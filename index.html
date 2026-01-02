@@ -14,14 +14,14 @@
         }
 
         :root {
-            --primary: #00ffff;
-            --accent: #9945ff;
+            --primary: #00d9ff;
+            --accent: #0066ff;
             --bg-dark: #0a0e1a;
-            --bg-card: #121826;
-            --bg-secondary: #1a1f35;
-            --text: #e5e7eb;
+            --bg-card: #121826; /* Kept slightly lighter for contrast */
+            --bg-secondary: #0f1729; /* Matches React section bg */
+            --text: #ffffff;
             --text-muted: #9ca3af;
-            --border: #2d3748;
+            --border: #1e2d3d;
         }
 
         body {
@@ -276,7 +276,7 @@
         }
 
         .service-card {
-            background: var(--bg-card);
+            background: #1a2332;
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 2rem;
@@ -304,6 +304,7 @@
         .service-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
         }
 
         .service-icon {
@@ -580,7 +581,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#projects">Portfolio</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -597,30 +598,56 @@
         <div class="hero-content">
             <div class="badge">
                 <i class="fas fa-sparkles"></i>
-                <span>AI-Powered Innovation</span>
+                <span>Building Intelligent Systems That Scale</span>
             </div>
-            <h1>
-                Transform Your Business<br>
-                <span class="gradient-text">with AI & Custom Software</span>
+            <h1 style="font-size: 4rem;">
+                AI-Powered Trading<br>
+                <span class="gradient-text">Strategies & Automation</span>
             </h1>
-            <p>We build intelligent solutions that drive innovation, automate processes, and deliver measurable results for forward-thinking companies.</p>
+            <p style="font-size: 1.25rem;">Custom-built bots and trading systems for crypto, forex, and stocks. Professional algorithmic trading solutions designed for maximum performance.<br><span style="display: block; margin-top: 1rem; font-size: 1rem; color: var(--primary);">Led by Salman Ullah Baig</span></p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Get Started Today →</a>
-                <a href="#projects" class="btn-secondary">View Our Work</a>
+                <a href="#contact" class="btn-primary">Hire Me →</a>
+                <a href="products.html" class="btn-secondary">View Full Portfolio</a>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Projects Delivered</div>
+            <div class="stats" style="gap: 1.5rem;">
+                <div class="service-card" style="text-align: center; padding: 1.5rem;">
+                    <div class="stat-number">33+</div>
+                    <div class="stat-label">Projects Completed</div>
                 </div>
-                <div class="stat-item">
+                <div class="service-card" style="text-align: center; padding: 1.5rem;">
                     <div class="stat-number">100%</div>
                     <div class="stat-label">Client Satisfaction</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">7+</div>
-                    <div class="stat-label">Years Experience</div>
+                <div class="service-card" style="text-align: center; padding: 1.5rem;">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Years of Profitable Ops</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="section-header">
+            <div class="section-tag">Why Choose Valour.ai</div>
+            <h2 class="section-title">Built for Professional <span class="gradient-text">Traders</span></h2>
+            <p class="section-description">Advanced AI technology combined with proven trading strategies</p>
+        </div>
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🏆</div>
+                <h3>Proven Track Record</h3>
+                <p>2 years of profitable operations with 9% average drawdown</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🤖</div>
+                <h3>Advanced AI Technology</h3>
+                <p>Deep learning models with real-time market analysis</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🌍</div>
+                <h3>Global Reach</h3>
+                <p>Serving clients across multiple markets and continents</p>
             </div>
         </div>
     </section>
@@ -628,8 +655,8 @@
     <!-- Services Section -->
     <section id="services" class="container">
         <div class="section-header">
-            <div class="section-tag">What We Do</div>
-            <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+            <div class="section-tag">What I Do</div>
+            <h2 class="section-title">Core <span class="gradient-text">Technologies</span></h2>
             <p class="section-description">Comprehensive solutions tailored to your business needs, powered by cutting-edge technology</p>
         </div>
         <div class="services-grid">
@@ -638,42 +665,42 @@
                     <i class="fas fa-brain"></i>
                 </div>
                 <h3>AI & Machine Learning</h3>
-                <p>Custom AI models, predictive analytics, computer vision, NLP, and intelligent automation solutions that transform data into actionable insights.</p>
+                <p>Custom AI models, predictive analytics, and intelligent automation solutions that transform data into actionable insights.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-code"></i>
+                    <i class="fas fa-eye"></i>
                 </div>
-                <h3>Web Development</h3>
-                <p>Full-stack web applications using React, Django, Node.js. Scalable, secure, and user-centric digital experiences.</p>
+                <h3>NLP & Computer Vision</h3>
+                <p>Advanced text analysis, sentiment classification, object detection, and image recognition systems.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-server"></i>
                 </div>
-                <h3>Automation & Bots</h3>
-                <p>Intelligent chatbots, RPA solutions, workflow automation that streamline operations and enhance productivity.</p>
+                <h3>Backend Development</h3>
+                <p>Robust and scalable backend architectures using Python, Django, FastAPI, and Node.js.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-cloud"></i>
                 </div>
-                <h3>Algo Trading Systems</h3>
-                <p>Advanced algorithmic trading platforms, backtesting frameworks, risk management systems for financial markets.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3>Custom Software</h3>
-                <p>Bespoke enterprise solutions, API development, system integrations designed for your unique requirements.</p>
+                <h3>Cloud & DevOps</h3>
+                <p>AWS infrastructure, Docker containerization, CI/CD pipelines, and serverless deployments.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-database"></i>
                 </div>
                 <h3>Data Engineering</h3>
-                <p>Data pipelines, ETL processes, database optimization, and cloud data architecture for data-driven decisions.</p>
+                <p>Big Data processing with Apache Spark, ETL pipelines, and optimized database architectures.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Trading & Finance</h3>
+                <p>Algorithmic trading bots, market analysis tools, and financial data visualization platforms.</p>
             </div>
         </div>
     </section>
@@ -683,63 +710,104 @@
         <div class="section-header">
             <div class="section-tag">Portfolio</div>
             <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-            <p class="section-description">A showcase of innovative solutions we've delivered across industries</p>
+            <p class="section-description">A showcase of innovative intelligent systems I've delivered</p>
         </div>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header"></div>
                 <div class="project-content">
                     <span class="project-tag">FinTech</span>
-                    <h3>AI Trading Platform</h3>
-                    <p>Real-time algorithmic trading system with ML-powered predictions and automated risk management for institutional investors.</p>
+                    <h3>Valor.ai</h3>
+                    <p>Advanced AI trading platform with real-time market analysis and automated execution strategies for institutional use.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">React</span>
+                    </div>
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header"></div>
+                <div class="project-content">
+                    <span class="project-tag">Blockchain</span>
+                    <h3>CryptoProfitShield</h3>
+                    <p>Comprehensive crypto asset protection and trading optimization system designed to maximize returns while minimizing risk.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Blockchain</span>
+                        <span class="tech-tag">Python</span>
                         <span class="tech-tag">AWS</span>
                     </div>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Project →</a>
+                    <a href="https://cryptoprofitshield.com" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-header"></div>
                 <div class="project-content">
-                    <span class="project-tag">E-Commerce</span>
-                    <h3>E-Commerce Ecosystem</h3>
-                    <p>Full-stack marketplace with AI recommendations, payment processing, inventory management, and analytics dashboard.</p>
+                    <span class="project-tag">Analytics</span>
+                    <h3>MarketAlphaQuest</h3>
+                    <p>Deep market analysis tool leveraging AI and NLP to discover alpha and hidden trends in global financial markets.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                    </div>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Project →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header"></div>
-                <div class="project-content">
-                    <span class="project-tag">Customer Service</span>
-                    <h3>Enterprise Chatbot Suite</h3>
-                    <p>Multi-channel AI chatbot platform with NLP, sentiment analysis, and seamless CRM integration for customer service.</p>
-                    <div class="tech-tags">
+                        <span class="tech-tag">Data Science</span>
                         <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">DialogFlow</span>
-                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Visualization</span>
                     </div>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Project →</a>
+                    <a href="https://marketalphaquest.com" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-header"></div>
                 <div class="project-content">
-                    <span class="project-tag">Healthcare</span>
-                    <h3>Healthcare Analytics</h3>
-                    <p>Predictive health monitoring system using ML to analyze patient data and provide early disease detection insights.</p>
+                    <span class="project-tag">AI/NLP</span>
+                    <h3>Enterprise AI Chatbot</h3>
+                    <p>Intelligent customer support agent powered by OpenAI and LangChain, capable of handling complex queries with context awareness.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Node.js</span>
                     </div>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Project →</a>
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="products.html" class="btn-secondary" style="padding: 1rem 3rem;">View All 30+ Projects →</a>
+        </div>
+    </section>
+
+    <!-- Latest Insights Section -->
+    <section id="blog" class="container">
+        <div class="section-header">
+            <div class="section-tag">Insights</div>
+            <h2 class="section-title">Latest <span class="gradient-text">Articles</span></h2>
+            <p class="section-description">Trends and strategies in AI trading</p>
+        </div>
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="service-card" style="padding: 0; overflow: hidden; display: block; height: auto;">
+                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600') center/cover;"></div>
+                <div style="padding: 2rem;">
+                    <span class="project-tag" style="margin-bottom: 1rem; display: inline-block;">Tutorial</span>
+                    <h3 style="font-size: 1.25rem;">Getting Started with AI Trading Bots</h3>
+                    <p style="margin-bottom: 1.5rem;">Learn how to leverage artificial intelligence to automate your trading strategies.</p>
+                    <a href="article.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read More →</a>
+                </div>
+            </div>
+            <div class="service-card" style="padding: 0; overflow: hidden; display: block; height: auto;">
+                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600') center/cover;"></div>
+                <div style="padding: 2rem;">
+                    <span class="project-tag" style="margin-bottom: 1rem; display: inline-block;">Strategy</span>
+                    <h3 style="font-size: 1.25rem;">Top 5 ML Strategies for Crypto</h3>
+                    <p style="margin-bottom: 1.5rem;">Discover the most effective machine learning algorithms used by pros.</p>
+                    <a href="article.html?id=2" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read More →</a>
+                </div>
+            </div>
+            <div class="service-card" style="padding: 0; overflow: hidden; display: block; height: auto;">
+                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600') center/cover;"></div>
+                <div style="padding: 2rem;">
+                    <span class="project-tag" style="margin-bottom: 1rem; display: inline-block;">Risk</span>
+                    <h3 style="font-size: 1.25rem;">Risk Management in Auto-Trading</h3>
+                    <p style="margin-bottom: 1.5rem;">Essential principles to protect your capital while using bots.</p>
+                    <a href="article.html?id=3" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read More →</a>
                 </div>
             </div>
         </div>
@@ -764,38 +832,52 @@
                     <i class="fas fa-eye"></i>
                 </div>
                 <h3>Our Vision</h3>
-                <p>We envision a future where businesses leverage AI and automation to unlock unprecedented levels of efficiency, insight, and growth. By staying at the forefront of technological advancement and maintaining our commitment to quality, we aim to be the trusted partner for organizations navigating their digital transformation journey.</p>
+                <p>To be the global leader in AI-driven financial automation, democratizing access to institutional-grade trading strategies through cutting-edge technology. We build systems that don't just execute trades, but think, adapt, and evolve with the market.</p>
+            </div>
+        </div>
+
+        <!-- Our Process -->
+        <div class="section-header" style="margin-top: 4rem;">
+            <h3 class="section-title" style="font-size: 2rem;">How We <span class="gradient-text">Work</span></h3>
+        </div>
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">01</div>
+                <h4>Discovery</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">We analyze your strategy and requirements deep-dive.</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">02</div>
+                <h4>Strategy</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">We design the AI architecture and backtest models.</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">03</div>
+                <h4>Development</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Agile coding with regular updates and feedback loops.</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">04</div>
+                <h4>Deployment</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Secure cloud launch with 24/7 monitoring systems.</p>
             </div>
         </div>
         
         <div class="section-header">
             <h3 class="section-title" style="font-size: 2rem;">Meet Our <span class="gradient-text">Team</span></h3>
         </div>
-        <div class="team-grid">
+        <div class="team-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); justify-content: center; max-width: 600px; margin: 0 auto;">
             <div class="team-member">
-                <div class="member-avatar">SM</div>
-                <h4>Salman Mahmood</h4>
-                <p>Founder & CEO</p>
+                <div class="member-avatar">SB</div>
+                <h4>Salman Ullah Baig</h4>
+                <p>Founder & Lead Developer</p>
             </div>
             <div class="team-member">
-                <div class="member-avatar">AK</div>
-                <h4>Ahmed Khan</h4>
-                <p>Head of AI/ML</p>
-            </div>
-            <div class="team-member">
-                <div class="member-avatar">ZA</div>
-                <h4>Zara Ahmed</h4>
-                <p>Lead Developer</p>
-            </div>
-            <div class="team-member">
-                <div class="member-avatar">FH</div>
-                <h4>Faisal Hassan</h4>
-                <p>Data Engineer</p>
-            </div>
-            <div class="team-member">
-                <div class="member-avatar">MR</div>
-                <h4>Maria Rodriguez</h4>
-                <p>UX/UI Designer</p>
+                <div class="member-avatar" style="background: transparent; border: 2px dashed var(--primary); color: var(--primary);">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <h4>Join Our Team</h4>
+                <p><a href="#contact" style="color: var(--primary); text-decoration: none;">We are Hiring →</a></p>
             </div>
         </div>
     </section>
@@ -809,7 +891,7 @@
         </div>
         <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;">
             <div class="service-card">
-                <form>
+                <form id="contactForm">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                         <div>
                             <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Full Name</label>
@@ -886,7 +968,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div>
+            <div class="footer-section">
                 <div class="logo" style="margin-bottom: 1.5rem;">Valour<span>.ai</span></div>
                 <p>Transforming businesses through AI, machine learning, and custom software solutions. Your trusted partner in digital innovation.</p>
                 <div class="social-links">
@@ -896,24 +978,24 @@
                     <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
-            <div>
+            <div class="footer-section">
                 <h4>Services</h4>
                 <ul>
                     <li><a href="#services">AI & Machine Learning</a></li>
-                    <li><a href="#services">Web Development</a></li>
-                    <li><a href="#services">Automation & Bots</a></li>
-                    <li><a href="#services">Algo Trading</a></li>
-                    <li><a href="#services">Custom Software</a></li>
+                    <li><a href="#services">NLP & Computer Vision</a></li>
+                    <li><a href="#services">Backend Development</a></li>
+                    <li><a href="#services">Cloud & DevOps</a></li>
                     <li><a href="#services">Data Engineering</a></li>
+                    <li><a href="#services">Trading & Finance</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#about">Our Team</a></li>
-                    <li><a href="#projects">Portfolio</a></li>
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="products.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#">Careers</a></li>
                 </ul>
@@ -959,8 +1041,8 @@
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                form.reset();
+                alert("Error: Message could not be sent.\n\nPlease email us directly at: support@valour.ai");
+                // form.reset(); // Don't reset so they can copy their message if needed
             });
         }
 

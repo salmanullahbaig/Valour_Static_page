@@ -3,12 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Valour.ai | Trading Bots & Tools</title>
-    <meta name="description" content="Pre-built AI trading bots and products ready for deployment">
+    <title>Portfolio - Valour.ai | All Projects</title>
+    <meta name="description" content="Complete portfolio of AI, trading, and software development projects by Salman Ullah Baig">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
+    <style>
+        :root {
+            --primary: #00d9ff;
+            --accent: #0066ff;
+            --bg-dark: #0a0e1a;
+            --bg-card: #121826;
+            --bg-secondary: #0f1729;
+            --text: #ffffff;
+            --text-muted: #9ca3af;
+            --border: #1e2d3d;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .product-card {
+            background: #1a2332;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+    </style>
 </head>
 <body>
     <div class="background-gradient"></div>
@@ -25,7 +62,7 @@
             <ul>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="products.html" class="active">Portfolio</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
@@ -33,15 +70,15 @@
     </nav>
 
     <!-- Products Header Section -->
-    <section class="hero" style="min-height: 60vh; padding-top: 150px;">
+    <section class="hero" style="min-height: 40vh; padding-top: 150px; padding-bottom: 2rem;">
         <div class="container">
             <div class="hero-content" style="max-width: 800px;">
-                <div class="section-label">Ready-Made Solutions</div>
+                <div class="section-label">My Work</div>
                 <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">
-                    <span class="gradient-text">Trading Bots</span> & Products
+                    <span class="gradient-text">Complete</span> Portfolio
                 </h1>
                 <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem;">
-                    Pre-built, tested trading systems ready for deployment
+                    A comprehensive list of 30+ projects delivered across AI, Trading, and Web Development.
                 </p>
             </div>
         </div>
@@ -50,134 +87,321 @@
     <!-- Products Grid -->
     <section id="products" style="padding: 4rem 0;">
         <div class="container">
-            <div class="products-grid">
+            <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
                 
-                <!-- Product 1 -->
-                <div class="product-card popular-product">
-                    <div class="popular-badge">POPULAR</div>
+                <!-- Project 1 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">FinTech</span>
+                        <span class="product-icon">🤖</span>
+                    </div>
+                    <h3>Valor.ai</h3>
+                    <p>Advanced AI trading platform with real-time market analysis and automated execution strategies.</p>
+                    <ul class="product-features">
+                        <li>AI Trading Platform</li>
+                        <li>Real-time Analysis</li>
+                        <li>Automated Execution</li>
+                    </ul>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Crypto</span>
+                        <span class="product-icon">🛡️</span>
+                    </div>
+                    <h3>CryptoProfitShield.com</h3>
+                    <p>Comprehensive crypto asset protection and trading optimization system.</p>
+                    <ul class="product-features">
+                        <li>Asset Protection</li>
+                        <li>Trading Optimization</li>
+                        <li>Risk Management</li>
+                    </ul>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Analytics</span>
+                        <span class="product-icon">📈</span>
+                    </div>
+                    <h3>MarketAlphaQuest.com</h3>
+                    <p>Deep market analysis tool leveraging AI to discover alpha and hidden trends.</p>
+                    <ul class="product-features">
+                        <li>Market Analysis</li>
+                        <li>Alpha Discovery</li>
+                        <li>Trend Detection</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">AI/ML</span>
+                        <span class="product-icon">🧠</span>
+                    </div>
+                    <h3>Deep Learning Trading Bot</h3>
+                    <p>Sophisticated trading bot using deep neural networks for price prediction.</p>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Strategy</span>
+                        <span class="product-icon">⚙️</span>
+                    </div>
+                    <h3>AI Strategy Optimization</h3>
+                    <p>System for optimizing trading strategies using genetic algorithms and ML.</p>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">NLP</span>
+                        <span class="product-icon">📝</span>
+                    </div>
+                    <h3>Arabic Text Sentiment</h3>
+                    <p>NLP model for classifying sentiment in Arabic text for market analysis.</p>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">AI/Chat</span>
+                        <span class="product-icon">💬</span>
+                    </div>
+                    <h3>AI Chatbot (OpenAI)</h3>
+                    <p>Intelligent chatbot built with OpenAI & LangChain for customer support.</p>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Vision</span>
+                        <span class="product-icon">👁️</span>
+                    </div>
+                    <h3>Video Ad Detection</h3>
+                    <p>Computer vision system for detecting and fingerprinting video advertisements.</p>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">TradingView</span>
+                        <span class="product-icon">📊</span>
+                    </div>
+                    <h3>ML TradingView Bot</h3>
+                    <p>Neural network-based trading bot integrated directly with TradingView.</p>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="product-card">
                     <div class="product-header">
                         <span class="product-tag">Crypto</span>
                         <span class="product-icon">₿</span>
                     </div>
-                    <h3>Crypto Trading Bot Pro</h3>
-                    <p>Advanced cryptocurrency trading bot with multi-exchange support and deep learning predictions.</p>
-                    <ul class="product-features">
-                        <li>LSTM Neural Network</li>
-                        <li>Multi-timeframe analysis</li>
-                        <li>Binance, Bybit, Coinbase support</li>
-                        <li>Risk management built-in</li>
-                        <li>Real-time alerts</li>
-                    </ul>
-                    <div class="product-pricing">
-                        <span class="price">$2,499</span>
-                        <a href="index.html#contact" class="btn btn-primary">Request Details</a>
-                    </div>
+                    <h3>Crypto Analysis Bot</h3>
+                    <p>Automated bot for real-time cryptocurrency market analysis and alerts.</p>
                 </div>
 
-                <!-- Product 2 -->
+                <!-- Project 11 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Integration</span>
+                        <span class="product-icon">🔄</span>
+                    </div>
+                    <h3>Binance TSL Integration</h3>
+                    <p>Custom integration app for Binance Trailing Stop Loss functionality.</p>
+                </div>
+
+                <!-- Project 12 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Trading</span>
+                        <span class="product-icon">📉</span>
+                    </div>
+                    <h3>Quotex ML Trading</h3>
+                    <p>Python-based machine learning trading automation for Quotex platform.</p>
+                </div>
+
+                <!-- Project 13 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Scala/Java</span>
+                        <span class="product-icon">☕</span>
+                    </div>
+                    <h3>Crypto Algo (Scala)</h3>
+                    <p>High-performance cryptocurrency trading algorithm implemented in Scala/Java.</p>
+                </div>
+
+                <!-- Project 14 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Stocks</span>
+                        <span class="product-icon">💹</span>
+                    </div>
+                    <h3>Real-Time Prediction</h3>
+                    <p>Real-time stock market prediction system using advanced streaming data.</p>
+                </div>
+
+                <!-- Project 15 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Mobile</span>
+                        <span class="product-icon">📱</span>
+                    </div>
+                    <h3>Stock Prediction App</h3>
+                    <p>Mobile application for tracking and predicting stock market movements.</p>
+                </div>
+
+                <!-- Project 16 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Automation</span>
+                        <span class="product-icon">🤖</span>
+                    </div>
+                    <h3>Digital Automation Bot</h3>
+                    <p>Agent bot designed for automating various digital workflows and tasks.</p>
+                </div>
+
+                <!-- Project 17 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">AI Training</span>
+                        <span class="product-icon">🎓</span>
+                    </div>
+                    <h3>Dharmesh Shah AI</h3>
+                    <p>Custom AI chatbot trained specifically on Dharmesh Shah's content.</p>
+                </div>
+
+                <!-- Project 18 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Scraper</span>
+                        <span class="product-icon">🕸️</span>
+                    </div>
+                    <h3>LinkedIn Scraper</h3>
+                    <p>Tool for scraping and managing new LinkedIn connections for lead gen.</p>
+                </div>
+
+                <!-- Project 19 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Optimization</span>
+                        <span class="product-icon">⚡</span>
+                    </div>
+                    <h3>Scheduling Algo</h3>
+                    <p>Optimization algorithm for complex resource scheduling problems.</p>
+                </div>
+
+                <!-- Project 20 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Security</span>
+                        <span class="product-icon">🔐</span>
+                    </div>
+                    <h3>McEliece Cryptosystem</h3>
+                    <p>Implementation of the McEliece public-key cryptosystem for secure comms.</p>
+                </div>
+
+                <!-- Project 21 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Data Science</span>
+                        <span class="product-icon">📉</span>
+                    </div>
+                    <h3>Churn Prediction App</h3>
+                    <p>Application to predict customer churn using historical behavioral data.</p>
+                </div>
+
+                <!-- Project 22 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Real Estate</span>
+                        <span class="product-icon">🏠</span>
+                    </div>
+                    <h3>Booking Calculator</h3>
+                    <p>Algorithm for calculating dynamic apartment booking prices.</p>
+                </div>
+
+                <!-- Project 23 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Web</span>
+                        <span class="product-icon">🌐</span>
+                    </div>
+                    <h3>Social Website Core</h3>
+                    <p>Backend Python coding and architecture for a social networking platform.</p>
+                </div>
+
+                <!-- Project 24 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Web</span>
+                        <span class="product-icon">🛍️</span>
+                    </div>
+                    <h3>Product Comparison</h3>
+                    <p>Final year project: A comprehensive website for comparing consumer products.</p>
+                </div>
+
+                <!-- Project 25 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Social</span>
+                        <span class="product-icon">👥</span>
+                    </div>
+                    <h3>Woochill.com</h3>
+                    <p>Full-featured social media platform development.</p>
+                </div>
+
+                <!-- Project 26 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">Healthcare</span>
+                        <span class="product-icon">🏥</span>
+                    </div>
+                    <h3>Patient Scheduling</h3>
+                    <p>Software solution for managing patient appointments and hospital resources.</p>
+                </div>
+
+                <!-- Project 27 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">AI/DL</span>
+                        <span class="product-icon">🧠</span>
+                    </div>
+                    <h3>Decision Support</h3>
+                    <p>Advanced decision support system utilizing deep learning models.</p>
+                </div>
+
+                <!-- Project 28 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="product-tag">NLP/Twitter</span>
+                        <span class="product-icon">🐦</span>
+                    </div>
+                    <h3>Disaster Detection</h3>
+                    <p>System to detect real-time disasters by analyzing Twitter data streams.</p>
+                </div>
+
+                <!-- Project 29 -->
                 <div class="product-card">
                     <div class="product-header">
                         <span class="product-tag">Forex</span>
                         <span class="product-icon">💱</span>
                     </div>
-                    <h3>Forex AI Trader</h3>
-                    <p>Intelligent forex trading system utilizing machine learning for currency pair analysis.</p>
-                    <ul class="product-features">
-                        <li>Deep learning models</li>
-                        <li>Major pairs coverage</li>
-                        <li>MetaTrader integration</li>
-                        <li>Sentiment analysis</li>
-                        <li>News-based trading</li>
-                    </ul>
-                    <div class="product-pricing">
-                        <span class="price">$1,999</span>
-                        <a href="index.html#contact" class="btn btn-primary">Request Details</a>
-                    </div>
+                    <h3>Forex AI Bot</h3>
+                    <p>Automated trading bot optimized for Forex market conditions.</p>
                 </div>
 
-                <!-- Product 3 -->
+                <!-- Project 30 -->
                 <div class="product-card">
                     <div class="product-header">
-                        <span class="product-tag">Stocks</span>
-                        <span class="product-icon">📈</span>
+                        <span class="product-tag">Trading</span>
+                        <span class="product-icon">📜</span>
                     </div>
-                    <h3>Stock Market Predictor</h3>
-                    <p>AI-powered stock prediction and trading system with high accuracy forecasting.</p>
-                    <ul class="product-features">
-                        <li>98% prediction accuracy</li>
-                        <li>Time series analysis</li>
-                        <li>Technical indicators</li>
-                        <li>Fundamental analysis</li>
-                        <li>Portfolio optimization</li>
-                    </ul>
-                    <div class="product-pricing">
-                        <span class="price">$2,999</span>
-                        <a href="index.html#contact" class="btn btn-primary">Request Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card popular-product">
-                    <div class="popular-badge">POPULAR</div>
-                    <div class="product-header">
-                        <span class="product-tag">Course</span>
-                        <span class="product-icon">🎓</span>
-                    </div>
-                    <h3>AI Trading Masterclass</h3>
-                    <p>Comprehensive course on building and deploying AI-powered trading systems.</p>
-                    <ul class="product-features">
-                        <li>20+ hours of video content</li>
-                        <li>Python code examples</li>
-                        <li>Real-world case studies</li>
-                        <li>Community access</li>
-                        <li>Lifetime updates</li>
-                    </ul>
-                    <div class="product-pricing">
-                        <span class="price">$499</span>
-                        <a href="index.html#contact" class="btn btn-primary">Request Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Strategy</span>
-                        <span class="product-icon">🎯</span>
-                    </div>
-                    <h3>Strategy Optimizer</h3>
-                    <p>ML framework for optimizing trading strategy combinations using genetic algorithms.</p>
-                    <ul class="product-features">
-                        <li>Genetic algorithms</li>
-                        <li>Backtest analysis</li>
-                        <li>95%+ accuracy</li>
-                        <li>Drawdown minimization</li>
-                        <li>Cross-validation</li>
-                    </ul>
-                    <div class="product-pricing">
-                        <span class="price">$1,499</span>
-                        <a href="index.html#contact" class="btn btn-primary">Request Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Tools</span>
-                        <span class="product-icon">🛠️</span>
-                    </div>
-                    <h3>Trading Toolkit Bundle</h3>
-                    <p>Complete set of tools for traders including indicators, analyzers, and utilities.</p>
-                    <ul class="product-features">
-                        <li>50+ custom indicators</li>
-                        <li>Market scanner</li>
-                        <li>Portfolio tracker</li>
-                        <li>Alert system</li>
-                        <li>API access</li>
-                    </ul>
-                    <div class="product-pricing">
-                        <span class="price">$799</span>
-                        <a href="index.html#contact" class="btn btn-primary">Request Details</a>
-                    </div>
+                    <h3>Historical Algo</h3>
+                    <p>Trading bot trained specifically on extensive historical market data.</p>
                 </div>
 
             </div>
@@ -209,23 +433,42 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">
-                    <div class="logo-icon"><img src="./logo.png" alt="Valour" style="width:100px; height:auto;"></div>
-                    <span class="logo-text">Valour.ai</span>
+        <div class="footer-content">
+            <div>
+                <div class="logo" style="margin-bottom: 1.5rem;">Valour<span>.ai</span></div>
+                <p>Transforming businesses through AI, machine learning, and custom software solutions. Your trusted partner in digital innovation.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
                 </div>
-
-                <div class="footer-links">
-                    <a href="https://github.com/salmanullahbaig" target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/salman-baig-b70a256a" target="_blank">LinkedIn</a>
-                    <a href="https://t.me/valourAI" target="_blank">Telegram</a>
-                    <a href="https://salmanullahbaig.github.io/portfolio/" target="_blank">Portfolio</a>
-                </div>
-
-                <p>&copy; 2025 Valour.ai. All rights reserved.</p>
-                <p>Professional AI Trading Solutions | Custom Bot Development</p>
             </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">AI & Machine Learning</a></li>
+                    <li><a href="index.html#services">NLP & Computer Vision</a></li>
+                    <li><a href="index.html#services">Backend Development</a></li>
+                    <li><a href="index.html#services">Cloud & DevOps</a></li>
+                    <li><a href="index.html#services">Data Engineering</a></li>
+                    <li><a href="index.html#services">Trading & Finance</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#about">Our Team</a></li>
+                    <li><a href="index.html#projects">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Valour.ai. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
         </div>
     </footer>
 

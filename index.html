@@ -65,6 +65,14 @@
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
         }
 
         .logo span {
@@ -844,7 +852,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">Valour<span>.</span></a>
+            <a href="#home" class="logo">
+                <img src="logo.jpg" alt="Valour">
+                Valour<span>.</span>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>

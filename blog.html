@@ -3,222 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Valour.ai | AI Trading Insights</title>
-    <meta name="description" content="Expert articles on AI trading, cryptocurrency, and algorithmic strategies">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-    <div class="background-gradient"></div>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="index.html">
-                <div class="logo">
-                    <div class="logo-icon"><img src="./logo.png" alt="Valour" style="width:100px; height:auto;"></div>
-                    <span class="logo-text">Valour.ai</span>
-                </div>
-            </a>
-            <ul>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="products.html">Portfolio</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Blog Header Section -->
-    <section class="hero" style="min-height: 60vh; padding-top: 150px;">
-        <div class="container">
-            <div class="hero-content" style="max-width: 800px;">
-                <div class="section-label">Knowledge Hub</div>
-                <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">
-                    <span class="gradient-text">Trading Insights</span> & Guides
-                </h1>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem;">
-                    Expert articles on AI trading, cryptocurrency, and algorithmic strategies
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Articles Grid -->
-    <section style="padding: 4rem 0 6rem;">
-        <div class="container">
-            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
-                
-                <!-- Article 1 -->
-                <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800');"></div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-category">Tutorial</span>
-                            <span class="blog-time">8 min read</span>
-                        </div>
-                        <h3 class="blog-title">Getting Started with AI Trading Bots in 2025</h3>
-                        <p class="blog-excerpt">Learn how to leverage artificial intelligence and machine learning to automate your cryptocurrency trading strategies.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <span>Valour.ai Team</span>
-                            </div>
-                            <div class="blog-date">Dec 8, 2025</div>
-                        </div>
-                        <a href="article.html?id=1" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Read Article →</a>
-                    </div>
-                </article>
-
-                <!-- Article 2 -->
-                <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=800');"></div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-category">Strategy</span>
-                            <span class="blog-time">12 min read</span>
-                        </div>
-                        <h3 class="blog-title">Top 5 Machine Learning Strategies for Crypto Trading</h3>
-                        <p class="blog-excerpt">Discover the most effective ML algorithms and strategies used by professional crypto traders in today's volatile markets.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <span>Valour.ai Team</span>
-                            </div>
-                            <div class="blog-date">Dec 5, 2025</div>
-                        </div>
-                        <a href="article.html?id=2" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Read Article →</a>
-                    </div>
-                </article>
-
-                <!-- Article 3 -->
-                <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800');"></div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-category">Risk Management</span>
-                            <span class="blog-time">10 min read</span>
-                        </div>
-                        <h3 class="blog-title">Risk Management in Automated Trading: A Complete Guide</h3>
-                        <p class="blog-excerpt">Essential risk management principles every trader should implement when using automated trading systems.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <span>Valour.ai Team</span>
-                            </div>
-                            <div class="blog-date">Dec 1, 2025</div>
-                        </div>
-                        <a href="article.html?id=3" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Read Article →</a>
-                    </div>
-                </article>
-
-                <!-- Article 4 -->
-                <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?w=800');"></div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-category">Industry Insights</span>
-                            <span class="blog-time">15 min read</span>
-                        </div>
-                        <h3 class="blog-title">The Future of DeFi and Algorithmic Trading</h3>
-                        <p class="blog-excerpt">Exploring how decentralized finance is transforming algorithmic trading and what it means for the future.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <span>Valour.ai Team</span>
-                            </div>
-                            <div class="blog-date">Nov 28, 2025</div>
-                        </div>
-                        <a href="article.html?id=4" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Read Article →</a>
-                    </div>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800');"></div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-category">Tutorial</span>
-                            <span class="blog-time">20 min read</span>
-                        </div>
-                        <h3 class="blog-title">Building Your First Trading Bot: Step-by-Step Tutorial</h3>
-                        <p class="blog-excerpt">A practical, hands-on guide to creating your first cryptocurrency trading bot from scratch.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <span>Valour.ai Team</span>
-                            </div>
-                            <div class="blog-date">Nov 25, 2025</div>
-                        </div>
-                        <a href="article.html?id=5" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Read Article →</a>
-                    </div>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1642790551116-18e150f248e5?w=800');"></div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-category">Analysis</span>
-                            <span class="blog-time">11 min read</span>
-                        </div>
-                        <h3 class="blog-title">Technical Analysis vs AI: Which is Better?</h3>
-                        <p class="blog-excerpt">Comparing traditional technical analysis with modern AI-driven approaches to market prediction.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <span>Valour.ai Team</span>
-                            </div>
-                            <div class="blog-date">Nov 22, 2025</div>
-                        </div>
-                        <a href="article.html?id=6" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Read Article →</a>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div>
-                <div class="logo" style="margin-bottom: 1.5rem;">Valour<span>.ai</span></div>
-                <p>Transforming businesses through AI, machine learning, and custom software solutions. Your trusted partner in digital innovation.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="index.html#services">AI & Machine Learning</a></li>
-                    <li><a href="index.html#services">NLP & Computer Vision</a></li>
-                    <li><a href="index.html#services">Backend Development</a></li>
-                    <li><a href="index.html#services">Cloud & DevOps</a></li>
-                    <li><a href="index.html#services">Data Engineering</a></li>
-                    <li><a href="index.html#services">Trading & Finance</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#about">Our Team</a></li>
-                    <li><a href="index.html#projects">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Valour.ai. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
-        </div>
-    </footer>
-
+    <title>Blog - Valour | Tech Insights</title>
+    <meta name="description" content="Expert articles on software development, AI, automation, and technology trends">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d5a8a;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-secondary: #162033;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dark: #64748b;
+            --border: #334155;
+            --success: #10b981;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+        }
+
+        .page-header .section-tag {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Blog Grid */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -227,16 +171,15 @@
 
         .blog-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s;
         }
 
         .blog-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .blog-image {
@@ -257,7 +200,7 @@
         }
 
         .blog-content {
-            padding: 2rem;
+            padding: 1.75rem;
         }
 
         .blog-meta {
@@ -268,38 +211,39 @@
         }
 
         .blog-category {
-            padding: 0.375rem 0.875rem;
-            background: rgba(0, 217, 255, 0.15);
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            color: var(--primary-color);
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            border-radius: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .blog-time {
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
 
         .blog-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: var(--white);
             transition: color 0.3s;
         }
 
         .blog-card:hover .blog-title {
-            color: var(--primary-color);
+            color: var(--accent);
         }
 
         .blog-excerpt {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.9rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -311,31 +255,403 @@
             justify-content: space-between;
             align-items: center;
             padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
         }
 
         .blog-author {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             font-weight: 500;
         }
 
         .blog-date {
-            font-size: 0.875rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--text-dark);
         }
 
-        nav a.active {
-            color: var(--primary-color);
+        .blog-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: var(--bg-secondary);
+            padding: 5rem 2rem;
+        }
+
+        .newsletter-box {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .newsletter-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 65px);
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
             .blog-grid {
                 grid-template-columns: 1fr;
             }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Valour<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="products.html">Portfolio</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#contact" class="btn-primary">Talk to Us</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-    <script src="assets/script.js"></script>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="section-tag">Knowledge Hub</div>
+        <h1>Tech Insights & Guides</h1>
+        <p>Expert articles on software development, AI, automation, and technology trends</p>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="container">
+        <div class="blog-grid">
+            
+            <!-- Article 1 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800');"></div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">AI & ML</span>
+                        <span class="blog-time">8 min read</span>
+                    </div>
+                    <h3 class="blog-title">Getting Started with AI in Enterprise Applications</h3>
+                    <p class="blog-excerpt">Learn how to leverage artificial intelligence and machine learning to automate business processes and gain competitive advantage.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author">Valour Team</span>
+                        <span class="blog-date">Jan 15, 2026</span>
+                    </div>
+                    <a href="article.html?id=1" class="blog-link">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800');"></div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Data Engineering</span>
+                        <span class="blog-time">12 min read</span>
+                    </div>
+                    <h3 class="blog-title">Building Scalable Data Pipelines with Python</h3>
+                    <p class="blog-excerpt">A comprehensive guide to designing and implementing ETL pipelines that can handle enterprise-scale data processing.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author">Valour Team</span>
+                        <span class="blog-date">Jan 10, 2026</span>
+                    </div>
+                    <a href="article.html?id=2" class="blog-link">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800');"></div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Automation</span>
+                        <span class="blog-time">10 min read</span>
+                    </div>
+                    <h3 class="blog-title">Workflow Automation: A Complete Implementation Guide</h3>
+                    <p class="blog-excerpt">Essential principles and best practices for automating business workflows to reduce manual effort and increase efficiency.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author">Valour Team</span>
+                        <span class="blog-date">Jan 5, 2026</span>
+                    </div>
+                    <a href="article.html?id=3" class="blog-link">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800');"></div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Cloud & DevOps</span>
+                        <span class="blog-time">15 min read</span>
+                    </div>
+                    <h3 class="blog-title">Cloud Architecture Best Practices for Startups</h3>
+                    <p class="blog-excerpt">How to design cost-effective and scalable cloud infrastructure that grows with your startup.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author">Valour Team</span>
+                        <span class="blog-date">Dec 28, 2025</span>
+                    </div>
+                    <a href="article.html?id=4" class="blog-link">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800');"></div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Development</span>
+                        <span class="blog-time">20 min read</span>
+                    </div>
+                    <h3 class="blog-title">Building APIs That Scale: REST vs GraphQL</h3>
+                    <p class="blog-excerpt">A practical comparison of REST and GraphQL APIs with recommendations for different use cases.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author">Valour Team</span>
+                        <span class="blog-date">Dec 20, 2025</span>
+                    </div>
+                    <a href="article.html?id=5" class="blog-link">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1488229297570-58520851e868?w=800');"></div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">NLP</span>
+                        <span class="blog-time">11 min read</span>
+                    </div>
+                    <h3 class="blog-title">Building Custom AI Chatbots with LangChain</h3>
+                    <p class="blog-excerpt">Step-by-step guide to creating intelligent chatbots using LangChain and OpenAI for customer support automation.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author">Valour Team</span>
+                        <span class="blog-date">Dec 15, 2025</span>
+                    </div>
+                    <a href="article.html?id=6" class="blog-link">Read Article →</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="newsletter-section">
+        <div class="newsletter-box">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest tech insights and updates.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="index.html" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">Valour<span>.</span></a>
+                <p>Technology partner for digital transformation. Building intelligent, scalable solutions for startups and enterprises.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Software Engineering</a></li>
+                    <li><a href="services.html">AI & Data</a></li>
+                    <li><a href="services.html">Automation</a></li>
+                    <li><a href="services.html">Cloud & Infrastructure</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="products.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Valour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

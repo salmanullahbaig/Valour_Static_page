@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valour.ai - AI & Custom Software Solutions</title>
+    <title>Valour - Technology Partner for Digital Transformation</title>
+    <meta name="description" content="Custom software, AI solutions, and infrastructure for startups and enterprises. Full-stack technology partner across industries.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,26 +15,28 @@
         }
 
         :root {
-            --primary: #00d9ff;
-            --accent: #0066ff;
-            --bg-dark: #0a0e1a;
-            --bg-card: #121826; /* Kept slightly lighter for contrast */
-            --bg-secondary: #0f1729; /* Matches React section bg */
-            --text: #ffffff;
-            --text-muted: #9ca3af;
-            --border: #1e2d3d;
+            /* Professional Corporate Palette */
+            --primary: #1e3a5f;
+            --primary-light: #2d5a8a;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-secondary: #162033;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dark: #64748b;
+            --border: #334155;
+            --success: #10b981;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Sora', sans-serif;
         }
 
         /* Navigation */
@@ -41,15 +44,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 14, 26, 0.8);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
@@ -60,14 +63,12 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            font-family: 'Sora', sans-serif;
+            color: var(--white);
+            text-decoration: none;
         }
 
         .logo span {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent);
         }
 
         .nav-links {
@@ -81,16 +82,17 @@
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: var(--bg-dark);
+            background: var(--accent);
+            color: var(--white);
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             border: none;
@@ -102,8 +104,8 @@
         }
 
         .btn-primary:hover {
+            background: var(--accent-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
         }
 
         .btn-secondary {
@@ -111,7 +113,7 @@
             color: var(--text);
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
-            border: 2px solid var(--primary);
+            border: 1px solid var(--border);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -120,7 +122,8 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         /* Hero Section */
@@ -131,73 +134,43 @@
             justify-content: center;
             text-align: center;
             padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(153, 69, 255, 0.1) 0%, transparent 70%);
-            bottom: 0;
-            right: 0;
-            animation: pulse 4s ease-in-out infinite 2s;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
         }
 
         .hero-content {
             max-width: 900px;
-            position: relative;
-            z-index: 1;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.3);
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
             padding: 0.5rem 1rem;
             border-radius: 2rem;
             font-size: 0.85rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 2rem;
+            font-weight: 500;
         }
 
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            line-height: 1.15;
+            color: var(--white);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
             margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         .hero-buttons {
@@ -205,39 +178,47 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 4rem;
         }
 
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .stat-item {
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem 1.5rem;
             text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent);
+            display: block;
         }
 
         .stat-label {
             font-size: 0.9rem;
             color: var(--text-muted);
+            margin-top: 0.5rem;
         }
 
         /* Container */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 6rem 2rem;
         }
@@ -248,7 +229,7 @@
         }
 
         .section-tag {
-            color: var(--primary);
+            color: var(--accent);
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -260,12 +241,14 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            color: var(--white);
         }
 
         .section-description {
             color: var(--text-muted);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
         /* Services Grid */
@@ -276,41 +259,22 @@
         }
 
         .service-card {
-            background: #1a2332;
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 2rem;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+            border-color: var(--accent);
         }
 
         .service-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 255, 255, 0.1);
+            width: 56px;
+            height: 56px;
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 0.75rem;
             display: flex;
             align-items: center;
@@ -319,24 +283,89 @@
         }
 
         .service-icon i {
-            font-size: 1.75rem;
-            color: var(--primary);
+            font-size: 1.5rem;
+            color: var(--accent);
         }
 
         .service-card h3 {
             font-size: 1.25rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
         }
 
         .service-card p {
             color: var(--text-muted);
-            line-height: 1.8;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-list li {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Industries Section */
+        .industries-section {
+            background: var(--bg-secondary);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .industry-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .industry-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .industry-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .industry-card h4 {
+            font-size: 0.95rem;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .industry-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
@@ -346,17 +375,11 @@
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s;
-            cursor: pointer;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .project-header {
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-color: var(--accent);
         }
 
         .project-content {
@@ -365,44 +388,177 @@
 
         .project-tag {
             display: inline-block;
-            background: rgba(0, 255, 255, 0.1);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.5rem;
             font-size: 0.75rem;
+            font-weight: 600;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
         }
 
-        .project-card p {
+        .project-card > .project-content > p {
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .tech-tag {
             background: var(--bg-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.4rem;
             font-size: 0.75rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Why Valour Section */
+        .why-section {
+            background: var(--bg-secondary);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .why-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .why-icon i {
+            font-size: 1.75rem;
+            color: var(--accent);
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+        }
+
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .about-card h3 i {
+            color: var(--accent);
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+        }
+
+        .process-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step h4 {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        /* Team Grid */
+        /* Team Section */
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
         }
 
         .team-member {
@@ -412,7 +568,7 @@
         .member-avatar {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: var(--accent);
             border-radius: 1rem;
             display: flex;
             align-items: center;
@@ -420,22 +576,123 @@
             margin: 0 auto 1rem;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--bg-dark);
-            transition: all 0.3s;
-        }
-
-        .team-member:hover .member-avatar {
-            transform: scale(1.1) rotate(5deg);
+            color: var(--white);
         }
 
         .team-member h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
+            color: var(--white);
             margin-bottom: 0.25rem;
         }
 
         .team-member p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .contact-card h4 {
+            font-size: 0.95rem;
+            color: var(--white);
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
         }
 
         /* Footer */
@@ -446,7 +703,7 @@
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
@@ -456,11 +713,13 @@
 
         .footer-section h4 {
             margin-bottom: 1.5rem;
+            color: var(--white);
         }
 
         .footer-section p {
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         .footer-section ul {
@@ -478,12 +737,12 @@
         }
 
         .footer-section a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .social-link {
@@ -499,8 +758,8 @@
         }
 
         .social-link:hover {
-            background: rgba(0, 255, 255, 0.1);
-            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
         }
 
         .footer-bottom {
@@ -521,11 +780,6 @@
             cursor: pointer;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .mobile-menu-btn {
@@ -534,10 +788,10 @@
 
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 65px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
+                height: calc(100vh - 65px);
                 background: var(--bg-card);
                 flex-direction: column;
                 padding: 2rem;
@@ -549,26 +803,39 @@
             }
 
             h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-title {
                 font-size: 2rem;
             }
 
             .stats {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1rem;
             }
 
             .services-grid,
-            .projects-grid {
+            .projects-grid,
+            .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -577,15 +844,15 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">Valour<span>.ai</span></div>
+            <a href="#home" class="logo">Valour<span>.</span></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#industries">Industries</a></li>
                 <li><a href="#projects">Portfolio</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" class="btn-primary">Get Started</a></li>
+                <li><a href="#contact" class="btn-primary">Talk to Us</a></li>
             </ul>
             <button class="mobile-menu-btn" id="menuBtn">
                 <i class="fas fa-bars"></i>
@@ -597,57 +864,28 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="badge">
-                <i class="fas fa-sparkles"></i>
-                <span>Building Intelligent Systems That Scale</span>
+                <i class="fas fa-building"></i>
+                <span>Enterprise Technology Solutions</span>
             </div>
-            <h1 style="font-size: 4rem;">
-                AI-Powered Trading<br>
-                <span class="gradient-text">Strategies & Automation</span>
-            </h1>
-            <p style="font-size: 1.25rem;">Custom-built bots and trading systems for crypto, forex, and stocks. Professional algorithmic trading solutions designed for maximum performance.<br><span style="display: block; margin-top: 1rem; font-size: 1rem; color: var(--primary);"></span></p>
+            <h1>Technology Partner for<br>Digital Transformation</h1>
+            <p>Custom software, AI solutions, and infrastructure for startups and enterprises. We build scalable systems that drive measurable business outcomes across industries.</p>
             <div class="hero-buttons">
-                <!-- <a href="#contact" class="btn-primary">Hire U →</a> -->
-                <a href="products.html" class="btn-secondary">View Full Portfolio</a>
+                <a href="#services" class="btn-primary">View Services</a>
+                <a href="#contact" class="btn-secondary">Talk to Us</a>
             </div>
-            <div class="stats" style="gap: 1.5rem;">
-                <div class="service-card" style="text-align: center; padding: 1.5rem;">
-                    <div class="stat-number">33+</div>
-                    <div class="stat-label">Projects Completed</div>
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">35+</span>
+                    <div class="stat-label">Projects Delivered</div>
                 </div>
-                <div class="service-card" style="text-align: center; padding: 1.5rem;">
-                    <div class="stat-number">100%</div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
                     <div class="stat-label">Client Satisfaction</div>
                 </div>
-                <div class="service-card" style="text-align: center; padding: 1.5rem;">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Years of Profitable Ops</div>
+                <div class="stat-card">
+                    <span class="stat-number">5+</span>
+                    <div class="stat-label">Years Experience</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Section -->
-    <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
-        <div class="section-header">
-            <div class="section-tag">Why Choose Valour.ai</div>
-            <h2 class="section-title">Built for Professional <span class="gradient-text">Traders</span></h2>
-            <p class="section-description">Advanced AI technology combined with proven trading strategies</p>
-        </div>
-        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🏆</div>
-                <h3>Proven Track Record</h3>
-                <p>2 years of profitable operations with 9% average drawdown</p>
-            </div>
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🤖</div>
-                <h3>Advanced AI Technology</h3>
-                <p>Deep learning models with real-time market analysis</p>
-            </div>
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🌍</div>
-                <h3>Global Reach</h3>
-                <p>Serving clients across multiple markets and continents</p>
             </div>
         </div>
     </section>
@@ -655,52 +893,125 @@
     <!-- Services Section -->
     <section id="services" class="container">
         <div class="section-header">
-            <div class="section-tag">What I Do</div>
-            <h2 class="section-title">Core <span class="gradient-text">Technologies</span></h2>
-            <p class="section-description">Comprehensive solutions tailored to your business needs, powered by cutting-edge technology</p>
+            <div class="section-tag">What We Do</div>
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-description">Comprehensive technology solutions tailored to your business needs</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Software Engineering</h3>
+                <p>Custom software solutions built with modern technologies and best practices.</p>
+                <ul class="service-list">
+                    <li>Web & Mobile Applications</li>
+                    <li>APIs & Backend Systems</li>
+                    <li>Enterprise Solutions</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
                     <i class="fas fa-brain"></i>
                 </div>
-                <h3>AI & Machine Learning</h3>
-                <p>Custom AI models, predictive analytics, and intelligent automation solutions that transform data into actionable insights.</p>
+                <h3>AI & Data</h3>
+                <p>Intelligent solutions that transform data into actionable business insights.</p>
+                <ul class="service-list">
+                    <li>Machine Learning Models</li>
+                    <li>Predictive Analytics</li>
+                    <li>NLP & Computer Vision</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-robot"></i>
                 </div>
-                <h3>NLP & Computer Vision</h3>
-                <p>Advanced text analysis, sentiment classification, object detection, and image recognition systems.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h3>Backend Development</h3>
-                <p>Robust and scalable backend architectures using Python, Django, FastAPI, and Node.js.</p>
+                <h3>Automation</h3>
+                <p>Streamline operations and reduce manual effort with intelligent automation.</p>
+                <ul class="service-list">
+                    <li>Business Process Automation</li>
+                    <li>Bot Development</li>
+                    <li>Workflow Optimization</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-cloud"></i>
                 </div>
-                <h3>Cloud & DevOps</h3>
-                <p>AWS infrastructure, Docker containerization, CI/CD pipelines, and serverless deployments.</p>
+                <h3>Cloud & Infrastructure</h3>
+                <p>Scalable, secure infrastructure for modern applications.</p>
+                <ul class="service-list">
+                    <li>AWS, GCP, Azure</li>
+                    <li>DevOps & CI/CD</li>
+                    <li>Containerization</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Fintech Solutions</h3>
+                <p>Specialized solutions for finance and trading applications.</p>
+                <ul class="service-list">
+                    <li>Trading Systems</li>
+                    <li>Risk Management</li>
+                    <li>Financial Analytics</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-database"></i>
                 </div>
                 <h3>Data Engineering</h3>
-                <p>Big Data processing with Apache Spark, ETL pipelines, and optimized database architectures.</p>
+                <p>Build robust data pipelines and infrastructure for analytics.</p>
+                <ul class="service-list">
+                    <li>ETL Pipelines</li>
+                    <li>Data Warehousing</li>
+                    <li>Real-time Processing</li>
+                </ul>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="industries-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Industries</div>
+                <h2 class="section-title">Industries We Serve</h2>
+                <p class="section-description">Cross-industry expertise delivering solutions for diverse business needs</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Startups</h4>
+                    <p>MVP to Scale</p>
                 </div>
-                <h3>Trading & Finance</h3>
-                <p>Algorithmic trading bots, market analysis tools, and financial data visualization platforms.</p>
+                <div class="industry-card">
+                    <i class="fas fa-building"></i>
+                    <h4>Enterprise</h4>
+                    <p>Digital Transformation</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-coins"></i>
+                    <h4>Finance</h4>
+                    <p>Trading & Analytics</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Healthcare</h4>
+                    <p>Health Tech</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>E-commerce</h4>
+                    <p>Retail Solutions</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-cloud"></i>
+                    <h4>SaaS</h4>
+                    <p>Product Development</p>
+                </div>
             </div>
         </div>
     </section>
@@ -709,105 +1020,136 @@
     <section id="projects" class="container">
         <div class="section-header">
             <div class="section-tag">Portfolio</div>
-            <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-            <p class="section-description">A showcase of innovative intelligent systems I've delivered</p>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">Showcasing our expertise across diverse technology domains</p>
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-header"></div>
                 <div class="project-content">
-                    <span class="project-tag">FinTech</span>
-                    <h3>Valor.ai</h3>
-                    <p>Advanced AI trading platform with real-time market analysis and automated execution strategies for institutional use.</p>
+                    <span class="project-tag">Security & Cryptography</span>
+                    <h3>McEliece Cryptosystem</h3>
+                    <p>Complete implementation of post-quantum cryptographic system using Goppa codes for error correction. Includes key generation, encryption, and decryption modules.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">SymPy</span>
+                    </div>
+                    <a href="https://www.freelancer.com/projects/python/McEliece-Crypto/details" target="_blank" class="project-link">View Details →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-tag">Web Development</span>
+                    <h3>Social Interaction Platform</h3>
+                    <p>Full-featured social networking website with profile creation, posts, messaging, and secure user authentication built with Django.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <a href="https://www.freelancer.com/projects/python/Python-coding-for-website/details" target="_blank" class="project-link">View Details →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-tag">AI & Machine Learning</span>
+                    <h3>Stock Market Prediction</h3>
+                    <p>Machine learning model for market prediction using historical data, technical indicators, and trend analysis to generate actionable signals.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Scikit-learn</span>
                     </div>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
+                    <a href="#" class="project-link">View Details →</a>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-header"></div>
                 <div class="project-content">
-                    <span class="project-tag">Blockchain</span>
-                    <h3>CryptoProfitShield</h3>
-                    <p>Comprehensive crypto asset protection and trading optimization system designed to maximize returns while minimizing risk.</p>
+                    <span class="project-tag">Enterprise Platform</span>
+                    <h3>Valour.AI Platform</h3>
+                    <p>AI-based platform serving 6,000+ users with automated strategies, risk management tools, and real-time analytics dashboard.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">Blockchain</span>
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Data Science</span>
                     </div>
-                    <a href="https://cryptoprofitshield.com" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
+                    <a href="#" class="project-link">View Details →</a>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-header"></div>
+                <div class="project-content">
+                    <span class="project-tag">Fintech</span>
+                    <h3>CryptoProfitShield</h3>
+                    <p>Web-based risk management system for position sizing, stop-loss management, and portfolio analytics for traders.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">APIs</span>
+                        <span class="tech-tag">Risk Management</span>
+                    </div>
+                    <a href="https://cryptoprofitshield.com/" target="_blank" class="project-link">View Details →</a>
+                </div>
+            </div>
+            <div class="project-card">
                 <div class="project-content">
                     <span class="project-tag">Analytics</span>
                     <h3>MarketAlphaQuest</h3>
-                    <p>Deep market analysis tool leveraging AI and NLP to discover alpha and hidden trends in global financial markets.</p>
+                    <p>Advanced market analytics platform with AI-based insights, technical indicators, and predictive models for market analysis.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">Data Science</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Visualization</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Financial Data</span>
                     </div>
-                    <a href="https://marketalphaquest.com" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header"></div>
-                <div class="project-content">
-                    <span class="project-tag">AI/NLP</span>
-                    <h3>Enterprise AI Chatbot</h3>
-                    <p>Intelligent customer support agent powered by OpenAI and LangChain, capable of handling complex queries with context awareness.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">Node.js</span>
-                    </div>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">View Details →</a>
+                    <a href="https://marketalphaquest.com/home" target="_blank" class="project-link">View Details →</a>
                 </div>
             </div>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="products.html" class="btn-secondary" style="padding: 1rem 3rem;">View All 30+ Projects →</a>
+            <a href="products.html" class="btn-secondary" style="padding: 1rem 2.5rem;">View All Projects →</a>
         </div>
     </section>
 
-    <!-- Latest Insights Section -->
-    <section id="blog" class="container">
-        <div class="section-header">
-            <div class="section-tag">Insights</div>
-            <h2 class="section-title">Latest <span class="gradient-text">Articles</span></h2>
-            <p class="section-description">Trends and strategies in AI trading</p>
-        </div>
-        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="service-card" style="padding: 0; overflow: hidden; display: block; height: auto;">
-                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600') center/cover;"></div>
-                <div style="padding: 2rem;">
-                    <span class="project-tag" style="margin-bottom: 1rem; display: inline-block;">Tutorial</span>
-                    <h3 style="font-size: 1.25rem;">Getting Started with AI Trading Bots</h3>
-                    <p style="margin-bottom: 1.5rem;">Learn how to leverage artificial intelligence to automate your trading strategies.</p>
-                    <a href="article.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read More →</a>
-                </div>
+    <!-- Why Valour Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Why Choose Us</div>
+                <h2 class="section-title">Why Valour</h2>
+                <p class="section-description">What sets us apart as your technology partner</p>
             </div>
-            <div class="service-card" style="padding: 0; overflow: hidden; display: block; height: auto;">
-                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600') center/cover;"></div>
-                <div style="padding: 2rem;">
-                    <span class="project-tag" style="margin-bottom: 1rem; display: inline-block;">Strategy</span>
-                    <h3 style="font-size: 1.25rem;">Top 5 ML Strategies for Crypto</h3>
-                    <p style="margin-bottom: 1.5rem;">Discover the most effective machine learning algorithms used by pros.</p>
-                    <a href="article.html?id=2" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read More →</a>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Technical Depth</h3>
+                    <p>Full-stack expertise across multiple technologies and domains, from infrastructure to user interfaces.</p>
                 </div>
-            </div>
-            <div class="service-card" style="padding: 0; overflow: hidden; display: block; height: auto;">
-                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600') center/cover;"></div>
-                <div style="padding: 2rem;">
-                    <span class="project-tag" style="margin-bottom: 1rem; display: inline-block;">Risk</span>
-                    <h3 style="font-size: 1.25rem;">Risk Management in Auto-Trading</h3>
-                    <p style="margin-bottom: 1.5rem;">Essential principles to protect your capital while using bots.</p>
-                    <a href="article.html?id=3" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read More →</a>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Cross-Industry Experience</h3>
+                    <p>Solutions for diverse sectors including finance, healthcare, e-commerce, and enterprise SaaS.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Results-Driven</h3>
+                    <p>Focus on measurable business outcomes, not just code delivery. Your success is our metric.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Reliable Delivery</h3>
+                    <p>Agile development process with consistent communication and on-time project completion.</p>
                 </div>
             </div>
         </div>
@@ -817,147 +1159,127 @@
     <section id="about" class="container">
         <div class="section-header">
             <div class="section-tag">About Us</div>
-            <h2 class="section-title">About <span class="gradient-text">Valour.ai</span></h2>
+            <h2 class="section-title">About Valour</h2>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-target"></i>
-                </div>
-                <h3>Our Mission</h3>
-                <p>At Valour.ai, we believe in the transformative power of artificial intelligence and custom software to solve complex business challenges. Our mission is to democratize access to cutting-edge technology by delivering intelligent, scalable solutions that drive measurable results for businesses of all sizes.</p>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3><i class="fas fa-crosshairs"></i> Our Mission</h3>
+                <p>To deliver intelligent, scalable technology solutions that solve complex business challenges. We partner with organizations to transform ideas into production-ready systems that create real value.</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <h3>Our Vision</h3>
-                <p>To be the global leader in AI-driven financial automation, democratizing access to institutional-grade trading strategies through cutting-edge technology. We build systems that don't just execute trades, but think, adapt, and evolve with the market.</p>
+            <div class="about-card">
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>To be a trusted technology partner for organizations seeking innovation and growth. We build systems that don't just work today, but evolve with your business needs.</p>
             </div>
         </div>
 
-        <!-- Our Process -->
         <div class="section-header" style="margin-top: 4rem;">
-            <h3 class="section-title" style="font-size: 2rem;">How We <span class="gradient-text">Work</span></h3>
+            <h3 class="section-title" style="font-size: 2rem;">How We Work</h3>
         </div>
-        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">01</div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="process-number">01</div>
                 <h4>Discovery</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">We analyze your strategy and requirements deep-dive.</p>
+                <p>Understanding your needs and business goals</p>
             </div>
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">02</div>
+            <div class="process-step">
+                <div class="process-number">02</div>
                 <h4>Strategy</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">We design the AI architecture and backtest models.</p>
+                <p>Designing the optimal solution architecture</p>
             </div>
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">03</div>
+            <div class="process-step">
+                <div class="process-number">03</div>
                 <h4>Development</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Agile coding with regular updates and feedback loops.</p>
+                <p>Building with precision and regular updates</p>
             </div>
-            <div class="service-card" style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">04</div>
+            <div class="process-step">
+                <div class="process-number">04</div>
                 <h4>Deployment</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Secure cloud launch with 24/7 monitoring systems.</p>
+                <p>Launch with support and monitoring</p>
             </div>
         </div>
-        
-        <div class="section-header">
-            <h3 class="section-title" style="font-size: 2rem;">Meet Our <span class="gradient-text">Team</span></h3>
+
+        <div class="section-header" style="margin-top: 4rem;">
+            <h3 class="section-title" style="font-size: 2rem;">Meet the Founder</h3>
         </div>
-        <div class="team-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); justify-content: center; max-width: 600px; margin: 0 auto;">
+        <div class="team-grid">
             <div class="team-member">
                 <div class="member-avatar">SB</div>
                 <h4>Salman Ullah Baig</h4>
-                <p>Founder & Lead Developer</p>
-            </div>
-            <div class="team-member">
-                <div class="member-avatar" style="background: transparent; border: 2px dashed var(--primary); color: var(--primary);">
-                    <i class="fas fa-plus"></i>
-                </div>
-                <h4>Join Our Team</h4>
-                <p><a href="#contact" style="color: var(--primary); text-decoration: none;">We are Hiring →</a></p>
+                <p>Founder & Lead Engineer</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="container">
-        <div class="section-header">
-            <div class="section-tag">Contact</div>
-            <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-            <p class="section-description">Ready to transform your business? Let's discuss your project</p>
-        </div>
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;">
-            <div class="service-card">
-                <form id="contactForm">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                        <div>
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Full Name</label>
-                            <input type="text" placeholder="John Doe" style="width: 100%; padding: 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text);">
-                        </div>
-                        <div>
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
-                            <input type="email" placeholder="john@example.com" style="width: 100%; padding: 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text);">
-                        </div>
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Subject</label>
-                        <input type="text" placeholder="Project Inquiry" style="width: 100%; padding: 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text);">
-                    </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
-                        <textarea placeholder="Tell us about your project..." style="width: 100%; padding: 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text); min-height: 150px;"></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; font-size: 1rem;">Send Message →</button>
-                </form>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Contact</div>
+                <h2 class="section-title">Let's Discuss Your Project</h2>
+                <p class="section-description">Schedule a consultation to explore how we can help</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div class="service-card" style="padding: 1.5rem;">
-                    <div style="display: flex; gap: 1rem; align-items: start;">
-                        <div class="service-icon" style="width: 50px; height: 50px; margin-bottom: 0;">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="Project Inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; font-size: 1rem;">Send Message →</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4 style="margin-bottom: 0.5rem;">Email Us</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">support@valour.ai</p>
+                            <h4>Email Us</h4>
+                            <p>support@valour.ai</p>
                         </div>
                     </div>
-                </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <div style="display: flex; gap: 1rem; align-items: start;">
-                        <div class="service-icon" style="width: 50px; height: 50px; margin-bottom: 0;">
+                    <div class="contact-card">
+                        <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4 style="margin-bottom: 0.5rem;">Call Us</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">+92 347 5083374</p>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Mon-Fri: 9AM - 6PM</p>
+                            <h4>Call Us</h4>
+                            <p>+92 347 5083374</p>
+                            <p>Mon-Fri: 9AM - 6PM</p>
                         </div>
                     </div>
-                </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <div style="display: flex; gap: 1rem; align-items: start;">
-                        <div class="service-icon" style="width: 50px; height: 50px; margin-bottom: 0;">
+                    <div class="contact-card">
+                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4 style="margin-bottom: 0.5rem;">Visit Us</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">F11/1, Street 73</p>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Islamabad, Pakistan</p>
+                            <h4>Visit Us</h4>
+                            <p>F11/1, Street 73</p>
+                            <p>Islamabad, Pakistan</p>
                         </div>
                     </div>
-                </div>
-                <div class="service-card" style="padding: 1.5rem;">
-                    <div style="display: flex; gap: 1rem; align-items: start;">
-                        <div class="service-icon" style="width: 50px; height: 50px; margin-bottom: 0;">
+                    <div class="contact-card">
+                        <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
-                            <h4 style="margin-bottom: 0.5rem;">Business Hours</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Monday - Friday</p>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">9:00 AM - 6:00 PM</p>
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday</p>
+                            <p>9:00 AM - 6:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -969,40 +1291,36 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <div class="logo" style="margin-bottom: 1.5rem;">Valour<span>.ai</span></div>
-                <p>Transforming businesses through AI, machine learning, and custom software solutions. Your trusted partner in digital innovation.</p>
+                <a href="#home" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">Valour<span>.</span></a>
+                <p>Technology partner for digital transformation. Building intelligent, scalable solutions for startups and enterprises.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="#services">AI & Machine Learning</a></li>
-                    <li><a href="#services">NLP & Computer Vision</a></li>
-                    <li><a href="#services">Backend Development</a></li>
-                    <li><a href="#services">Cloud & DevOps</a></li>
-                    <li><a href="#services">Data Engineering</a></li>
-                    <li><a href="#services">Trading & Finance</a></li>
+                    <li><a href="#services">Software Engineering</a></li>
+                    <li><a href="#services">AI & Data</a></li>
+                    <li><a href="#services">Automation</a></li>
+                    <li><a href="#services">Cloud & Infrastructure</a></li>
+                    <li><a href="#services">Fintech Solutions</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#about">Our Team</a></li>
-                    <li><a href="products.html">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#projects">Portfolio</a></li>
+                    <li><a href="#industries">Industries</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Valour.ai. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
+            <p>&copy; 2025 Valour. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
         </div>
     </footer>
 
@@ -1037,12 +1355,11 @@
         });
 
         // Form submission
-        const form = document.querySelector('form');
+        const form = document.getElementById('contactForm');
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert("Error: Message could not be sent.\n\nPlease email us directly at: support@valour.ai");
-                // form.reset(); // Don't reset so they can copy their message if needed
+                alert("Thank you for your interest!\n\nPlease email us directly at: support@valour.ai");
             });
         }
 
@@ -1050,9 +1367,9 @@
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 14, 26, 0.95)';
+                nav.style.background = 'rgba(15, 23, 42, 0.98)';
             } else {
-                nav.style.background = 'rgba(10, 14, 26, 0.8)';
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
             }
         });
     </script>

@@ -3,555 +3,935 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Valour.ai | All Projects</title>
-    <meta name="description" content="Complete portfolio of AI, trading, and software development projects by Salman Ullah Baig">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Portfolio - Valour | All Projects</title>
+    <meta name="description" content="Complete portfolio of AI, software development, and automation projects by Valour">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #00d9ff;
-            --accent: #0066ff;
-            --bg-dark: #0a0e1a;
-            --bg-card: #121826;
-            --bg-secondary: #0f1729;
-            --text: #ffffff;
-            --text-muted: #9ca3af;
-            --border: #1e2d3d;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d5a8a;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-secondary: #162033;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dark: #64748b;
+            --border: #334155;
+            --success: #10b981;
+            --white: #ffffff;
+        }
+
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text);
-            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
         }
 
-        .product-card {
-            background: #1a2332;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+        }
+
+        .page-header .section-tag {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1.75rem;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            height: 100%;
             display: flex;
             flex-direction: column;
         }
-        
-        .product-card hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
-        }
-    </style>
-</head>
-<body>
-    <div class="background-gradient"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="index.html">
-                <div class="logo">
-                    <div class="logo-icon"><img src="./logo.png" alt="Valour" style="width:100px; height:auto;"></div>
-                    <span class="logo-text">Valour.ai</span>
-                </div>
-            </a>
-            <ul>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="products.html" class="active">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Products Header Section -->
-    <section class="hero" style="min-height: 40vh; padding-top: 150px; padding-bottom: 2rem;">
-        <div class="container">
-            <div class="hero-content" style="max-width: 800px;">
-                <div class="section-label">My Work</div>
-                <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">
-                    <span class="gradient-text">Complete</span> Portfolio
-                </h1>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem;">
-                    A comprehensive list of 30+ projects delivered across AI, Trading, and Web Development.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Grid -->
-    <section id="products" style="padding: 4rem 0;">
-        <div class="container">
-            <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
-                
-                <!-- Project 1 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">FinTech</span>
-                        <span class="product-icon">🤖</span>
-                    </div>
-                    <h3>Valor.ai</h3>
-                    <p>Advanced AI trading platform with real-time market analysis and automated execution strategies.</p>
-                    <ul class="product-features">
-                        <li>AI Trading Platform</li>
-                        <li>Real-time Analysis</li>
-                        <li>Automated Execution</li>
-                    </ul>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Crypto</span>
-                        <span class="product-icon">🛡️</span>
-                    </div>
-                    <h3>CryptoProfitShield.com</h3>
-                    <p>Comprehensive crypto asset protection and trading optimization system.</p>
-                    <ul class="product-features">
-                        <li>Asset Protection</li>
-                        <li>Trading Optimization</li>
-                        <li>Risk Management</li>
-                    </ul>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Analytics</span>
-                        <span class="product-icon">📈</span>
-                    </div>
-                    <h3>MarketAlphaQuest.com</h3>
-                    <p>Deep market analysis tool leveraging AI to discover alpha and hidden trends.</p>
-                    <ul class="product-features">
-                        <li>Market Analysis</li>
-                        <li>Alpha Discovery</li>
-                        <li>Trend Detection</li>
-                    </ul>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">AI/ML</span>
-                        <span class="product-icon">🧠</span>
-                    </div>
-                    <h3>Deep Learning Trading Bot</h3>
-                    <p>Sophisticated trading bot using deep neural networks for price prediction.</p>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Strategy</span>
-                        <span class="product-icon">⚙️</span>
-                    </div>
-                    <h3>AI Strategy Optimization</h3>
-                    <p>System for optimizing trading strategies using genetic algorithms and ML.</p>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">NLP</span>
-                        <span class="product-icon">📝</span>
-                    </div>
-                    <h3>Arabic Text Sentiment</h3>
-                    <p>NLP model for classifying sentiment in Arabic text for market analysis.</p>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">AI/Chat</span>
-                        <span class="product-icon">💬</span>
-                    </div>
-                    <h3>AI Chatbot (OpenAI)</h3>
-                    <p>Intelligent chatbot built with OpenAI & LangChain for customer support.</p>
-                </div>
-
-                <!-- Project 8 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Vision</span>
-                        <span class="product-icon">👁️</span>
-                    </div>
-                    <h3>Video Ad Detection</h3>
-                    <p>Computer vision system for detecting and fingerprinting video advertisements.</p>
-                </div>
-
-                <!-- Project 9 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">TradingView</span>
-                        <span class="product-icon">📊</span>
-                    </div>
-                    <h3>ML TradingView Bot</h3>
-                    <p>Neural network-based trading bot integrated directly with TradingView.</p>
-                </div>
-
-                <!-- Project 10 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Crypto</span>
-                        <span class="product-icon">₿</span>
-                    </div>
-                    <h3>Crypto Analysis Bot</h3>
-                    <p>Automated bot for real-time cryptocurrency market analysis and alerts.</p>
-                </div>
-
-                <!-- Project 11 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Integration</span>
-                        <span class="product-icon">🔄</span>
-                    </div>
-                    <h3>Binance TSL Integration</h3>
-                    <p>Custom integration app for Binance Trailing Stop Loss functionality.</p>
-                </div>
-
-                <!-- Project 12 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Trading</span>
-                        <span class="product-icon">📉</span>
-                    </div>
-                    <h3>Quotex ML Trading</h3>
-                    <p>Python-based machine learning trading automation for Quotex platform.</p>
-                </div>
-
-                <!-- Project 13 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Scala/Java</span>
-                        <span class="product-icon">☕</span>
-                    </div>
-                    <h3>Crypto Algo (Scala)</h3>
-                    <p>High-performance cryptocurrency trading algorithm implemented in Scala/Java.</p>
-                </div>
-
-                <!-- Project 14 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Stocks</span>
-                        <span class="product-icon">💹</span>
-                    </div>
-                    <h3>Real-Time Prediction</h3>
-                    <p>Real-time stock market prediction system using advanced streaming data.</p>
-                </div>
-
-                <!-- Project 15 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Mobile</span>
-                        <span class="product-icon">📱</span>
-                    </div>
-                    <h3>Stock Prediction App</h3>
-                    <p>Mobile application for tracking and predicting stock market movements.</p>
-                </div>
-
-                <!-- Project 16 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Automation</span>
-                        <span class="product-icon">🤖</span>
-                    </div>
-                    <h3>Digital Automation Bot</h3>
-                    <p>Agent bot designed for automating various digital workflows and tasks.</p>
-                </div>
-
-                <!-- Project 17 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">AI Training</span>
-                        <span class="product-icon">🎓</span>
-                    </div>
-                    <h3>Dharmesh Shah AI</h3>
-                    <p>Custom AI chatbot trained specifically on Dharmesh Shah's content.</p>
-                </div>
-
-                <!-- Project 18 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Scraper</span>
-                        <span class="product-icon">🕸️</span>
-                    </div>
-                    <h3>LinkedIn Scraper</h3>
-                    <p>Tool for scraping and managing new LinkedIn connections for lead gen.</p>
-                </div>
-
-                <!-- Project 19 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Optimization</span>
-                        <span class="product-icon">⚡</span>
-                    </div>
-                    <h3>Scheduling Algo</h3>
-                    <p>Optimization algorithm for complex resource scheduling problems.</p>
-                </div>
-
-                <!-- Project 20 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Security</span>
-                        <span class="product-icon">🔐</span>
-                    </div>
-                    <h3>McEliece Cryptosystem</h3>
-                    <p>Implementation of the McEliece public-key cryptosystem for secure comms.</p>
-                </div>
-
-                <!-- Project 21 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Data Science</span>
-                        <span class="product-icon">📉</span>
-                    </div>
-                    <h3>Churn Prediction App</h3>
-                    <p>Application to predict customer churn using historical behavioral data.</p>
-                </div>
-
-                <!-- Project 22 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Real Estate</span>
-                        <span class="product-icon">🏠</span>
-                    </div>
-                    <h3>Booking Calculator</h3>
-                    <p>Algorithm for calculating dynamic apartment booking prices.</p>
-                </div>
-
-                <!-- Project 23 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Web</span>
-                        <span class="product-icon">🌐</span>
-                    </div>
-                    <h3>Social Website Core</h3>
-                    <p>Backend Python coding and architecture for a social networking platform.</p>
-                </div>
-
-                <!-- Project 24 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Web</span>
-                        <span class="product-icon">🛍️</span>
-                    </div>
-                    <h3>Product Comparison</h3>
-                    <p>Final year project: A comprehensive website for comparing consumer products.</p>
-                </div>
-
-                <!-- Project 25 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Social</span>
-                        <span class="product-icon">👥</span>
-                    </div>
-                    <h3>Woochill.com</h3>
-                    <p>Full-featured social media platform development.</p>
-                </div>
-
-                <!-- Project 26 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Healthcare</span>
-                        <span class="product-icon">🏥</span>
-                    </div>
-                    <h3>Patient Scheduling</h3>
-                    <p>Software solution for managing patient appointments and hospital resources.</p>
-                </div>
-
-                <!-- Project 27 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">AI/DL</span>
-                        <span class="product-icon">🧠</span>
-                    </div>
-                    <h3>Decision Support</h3>
-                    <p>Advanced decision support system utilizing deep learning models.</p>
-                </div>
-
-                <!-- Project 28 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">NLP/Twitter</span>
-                        <span class="product-icon">🐦</span>
-                    </div>
-                    <h3>Disaster Detection</h3>
-                    <p>System to detect real-time disasters by analyzing Twitter data streams.</p>
-                </div>
-
-                <!-- Project 29 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Forex</span>
-                        <span class="product-icon">💱</span>
-                    </div>
-                    <h3>Forex AI Bot</h3>
-                    <p>Automated trading bot optimized for Forex market conditions.</p>
-                </div>
-
-                <!-- Project 30 -->
-                <div class="product-card">
-                    <div class="product-header">
-                        <span class="product-tag">Trading</span>
-                        <span class="product-icon">📜</span>
-                    </div>
-                    <h3>Historical Algo</h3>
-                    <p>Trading bot trained specifically on extensive historical market data.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Benefits -->
-    <section style="padding: 4rem 0 6rem; background: var(--bg-dark);">
-        <div class="container">
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">⭐</div>
-                    <h4>Premium Support</h4>
-                    <p>24/7 technical support for all products</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">✓</div>
-                    <h4>Lifetime Updates</h4>
-                    <p>Free updates and improvements forever</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💳</div>
-                    <h4>Money-Back Guarantee</h4>
-                    <p>30-day refund if not satisfied</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div>
-                <div class="logo" style="margin-bottom: 1.5rem;">Valour<span>.ai</span></div>
-                <p>Transforming businesses through AI, machine learning, and custom software solutions. Your trusted partner in digital innovation.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="index.html#services">AI & Machine Learning</a></li>
-                    <li><a href="index.html#services">NLP & Computer Vision</a></li>
-                    <li><a href="index.html#services">Backend Development</a></li>
-                    <li><a href="index.html#services">Cloud & DevOps</a></li>
-                    <li><a href="index.html#services">Data Engineering</a></li>
-                    <li><a href="index.html#services">Trading & Finance</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#about">Our Team</a></li>
-                    <li><a href="index.html#projects">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Valour.ai. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
-        </div>
-    </footer>
-
-    <style>
-        nav a.active {
-            color: var(--primary-color);
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
         }
 
-        .popular-product {
-            position: relative;
-            border-color: var(--primary-color) !important;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
         }
 
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0.375rem 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--bg-darker);
-            font-size: 0.75rem;
-            font-weight: 700;
-            border-radius: 50px;
+        .project-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.7rem;
+            border-radius: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.5px;
         }
 
-        .product-pricing {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
+        .project-icon {
+            font-size: 1.5rem;
         }
 
-        .product-pricing .price {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .project-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: var(--white);
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-features li {
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: var(--bg-secondary);
+            padding: 4rem 2rem;
         }
 
         .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .benefit-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
             text-align: center;
             transition: all 0.3s;
         }
 
         .benefit-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.2);
+            border-color: var(--accent);
+            transform: translateY(-3px);
         }
 
         .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 56px;
+            height: 56px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--accent);
         }
 
         .benefit-card h4 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
         .benefit-card p {
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 65px);
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .filter-container {
+                justify-content: flex-start;
+            }
         }
     </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Valour<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="products.html" class="active">Portfolio</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#contact" class="btn-primary">Talk to Us</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-    <script src="assets/script.js"></script>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="section-tag">Portfolio</div>
+        <h1>Our Projects</h1>
+        <p>A comprehensive portfolio of 35+ projects delivered across AI, software development, automation, and data engineering.</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="ai">AI & ML</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="automation">Automation</button>
+            <button class="filter-btn" data-filter="fintech">Fintech</button>
+            <button class="filter-btn" data-filter="data">Data & Analytics</button>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="container">
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card" data-category="fintech">
+                <div class="project-header">
+                    <span class="project-tag">Enterprise Platform</span>
+                    <span class="project-icon">🚀</span>
+                </div>
+                <h3>Valour.AI Platform</h3>
+                <p>AI-based platform serving 6,000+ users with automated strategies, risk management, and real-time analytics.</p>
+                <ul class="project-features">
+                    <li>Automated Strategies</li>
+                    <li>Real-time Analytics</li>
+                    <li>Risk Management</li>
+                </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="fintech">
+                <div class="project-header">
+                    <span class="project-tag">Fintech</span>
+                    <span class="project-icon">🛡️</span>
+                </div>
+                <h3>CryptoProfitShield</h3>
+                <p>Web-based risk management system for position sizing, stop-loss management, and portfolio analytics.</p>
+                <ul class="project-features">
+                    <li>Position Sizing</li>
+                    <li>Portfolio Analytics</li>
+                    <li>Risk Controls</li>
+                </ul>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="data">
+                <div class="project-header">
+                    <span class="project-tag">Analytics</span>
+                    <span class="project-icon">📈</span>
+                </div>
+                <h3>MarketAlphaQuest</h3>
+                <p>Advanced market analytics platform with AI-based insights, technical indicators, and predictive models.</p>
+                <ul class="project-features">
+                    <li>Market Analysis</li>
+                    <li>Trend Detection</li>
+                    <li>Predictive Models</li>
+                </ul>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">AI/ML</span>
+                    <span class="project-icon">🧠</span>
+                </div>
+                <h3>Deep Learning Models</h3>
+                <p>Sophisticated neural networks for price prediction and pattern recognition in financial data.</p>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">Optimization</span>
+                    <span class="project-icon">⚙️</span>
+                </div>
+                <h3>Strategy Optimization</h3>
+                <p>System for optimizing business strategies using genetic algorithms and machine learning.</p>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">NLP</span>
+                    <span class="project-icon">📝</span>
+                </div>
+                <h3>Arabic Text Sentiment</h3>
+                <p>NLP model for classifying sentiment in Arabic text for market and social media analysis.</p>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">AI/Chat</span>
+                    <span class="project-icon">💬</span>
+                </div>
+                <h3>Enterprise AI Chatbot</h3>
+                <p>Intelligent chatbot built with OpenAI & LangChain for customer support automation.</p>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">Computer Vision</span>
+                    <span class="project-icon">👁️</span>
+                </div>
+                <h3>Video Ad Detection</h3>
+                <p>Computer vision system for detecting and fingerprinting video advertisements.</p>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="project-card" data-category="automation">
+                <div class="project-header">
+                    <span class="project-tag">Integration</span>
+                    <span class="project-icon">📊</span>
+                </div>
+                <h3>TradingView Integration</h3>
+                <p>Neural network-based automation integrated with TradingView for real-time analysis.</p>
+            </div>
+
+            <!-- Project 10 -->
+            <div class="project-card" data-category="automation">
+                <div class="project-header">
+                    <span class="project-tag">Automation</span>
+                    <span class="project-icon">🔄</span>
+                </div>
+                <h3>Crypto Analysis Bot</h3>
+                <p>Automated bot for real-time cryptocurrency market analysis and alert notifications.</p>
+            </div>
+
+            <!-- Project 11 -->
+            <div class="project-card" data-category="fintech">
+                <div class="project-header">
+                    <span class="project-tag">Integration</span>
+                    <span class="project-icon">🔗</span>
+                </div>
+                <h3>Exchange API Integration</h3>
+                <p>Custom integration solutions for major exchange APIs with trailing stop-loss functionality.</p>
+            </div>
+
+            <!-- Project 12 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">ML Platform</span>
+                    <span class="project-icon">📉</span>
+                </div>
+                <h3>ML Trading Automation</h3>
+                <p>Python-based machine learning automation for various trading platforms.</p>
+            </div>
+
+            <!-- Project 13 -->
+            <div class="project-card" data-category="fintech">
+                <div class="project-header">
+                    <span class="project-tag">High Performance</span>
+                    <span class="project-icon">⚡</span>
+                </div>
+                <h3>Scala Trading Algorithm</h3>
+                <p>High-performance trading algorithm implemented in Scala/Java for low-latency execution.</p>
+            </div>
+
+            <!-- Project 14 -->
+            <div class="project-card" data-category="data">
+                <div class="project-header">
+                    <span class="project-tag">Real-time</span>
+                    <span class="project-icon">💹</span>
+                </div>
+                <h3>Real-Time Prediction</h3>
+                <p>Real-time market prediction system using advanced streaming data pipelines.</p>
+            </div>
+
+            <!-- Project 15 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">Mobile</span>
+                    <span class="project-icon">📱</span>
+                </div>
+                <h3>Stock Prediction App</h3>
+                <p>Mobile application for tracking and predicting stock market movements.</p>
+            </div>
+
+            <!-- Project 16 -->
+            <div class="project-card" data-category="automation">
+                <div class="project-header">
+                    <span class="project-tag">Automation</span>
+                    <span class="project-icon">🤖</span>
+                </div>
+                <h3>Digital Workflow Bot</h3>
+                <p>Agent bot designed for automating various digital workflows and repetitive tasks.</p>
+            </div>
+
+            <!-- Project 17 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">Custom AI</span>
+                    <span class="project-icon">🎓</span>
+                </div>
+                <h3>Custom AI Training</h3>
+                <p>Custom AI chatbot trained on specific domain content for personalized interactions.</p>
+            </div>
+
+            <!-- Project 18 -->
+            <div class="project-card" data-category="automation">
+                <div class="project-header">
+                    <span class="project-tag">Scraping</span>
+                    <span class="project-icon">🕸️</span>
+                </div>
+                <h3>LinkedIn Data Scraper</h3>
+                <p>Tool for scraping and managing LinkedIn connections for lead generation.</p>
+            </div>
+
+            <!-- Project 19 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">Optimization</span>
+                    <span class="project-icon">📋</span>
+                </div>
+                <h3>Scheduling Algorithm</h3>
+                <p>Optimization algorithm for complex resource scheduling and allocation problems.</p>
+            </div>
+
+            <!-- Project 20 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">Security</span>
+                    <span class="project-icon">🔐</span>
+                </div>
+                <h3>McEliece Cryptosystem</h3>
+                <p>Implementation of post-quantum McEliece public-key cryptosystem for secure communications.</p>
+            </div>
+
+            <!-- Project 21 -->
+            <div class="project-card" data-category="data">
+                <div class="project-header">
+                    <span class="project-tag">Data Science</span>
+                    <span class="project-icon">📊</span>
+                </div>
+                <h3>Churn Prediction</h3>
+                <p>Application to predict customer churn using historical behavioral data and ML models.</p>
+            </div>
+
+            <!-- Project 22 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">Real Estate</span>
+                    <span class="project-icon">🏠</span>
+                </div>
+                <h3>Booking Calculator</h3>
+                <p>Algorithm for calculating dynamic apartment booking prices based on market factors.</p>
+            </div>
+
+            <!-- Project 23 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">Web Development</span>
+                    <span class="project-icon">🌐</span>
+                </div>
+                <h3>Social Platform Backend</h3>
+                <p>Backend architecture for a social networking platform with Python and Django.</p>
+            </div>
+
+            <!-- Project 24 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">E-commerce</span>
+                    <span class="project-icon">🛍️</span>
+                </div>
+                <h3>Product Comparison</h3>
+                <p>Comprehensive website for comparing consumer products across multiple categories.</p>
+            </div>
+
+            <!-- Project 25 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">Social</span>
+                    <span class="project-icon">👥</span>
+                </div>
+                <h3>Social Media Platform</h3>
+                <p>Full-featured social media platform with user profiles, posts, and messaging.</p>
+            </div>
+
+            <!-- Project 26 -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <span class="project-tag">Healthcare</span>
+                    <span class="project-icon">🏥</span>
+                </div>
+                <h3>Patient Scheduling</h3>
+                <p>Software solution for managing patient appointments and hospital resources.</p>
+            </div>
+
+            <!-- Project 27 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">AI/DL</span>
+                    <span class="project-icon">🧠</span>
+                </div>
+                <h3>Decision Support System</h3>
+                <p>Advanced decision support system utilizing deep learning models for business intelligence.</p>
+            </div>
+
+            <!-- Project 28 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">NLP</span>
+                    <span class="project-icon">🐦</span>
+                </div>
+                <h3>Disaster Detection</h3>
+                <p>System to detect real-time disasters by analyzing social media data streams.</p>
+            </div>
+
+            <!-- Project 29 -->
+            <div class="project-card" data-category="fintech">
+                <div class="project-header">
+                    <span class="project-tag">Forex</span>
+                    <span class="project-icon">💱</span>
+                </div>
+                <h3>Forex Trading Bot</h3>
+                <p>Automated trading bot optimized for Forex market conditions and currency pairs.</p>
+            </div>
+
+            <!-- Project 30 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <span class="project-tag">Historical Analysis</span>
+                    <span class="project-icon">📜</span>
+                </div>
+                <h3>Historical Data Analysis</h3>
+                <p>ML model trained on extensive historical data for pattern recognition and prediction.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="benefits-section">
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h4>Dedicated Support</h4>
+                <p>Ongoing technical support for all delivered projects</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h4>Continuous Updates</h4>
+                <p>Regular improvements and feature enhancements</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Quality Guarantee</h4>
+                <p>100% satisfaction with every project delivery</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Let's discuss how we can help bring your ideas to life.</p>
+        <a href="index.html#contact" class="btn-primary" style="padding: 1rem 2.5rem;">Get in Touch</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="index.html" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">Valour<span>.</span></a>
+                <p>Technology partner for digital transformation. Building intelligent, scalable solutions for startups and enterprises.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">Software Engineering</a></li>
+                    <li><a href="index.html#services">AI & Data</a></li>
+                    <li><a href="index.html#services">Automation</a></li>
+                    <li><a href="index.html#services">Cloud & Infrastructure</a></li>
+                    <li><a href="index.html#services">Fintech Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="products.html">Portfolio</a></li>
+                    <li><a href="index.html#industries">Industries</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Valour. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

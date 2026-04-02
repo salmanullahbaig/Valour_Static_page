@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Valour | All Projects</title>
-    <meta name="description" content="Complete portfolio of AI, software development, and automation projects by Valour">
+    <title>AI Trading Suite — Valour.ai</title>
+    <meta name="description" content="AI-powered trading bots, DIY tools, copy trading signals, and education. Build your trading edge with Valour.ai">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo_yellow_valour-r.png">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #1e3a5f;
-            --primary-light: #2d5a8a;
-            --accent: #3b82f6;
-            --accent-light: #60a5fa;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --bg-secondary: #162033;
-            --text: #f1f5f9;
+            --accent: #d4af37;
+            --accent-light: #facc15;
+            --accent-dim: rgba(212, 175, 55, 0.12);
+            --accent-glow: rgba(212, 175, 55, 0.4);
+            --bg-dark: #020617;
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-bg-hover: rgba(212, 175, 55, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-border-hover: rgba(212, 175, 55, 0.5);
+            --glass-blur: blur(22px);
+            --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+            --text: #f8fafc;
             --text-muted: #94a3b8;
             --text-dark: #64748b;
-            --border: #334155;
-            --success: #10b981;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --purple: #8b5cf6;
             --white: #ffffff;
         }
 
@@ -35,914 +37,1103 @@
             background-color: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
-        nav {
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 8% 12%, rgba(212, 175, 55, 0.28) 0%, transparent 38%),
+                radial-gradient(ellipse at 88% 82%, rgba(139, 92, 246, 0.5) 0%, transparent 38%),
+                radial-gradient(ellipse at 55% 45%, rgba(30, 58, 138, 0.45) 0%, transparent 48%),
+                radial-gradient(ellipse at 22% 88%, rgba(180, 140, 20, 0.35) 0%, transparent 30%),
+                radial-gradient(ellipse at 78% 8%, rgba(99, 102, 241, 0.4) 0%, transparent 32%);
         }
 
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(2, 6, 23, 0.55);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            z-index: 1000; padding: 1rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1280px; margin: 0 auto;
             padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent);
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0.75rem; }
+        .logo img { height: 38px; width: auto; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .btn-nav {
+            background: linear-gradient(135deg, var(--accent), #b8941e);
+            color: #0a0a0a; padding: 0.6rem 1.25rem; border-radius: 0.5rem;
+            font-weight: 700; font-size: 0.875rem; text-decoration: none;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
             transition: all 0.3s;
-            text-decoration: none;
+        }
+        .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45); color: #0a0a0a; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            padding: 9rem 2rem 5rem;
+            text-align: center;
+            max-width: 1280px; margin: 0 auto;
+        }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.45rem 1.1rem; border-radius: 2rem;
+            font-size: 0.8rem; font-weight: 600; color: var(--accent);
+            margin-bottom: 1.75rem; letter-spacing: 0.05em; text-transform: uppercase;
+        }
+        .page-hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+            line-height: 1.1; margin-bottom: 1.25rem;
+        }
+        .page-hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .page-hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 3rem; line-height: 1.75; }
+
+        .platform-stats {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+            max-width: 860px; margin: 0 auto;
+        }
+        .pstat {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem; padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--glass-shine);
+            transition: all 0.3s;
+        }
+        .pstat:hover { border-color: var(--glass-border-hover); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(212,175,55,0.2), var(--glass-shine); }
+        .pstat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); display: block; }
+        .pstat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+        /* ── CATEGORY TABS ── */
+        .cat-tabs-wrap {
+            position: sticky; top: 64px; z-index: 90;
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0;
+        }
+        .cat-tabs {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; padding: 0 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .cat-tabs::-webkit-scrollbar { display: none; }
+        .cat-tab {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 1.1rem 1.5rem;
+            color: var(--text-muted); font-size: 0.9rem; font-weight: 600;
+            cursor: pointer; border: none; background: none;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s;
+        }
+        .cat-tab:hover { color: var(--text); }
+        .cat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .cat-tab i { font-size: 1rem; }
+        .tab-badge {
+            background: var(--accent-dim);
+            border: 1px solid rgba(212,175,55,0.25);
+            color: var(--accent); font-size: 0.7rem; font-weight: 700;
+            padding: 0.15rem 0.45rem; border-radius: 0.3rem;
+        }
+
+        /* ── SECTION SHARED ── */
+        .products-section { padding: 5rem 2rem; }
+        .section-wrap { max-width: 1280px; margin: 0 auto; }
+        .section-head { margin-bottom: 3rem; }
+        .section-eyebrow {
             display: inline-block;
+            font-size: 0.75rem; font-weight: 700; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;
+        }
+        .section-head h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .section-head p { color: var(--text-muted); font-size: 1rem; max-width: 560px; }
+
+        /* glass card base */
+        .gcard {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.25rem;
+            box-shadow: var(--glass-shine);
+            transition: all 0.35s ease;
+        }
+        .gcard:hover {
+            border-color: var(--glass-border-hover);
+            background: var(--glass-bg-hover);
+            box-shadow: 0 16px 48px rgba(212,175,55,0.18), var(--glass-shine);
+            transform: translateY(-5px);
         }
 
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-
-        /* Page Header */
-        .page-header {
-            padding: 10rem 2rem 4rem;
-            text-align: center;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
-        }
-
-        .page-header .section-tag {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .page-header p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Filter Tabs */
-        .filter-section {
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .filter-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 0.6rem 1.25rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--white);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.75rem;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .project-tag {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            padding: 0.3rem 0.7rem;
-            border-radius: 0.4rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-icon {
-            font-size: 1.5rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.6rem;
-            color: var(--white);
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .project-features {
-            list-style: none;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .project-features li {
-            color: var(--text-dark);
-            font-size: 0.8rem;
-            padding: 0.25rem 0;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .project-features li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            background: var(--bg-secondary);
-            padding: 4rem 2rem;
-        }
-
-        .benefits-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .benefit-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .benefit-icon {
-            width: 56px;
-            height: 56px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .benefit-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--white);
-        }
-
-        .benefit-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .cta-section p {
-            color: var(--text-muted);
+        /* ── BOTS SECTION ── */
+        .featured-bot {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            font-size: 1.1rem;
+        }
+        .featured-bot-info { display: flex; flex-direction: column; justify-content: space-between; }
+        .bot-category-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
+            color: var(--accent); font-size: 0.75rem; font-weight: 700;
+            padding: 0.3rem 0.75rem; border-radius: 0.4rem;
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
+        }
+        .featured-bot-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .featured-bot-info p { color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
+        .perf-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.75rem; }
+        .perf-metric {
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0.75rem; padding: 1rem; text-align: center;
+        }
+        .perf-metric-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 800; display: block; }
+        .perf-metric-val.green { color: var(--success); }
+        .perf-metric-val.gold { color: var(--accent); }
+        .perf-metric-val.purple { color: var(--purple); }
+        .perf-metric-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+        /* mock chart */
+        .chart-area {
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1rem; padding: 1.25rem;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            min-height: 220px; position: relative; overflow: hidden;
+        }
+        .chart-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+        .chart-label strong { color: var(--success); font-size: 1.1rem; margin-right: 0.5rem; }
+        .chart-bars { display: flex; align-items: flex-end; gap: 4px; height: 140px; }
+        .chart-bar {
+            flex: 1; border-radius: 3px 3px 0 0;
+            background: linear-gradient(180deg, var(--success), rgba(34,197,94,0.3));
+            transition: opacity 0.3s;
+        }
+        .chart-bar.loss { background: linear-gradient(180deg, var(--danger), rgba(239,68,68,0.3)); }
+        .chart-line-overlay {
+            position: absolute; bottom: 50px; left: 1.25rem; right: 1.25rem; height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            opacity: 0.5;
+            border-radius: 1px;
+        }
+        .chart-line-overlay::after {
+            content: '';
+            position: absolute; right: 0; top: -4px;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--accent); box-shadow: 0 0 12px rgba(212,175,55,0.8);
         }
 
-        /* Footer */
+        .bots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .bot-card { padding: 1.75rem; }
+        .bot-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .bot-icon {
+            width: 48px; height: 48px;
+            background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+        }
+        .bot-type-tag {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 0.25rem 0.6rem; border-radius: 0.35rem;
+        }
+        .tag-stocks { background: rgba(34,197,94,0.12); color: var(--success); border: 1px solid rgba(34,197,94,0.25); }
+        .tag-crypto { background: rgba(212,175,55,0.12); color: var(--accent); border: 1px solid rgba(212,175,55,0.25); }
+        .tag-forex  { background: rgba(139,92,246,0.12); color: var(--purple); border: 1px solid rgba(139,92,246,0.25); }
+        .tag-etf    { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+        .bot-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .bot-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem; }
+        .bot-stats { display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .bot-stat { font-size: 0.78rem; display: flex; align-items: center; gap: 0.3rem; }
+        .bot-stat .val { font-weight: 700; }
+        .bot-stat .val.g { color: var(--success); }
+        .bot-stat .val.gold { color: var(--accent); }
+        .bot-stat .sep { color: var(--text-dark); }
+        .bot-features { list-style: none; margin-bottom: 1.5rem; }
+        .bot-features li {
+            font-size: 0.82rem; color: var(--text-muted);
+            padding: 0.3rem 0 0.3rem 1.25rem; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .bot-features li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+        .btn-card {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: linear-gradient(135deg, var(--accent), #b8941e);
+            color: #0a0a0a; padding: 0.65rem 1.25rem; border-radius: 0.5rem;
+            font-weight: 700; font-size: 0.85rem; text-decoration: none;
+            box-shadow: 0 4px 16px rgba(212,175,55,0.25); transition: all 0.3s; cursor: pointer; border: none;
+        }
+        .btn-card:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,175,55,0.4); }
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+            color: var(--text); padding: 0.65rem 1.25rem; border-radius: 0.5rem;
+            font-weight: 600; font-size: 0.85rem; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.18); transition: all 0.3s; cursor: pointer;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(212,175,55,0.08); }
+
+        /* ── DIY TOOLS ── */
+        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .tool-card { padding: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; }
+        .tool-icon-wrap {
+            width: 56px; height: 56px; border-radius: 1rem; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+        }
+        .ti-gold { background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3); }
+        .ti-purple { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); }
+        .ti-green { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); }
+        .ti-blue { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); }
+        .tool-body h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .tool-body p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1rem; }
+        .tool-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+        .tool-pill {
+            font-size: 0.72rem; font-weight: 600; padding: 0.25rem 0.65rem;
+            border-radius: 0.35rem; background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
+        }
+        .tool-demo {
+            background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 0.75rem; padding: 0.85rem 1rem; margin-bottom: 1.25rem;
+            font-size: 0.8rem;
+        }
+        .demo-row { display: flex; justify-content: space-between; align-items: center; padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .demo-row:last-child { border-bottom: none; }
+        .demo-label { color: var(--text-muted); }
+        .demo-val { font-weight: 700; }
+        .demo-val.g { color: var(--success); }
+        .demo-val.gold { color: var(--accent); }
+        .demo-val.r { color: var(--danger); }
+
+        /* ── COPY TRADING ── */
+        .copy-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .signals-feed { padding: 1.75rem; }
+        .feed-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+        .feed-header h4 { font-size: 1rem; font-weight: 700; }
+        .live-dot {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.75rem; color: var(--success); font-weight: 600;
+        }
+        .live-dot::before {
+            content: ''; width: 8px; height: 8px; border-radius: 50%;
+            background: var(--success); box-shadow: 0 0 8px var(--success);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        .signal-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .signal-item:last-child { border-bottom: none; }
+        .signal-side {
+            width: 44px; height: 28px; border-radius: 0.35rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; flex-shrink: 0;
+        }
+        .sig-buy { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.35); color: var(--success); }
+        .sig-sell { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: var(--danger); }
+        .signal-info { flex: 1; min-width: 0; }
+        .signal-ticker { font-size: 0.9rem; font-weight: 700; }
+        .signal-detail { font-size: 0.75rem; color: var(--text-muted); }
+        .signal-right { text-align: right; flex-shrink: 0; }
+        .signal-price { font-size: 0.9rem; font-weight: 700; }
+        .signal-conf { font-size: 0.72rem; color: var(--text-muted); }
+        .signal-conf span { color: var(--accent); font-weight: 700; }
+
+        .copy-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+        .copy-card { padding: 1.75rem; }
+        .copy-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .copy-card-head h4 { font-size: 1.05rem; font-weight: 700; }
+        .copy-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem; }
+        .copy-meta { display: flex; gap: 1.5rem; margin-bottom: 1.25rem; }
+        .cmeta { font-size: 0.8rem; }
+        .cmeta .label { color: var(--text-muted); }
+        .cmeta .value { font-weight: 700; margin-top: 0.1rem; }
+        .cmeta .value.g { color: var(--success); }
+        .cmeta .value.gold { color: var(--accent); }
+        .timeframe-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tf-pill {
+            font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.6rem;
+            border-radius: 0.35rem; background: rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.2); color: var(--accent);
+        }
+
+        /* ── ACADEMY ── */
+        .academy-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+        .academy-categories { display: flex; flex-direction: column; gap: 0.75rem; }
+        .acad-cat {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1.1rem 1.25rem;
+            border-radius: 0.75rem; cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.25s; font-size: 0.9rem; font-weight: 600;
+            background: rgba(255,255,255,0.03);
+        }
+        .acad-cat:hover, .acad-cat.active {
+            background: var(--accent-dim); border-color: rgba(212,175,55,0.35);
+            color: var(--accent);
+        }
+        .acad-cat i { width: 20px; text-align: center; font-size: 1.1rem; }
+        .acad-cat .count { margin-left: auto; font-size: 0.72rem; color: var(--text-muted); }
+
+        .academy-courses { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        .course-card { padding: 1.5rem; }
+        .course-thumb {
+            height: 100px; border-radius: 0.75rem; margin-bottom: 1.1rem;
+            display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+        }
+        .ct-gold { background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.2); }
+        .ct-purple { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.05)); border: 1px solid rgba(139,92,246,0.2); }
+        .ct-green { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.05)); border: 1px solid rgba(34,197,94,0.2); }
+        .ct-blue { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.2); }
+        .course-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .course-card p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin-bottom: 1rem; }
+        .course-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }
+        .course-type { color: var(--accent); font-weight: 700; }
+        .course-level { color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 0.2rem 0.5rem; border-radius: 0.3rem; border: 1px solid rgba(255,255,255,0.08); }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 6rem 2rem; text-align: center;
+        }
+        .cta-inner {
+            max-width: 700px; margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 2rem; padding: 4rem 3rem;
+            box-shadow: 0 0 60px rgba(212,175,55,0.12), var(--glass-shine);
+        }
+        .cta-inner h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .cta-inner p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-cta-primary {
+            background: linear-gradient(135deg, var(--accent), #b8941e);
+            color: #0a0a0a; padding: 1rem 2.25rem; border-radius: 0.75rem;
+            font-weight: 700; font-size: 1rem; text-decoration: none;
+            box-shadow: 0 8px 32px rgba(212,175,55,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+        .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(212,175,55,0.5); }
+        .btn-cta-secondary {
+            background: rgba(255,255,255,0.07); backdrop-filter: blur(12px);
+            color: #fff; padding: 1rem 2.25rem; border-radius: 0.75rem;
+            font-weight: 600; font-size: 1rem; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: all 0.3s;
+        }
+        .btn-cta-secondary:hover { border-color: var(--accent); color: var(--accent); background: rgba(212,175,55,0.1); }
+
+        /* ── FOOTER ── */
         footer {
-            background: var(--bg-card);
-            border-top: 1px solid var(--border);
+            background: rgba(2,6,23,0.7); backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(212,175,55,0.12);
             padding: 4rem 2rem 2rem;
         }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-
-        .footer-section p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-section a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
-        }
-
+        .footer-content { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+        .footer-section h4 { margin-bottom: 1.5rem; color: var(--white); font-size: 0.95rem; }
+        .footer-section p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.9rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.75rem; }
+        .footer-section a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent); }
+        .social-links { display: flex; gap: 0.75rem; }
         .social-link {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-secondary);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            transition: all 0.3s;
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); transition: all 0.3s; text-decoration: none;
         }
+        .social-link:hover { background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.3); color: var(--accent); }
+        .footer-bottom { max-width: 1280px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
 
-        .social-link:hover {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .tools-grid { grid-template-columns: 1fr; }
+            .academy-layout { grid-template-columns: 1fr; }
+            .academy-categories { flex-direction: row; flex-wrap: wrap; }
+            .featured-bot { grid-template-columns: 1fr; }
         }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
+            .mobile-menu-btn { display: block; }
             .nav-links {
-                position: fixed;
-                top: 65px;
-                left: -100%;
-                width: 100%;
+                position: fixed; top: 65px; left: -100%; width: 100%;
                 height: calc(100vh - 65px);
-                background: var(--bg-card);
-                flex-direction: column;
-                padding: 2rem;
-                transition: left 0.3s;
+                background: rgba(2,6,23,0.9); backdrop-filter: blur(24px);
+                flex-direction: column; padding: 2rem; transition: left 0.3s; z-index: 999;
             }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .filter-container {
-                justify-content: flex-start;
-            }
+            .nav-links.active { left: 0; }
+            .platform-stats { grid-template-columns: repeat(2,1fr); }
+            .bots-grid { grid-template-columns: 1fr; }
+            .copy-layout { grid-template-columns: 1fr; }
+            .academy-courses { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+            .perf-metrics { grid-template-columns: 1fr 1fr 1fr; }
+            .tool-card { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.jpg" alt="Valour">
-                Valour<span>.</span>
-            </a>
-            <ul class="nav-links" id="navLinks">
+
+<!-- ── NAVIGATION ── -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="logo_yellow_valour-r.png" alt="Valour">
+            ValourAI
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#industries">Industries</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#contact" class="btn-nav">Talk to Us</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+    <div class="hero-eyebrow"><i class="fas fa-robot"></i> AI-Powered Trading Suite</div>
+    <h1>Your Edge in Every<br><span>Market, Every Trade</span></h1>
+    <p>Automated bots, intelligent DIY tools, copy trading signals, and a full trading academy — everything you need to trade smarter with AI.</p>
+    <div class="platform-stats">
+        <div class="pstat"><span class="pstat-num">+227%</span><div class="pstat-label">Peak Annualized Return</div></div>
+        <div class="pstat"><span class="pstat-num">80%</span><div class="pstat-label">Win Rate (Top Bots)</div></div>
+        <div class="pstat"><span class="pstat-num">7</span><div class="pstat-label">Active Bot Types</div></div>
+        <div class="pstat"><span class="pstat-num">24/7</span><div class="pstat-label">Real-Time Signals</div></div>
+    </div>
+</div>
+
+<!-- ── CATEGORY TABS ── -->
+<div class="cat-tabs-wrap">
+    <div class="cat-tabs">
+        <button class="cat-tab active" onclick="scrollTo('bots')"><i class="fas fa-robot"></i> Bots & Agents <span class="tab-badge">7</span></button>
+        <button class="cat-tab" onclick="scrollTo('tools')"><i class="fas fa-tools"></i> AI DIY Tools <span class="tab-badge">4</span></button>
+        <button class="cat-tab" onclick="scrollTo('copy')"><i class="fas fa-copy"></i> Copy Trading</button>
+        <button class="cat-tab" onclick="scrollTo('academy')"><i class="fas fa-graduation-cap"></i> Academy</button>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 — AI TRADING BOTS & AGENTS
+══════════════════════════════════════════ -->
+<section class="products-section" id="bots">
+    <div class="section-wrap">
+        <div class="section-head">
+            <span class="section-eyebrow"><i class="fas fa-robot"></i> &nbsp;AI Trading Bots & Agents</span>
+            <h2>Automated Intelligence,<br>Trading 24/7 for You</h2>
+            <p>Deploy pre-built AI robots that exploit momentum, volatility, and market rotations across stocks, ETFs, forex, and crypto.</p>
+        </div>
+
+        <!-- Featured Bot -->
+        <div class="gcard featured-bot" style="margin-bottom:2rem;">
+            <div class="featured-bot-info">
+                <div>
+                    <div class="bot-category-badge"><i class="fas fa-fire"></i> Featured · Stocks & ETFs</div>
+                    <h3>AI Trending Robots</h3>
+                    <p>Exploit short-term momentum, volatility spikes, and sector rotations across stocks and ETFs. Powered by deep learning models trained on tick-level market data with adaptive risk management.</p>
+                    <div class="perf-metrics">
+                        <div class="perf-metric"><span class="perf-metric-val green">+227%</span><div class="perf-metric-label">Annualized Return</div></div>
+                        <div class="perf-metric"><span class="perf-metric-val gold">70–80%</span><div class="perf-metric-label">Win Rate</div></div>
+                        <div class="perf-metric"><span class="perf-metric-val purple">&lt;9%</span><div class="perf-metric-label">Avg Drawdown</div></div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                    <a href="index.html#contact" class="btn-card"><i class="fas fa-play"></i> Deploy Bot</a>
+                    <a href="index.html#contact" class="btn-outline">View Details</a>
+                </div>
+            </div>
+            <div class="chart-area">
+                <div class="chart-label"><strong>+227%</strong> Annualized · Last 12 months</div>
+                <div class="chart-bars">
+                    <div class="chart-bar" style="height:35%"></div>
+                    <div class="chart-bar" style="height:52%"></div>
+                    <div class="chart-bar loss" style="height:20%"></div>
+                    <div class="chart-bar" style="height:68%"></div>
+                    <div class="chart-bar" style="height:75%"></div>
+                    <div class="chart-bar loss" style="height:15%"></div>
+                    <div class="chart-bar" style="height:82%"></div>
+                    <div class="chart-bar" style="height:90%"></div>
+                    <div class="chart-bar loss" style="height:22%"></div>
+                    <div class="chart-bar" style="height:95%"></div>
+                    <div class="chart-bar" style="height:88%"></div>
+                    <div class="chart-bar" style="height:100%"></div>
+                </div>
+                <div class="chart-line-overlay"></div>
+            </div>
+        </div>
+
+        <!-- Bot Grid -->
+        <div class="bots-grid">
+
+            <div class="gcard bot-card">
+                <div class="bot-card-top">
+                    <div class="bot-icon">🤖</div>
+                    <span class="bot-type-tag tag-etf">ETFs</span>
+                </div>
+                <h4>AI Virtual Agents</h4>
+                <p>Specialized agents for leveraged ETFs, volatility spikes, and strategic dip-buying across major indices.</p>
+                <div class="bot-stats">
+                    <div class="bot-stat"><span class="val g">+125%</span><span class="sep">|</span><span style="color:var(--text-muted)">Annualized</span></div>
+                    <div class="bot-stat"><span class="val gold">75%</span><span class="sep">|</span><span style="color:var(--text-muted)">Win Rate</span></div>
+                </div>
+                <ul class="bot-features">
+                    <li>Leveraged ETF strategies (3x)</li>
+                    <li>Volatility spike detection</li>
+                    <li>Dip-buying automation</li>
+                    <li>Adaptive position sizing</li>
+                </ul>
+                <a href="index.html#contact" class="btn-card">Get Access</a>
+            </div>
+
+            <div class="gcard bot-card">
+                <div class="bot-card-top">
+                    <div class="bot-icon">📡</div>
+                    <span class="bot-type-tag tag-stocks">Stocks</span>
+                </div>
+                <h4>Brokerage Agents</h4>
+                <p>Real-time trading signals on 5-, 15-, and 60-minute timeframes using tick-level brokerage data feeds.</p>
+                <div class="bot-stats">
+                    <div class="bot-stat"><span class="val gold">5/15/60</span><span class="sep">|</span><span style="color:var(--text-muted)">Min TF</span></div>
+                    <div class="bot-stat"><span class="val g">Real-time</span></div>
+                </div>
+                <ul class="bot-features">
+                    <li>Tick-level data processing</li>
+                    <li>Multi-timeframe confluence</li>
+                    <li>Broker API integration</li>
+                    <li>Instant signal delivery</li>
+                </ul>
+                <a href="index.html#contact" class="btn-card">Get Access</a>
+            </div>
+
+            <div class="gcard bot-card">
+                <div class="bot-card-top">
+                    <div class="bot-icon">⚡</div>
+                    <span class="bot-type-tag tag-stocks">Day Trade</span>
+                </div>
+                <h4>Day Trader Bot</h4>
+                <p>Intraday momentum bot operating on 60-min charts. Opens and closes all positions within the trading session.</p>
+                <div class="bot-stats">
+                    <div class="bot-stat"><span class="val g">Intraday</span><span class="sep">|</span><span style="color:var(--text-muted)">60-min Charts</span></div>
+                </div>
+                <ul class="bot-features">
+                    <li>No overnight risk exposure</li>
+                    <li>VWAP & volume analysis</li>
+                    <li>Auto stop-loss & take-profit</li>
+                    <li>Pre-market gap scanner</li>
+                </ul>
+                <a href="index.html#contact" class="btn-card">Get Access</a>
+            </div>
+
+            <div class="gcard bot-card">
+                <div class="bot-card-top">
+                    <div class="bot-icon">📊</div>
+                    <span class="bot-type-tag tag-stocks">Swing</span>
+                </div>
+                <h4>Swing Trader Bot</h4>
+                <p>Captures multi-day price swings using trend-following and mean-reversion strategies on 60-min charts.</p>
+                <div class="bot-stats">
+                    <div class="bot-stat"><span class="val g">2–10 Days</span><span class="sep">|</span><span style="color:var(--text-muted)">Hold Period</span></div>
+                </div>
+                <ul class="bot-features">
+                    <li>Trend + reversion hybrid</li>
+                    <li>Fibonacci level targeting</li>
+                    <li>Earnings event avoidance</li>
+                    <li>Portfolio diversification logic</li>
+                </ul>
+                <a href="index.html#contact" class="btn-card">Get Access</a>
+            </div>
+
+            <div class="gcard bot-card">
+                <div class="bot-card-top">
+                    <div class="bot-icon">📈</div>
+                    <span class="bot-type-tag tag-etf">Trend</span>
+                </div>
+                <h4>Trend Trader Bot</h4>
+                <p>Macro trend-following bot that rides major market moves with dynamic position scaling on 60-min charts.</p>
+                <div class="bot-stats">
+                    <div class="bot-stat"><span class="val g">Weeks–Months</span><span class="sep">|</span><span style="color:var(--text-muted)">Hold</span></div>
+                </div>
+                <ul class="bot-features">
+                    <li>Moving average crossover AI</li>
+                    <li>Dynamic trailing stop</li>
+                    <li>Pyramid position scaling</li>
+                    <li>Macro regime detection</li>
+                </ul>
+                <a href="index.html#contact" class="btn-card">Get Access</a>
+            </div>
+
+            <div class="gcard bot-card">
+                <div class="bot-card-top">
+                    <div class="bot-icon">₿</div>
+                    <span class="bot-type-tag tag-crypto">Crypto</span>
+                </div>
+                <h4>Crypto Virtual Agents</h4>
+                <p>Crypto-specific bots with real-time signals, money management, and multi-exchange support for BTC, ETH, and altcoins.</p>
+                <div class="bot-stats">
+                    <div class="bot-stat"><span class="val gold">24/7</span><span class="sep">|</span><span style="color:var(--text-muted)">Always On</span></div>
+                    <div class="bot-stat"><span class="val g">Multi-Exchange</span></div>
+                </div>
+                <ul class="bot-features">
+                    <li>Binance, Bybit, Coinbase</li>
+                    <li>On-chain data integration</li>
+                    <li>Funding rate arbitrage</li>
+                    <li>Smart money management</li>
+                </ul>
+                <a href="index.html#contact" class="btn-card">Get Access</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — AI DIY TOOLS
+══════════════════════════════════════════ -->
+<section class="products-section" id="tools" style="padding-top:2rem;">
+    <div class="section-wrap">
+        <div class="section-head">
+            <span class="section-eyebrow"><i class="fas fa-tools"></i> &nbsp;AI DIY Tools</span>
+            <h2>Research Smarter,<br>Decide with Confidence</h2>
+            <p>Powerful AI engines that find patterns, predict direction, and screen opportunities — you stay in control.</p>
+        </div>
+
+        <div class="tools-grid">
+
+            <!-- Pattern Search -->
+            <div class="gcard tool-card">
+                <div class="tool-icon-wrap ti-gold">🔍</div>
+                <div class="tool-body">
+                    <h4>AI Pattern Search Engine</h4>
+                    <p>Scans thousands of charts end-of-day to find breakout patterns, targets, and confidence levels — with full backtesting history.</p>
+                    <div class="tool-pills">
+                        <span class="tool-pill">End-of-Day</span>
+                        <span class="tool-pill">Breakout Detection</span>
+                        <span class="tool-pill">Backtested</span>
+                        <span class="tool-pill">Confidence Score</span>
+                    </div>
+                    <div class="tool-demo">
+                        <div class="demo-row"><span class="demo-label">Pattern</span><span class="demo-val gold">Bull Flag</span></div>
+                        <div class="demo-row"><span class="demo-label">Breakout Target</span><span class="demo-val g">$187.40 (+8.2%)</span></div>
+                        <div class="demo-row"><span class="demo-label">Confidence</span><span class="demo-val gold">87%</span></div>
+                        <div class="demo-row"><span class="demo-label">Historical Win Rate</span><span class="demo-val g">74%</span></div>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Try Tool</a>
+                </div>
+            </div>
+
+            <!-- TPE -->
+            <div class="gcard tool-card">
+                <div class="tool-icon-wrap ti-purple">🧠</div>
+                <div class="tool-body">
+                    <h4>AI Trend Prediction Engine (TPE)</h4>
+                    <p>Predicts whether a stock will go up or down over the next 1–5 days, with precise entry/exit prices and confidence levels.</p>
+                    <div class="tool-pills">
+                        <span class="tool-pill">Direction Prediction</span>
+                        <span class="tool-pill">Entry & Exit Prices</span>
+                        <span class="tool-pill">1–5 Day Forecast</span>
+                        <span class="tool-pill">ML-Powered</span>
+                    </div>
+                    <div class="tool-demo">
+                        <div class="demo-row"><span class="demo-label">Ticker</span><span class="demo-val">NVDA</span></div>
+                        <div class="demo-row"><span class="demo-label">Prediction</span><span class="demo-val g">↑ Bullish (3-day)</span></div>
+                        <div class="demo-row"><span class="demo-label">Entry / Exit</span><span class="demo-val gold">$782 → $821</span></div>
+                        <div class="demo-row"><span class="demo-label">Confidence</span><span class="demo-val g">91%</span></div>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Try Tool</a>
+                </div>
+            </div>
+
+            <!-- Stock Screener -->
+            <div class="gcard tool-card">
+                <div class="tool-icon-wrap ti-green">📋</div>
+                <div class="tool-body">
+                    <h4>AI Stock Screener</h4>
+                    <p>Filter and screen thousands of stocks using AI-generated signals with entry/exit prices and confidence scores — no manual scanning.</p>
+                    <div class="tool-pills">
+                        <span class="tool-pill">Multi-Market</span>
+                        <span class="tool-pill">Entry/Exit Prices</span>
+                        <span class="tool-pill">Confidence Ranked</span>
+                        <span class="tool-pill">Custom Filters</span>
+                    </div>
+                    <div class="tool-demo">
+                        <div class="demo-row"><span class="demo-label">Screened</span><span class="demo-val">5,200+ stocks</span></div>
+                        <div class="demo-row"><span class="demo-label">Opportunities Found</span><span class="demo-val gold">34 signals</span></div>
+                        <div class="demo-row"><span class="demo-label">Top Signal Conf.</span><span class="demo-val g">94%</span></div>
+                        <div class="demo-row"><span class="demo-label">Updated</span><span class="demo-val">End-of-Day</span></div>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Try Tool</a>
+                </div>
+            </div>
+
+            <!-- RTP -->
+            <div class="gcard tool-card">
+                <div class="tool-icon-wrap ti-blue">⚡</div>
+                <div class="tool-body">
+                    <h4>AI Real-Time Patterns (RTP)</h4>
+                    <p>Discovers live intraday patterns in real-time as they form, complete with historical success rate analysis for each pattern type.</p>
+                    <div class="tool-pills">
+                        <span class="tool-pill">Real-Time</span>
+                        <span class="tool-pill">Intraday Patterns</span>
+                        <span class="tool-pill">Success Rate</span>
+                        <span class="tool-pill">Live Alerts</span>
+                    </div>
+                    <div class="tool-demo">
+                        <div class="demo-row"><span class="demo-label">Pattern Detected</span><span class="demo-val gold">Double Bottom</span></div>
+                        <div class="demo-row"><span class="demo-label">Timeframe</span><span class="demo-val">15-min · AAPL</span></div>
+                        <div class="demo-row"><span class="demo-label">Hist. Success Rate</span><span class="demo-val g">68%</span></div>
+                        <div class="demo-row"><span class="demo-label">Alert Sent</span><span class="demo-val g">✓ 2 mins ago</span></div>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Try Tool</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — COPY TRADING & SIGNALS
+══════════════════════════════════════════ -->
+<section class="products-section" id="copy" style="padding-top:2rem;">
+    <div class="section-wrap">
+        <div class="section-head">
+            <span class="section-eyebrow"><i class="fas fa-copy"></i> &nbsp;Copy Trading & Signals</span>
+            <h2>Follow the AI.<br>Profit Automatically.</h2>
+            <p>Get daily buy/sell signals, real-time copy trading with AI agents, and automatic position following with no minimum balance.</p>
+        </div>
+
+        <div class="copy-layout">
+
+            <!-- Live Signal Feed -->
+            <div class="gcard signals-feed">
+                <div class="feed-header">
+                    <h4>Live Signal Feed</h4>
+                    <div class="live-dot">Live</div>
+                </div>
+                <div class="signal-item">
+                    <div class="signal-side sig-buy">BUY</div>
+                    <div class="signal-info">
+                        <div class="signal-ticker">NVDA</div>
+                        <div class="signal-detail">Momentum breakout · 15-min</div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-price" style="color:var(--success)">$867.50</div>
+                        <div class="signal-conf">Conf. <span>92%</span></div>
+                    </div>
+                </div>
+                <div class="signal-item">
+                    <div class="signal-side sig-sell">SELL</div>
+                    <div class="signal-info">
+                        <div class="signal-ticker">SPY</div>
+                        <div class="signal-detail">Reversal pattern · 60-min</div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-price" style="color:var(--danger)">$528.10</div>
+                        <div class="signal-conf">Conf. <span>85%</span></div>
+                    </div>
+                </div>
+                <div class="signal-item">
+                    <div class="signal-side sig-buy">BUY</div>
+                    <div class="signal-info">
+                        <div class="signal-ticker">AAPL</div>
+                        <div class="signal-detail">Dip buy · sector rotation</div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-price" style="color:var(--success)">$192.35</div>
+                        <div class="signal-conf">Conf. <span>88%</span></div>
+                    </div>
+                </div>
+                <div class="signal-item">
+                    <div class="signal-side sig-buy">BUY</div>
+                    <div class="signal-info">
+                        <div class="signal-ticker">BTC/USDT</div>
+                        <div class="signal-detail">Crypto agent · support level</div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-price" style="color:var(--success)">$67,420</div>
+                        <div class="signal-conf">Conf. <span>79%</span></div>
+                    </div>
+                </div>
+                <div class="signal-item">
+                    <div class="signal-side sig-sell">SELL</div>
+                    <div class="signal-info">
+                        <div class="signal-ticker">QQQ</div>
+                        <div class="signal-detail">Overbought · 5-min exit</div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-price" style="color:var(--danger)">$448.90</div>
+                        <div class="signal-conf">Conf. <span>83%</span></div>
+                    </div>
+                </div>
+                <div class="signal-item">
+                    <div class="signal-side sig-buy">BUY</div>
+                    <div class="signal-info">
+                        <div class="signal-ticker">TSLA</div>
+                        <div class="signal-detail">Breakout pattern · 60-min</div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-price" style="color:var(--success)">$183.20</div>
+                        <div class="signal-conf">Conf. <span>76%</span></div>
+                    </div>
+                </div>
+                <div style="margin-top:1.25rem;">
+                    <a href="index.html#contact" class="btn-card" style="width:100%;justify-content:center;">Subscribe to Signals</a>
+                </div>
+            </div>
+
+            <!-- Copy Cards -->
+            <div class="copy-cards">
+
+                <div class="gcard copy-card">
+                    <div class="copy-card-head">
+                        <h4>Daily Buy/Sell Signals</h4>
+                        <span class="bot-type-tag tag-stocks">EOD</span>
+                    </div>
+                    <p>End-of-day swing trade ideas for stocks and ETFs generated by machine learning models. Delivered every market close with full entry, target, and stop levels.</p>
+                    <div class="copy-meta">
+                        <div class="cmeta"><div class="label">Avg Signals/Day</div><div class="value gold">8–15</div></div>
+                        <div class="cmeta"><div class="label">Win Rate</div><div class="value g">72%</div></div>
+                        <div class="cmeta"><div class="label">Markets</div><div class="value">Stocks, ETFs</div></div>
+                    </div>
+                    <div class="timeframe-pills">
+                        <span class="tf-pill">Swing 2–10 Days</span>
+                        <span class="tf-pill">Entry Price</span>
+                        <span class="tf-pill">Target Price</span>
+                        <span class="tf-pill">Stop Loss</span>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Get Signals</a>
+                </div>
+
+                <div class="gcard copy-card">
+                    <div class="copy-card-head">
+                        <h4>Signal Agents</h4>
+                        <span class="bot-type-tag tag-crypto">Real-Time</span>
+                    </div>
+                    <p>AI-powered real-time copy trading with fixed trade sizes. No minimum balance required — the agent executes trades directly in your brokerage account.</p>
+                    <div class="copy-meta">
+                        <div class="cmeta"><div class="label">Min. Balance</div><div class="value g">None</div></div>
+                        <div class="cmeta"><div class="label">Trade Size</div><div class="value gold">Fixed</div></div>
+                        <div class="cmeta"><div class="label">Execution</div><div class="value">Automated</div></div>
+                    </div>
+                    <div class="timeframe-pills">
+                        <span class="tf-pill">Auto-Execute</span>
+                        <span class="tf-pill">Risk Managed</span>
+                        <span class="tf-pill">No Min Balance</span>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Start Copying</a>
+                </div>
+
+                <div class="gcard copy-card">
+                    <div class="copy-card-head">
+                        <h4>Copy Trader</h4>
+                        <span class="bot-type-tag tag-etf">Passive</span>
+                    </div>
+                    <p>Follow our top-performing AI robots automatically. Mirror every trade proportionally to your balance — fully hands-off, fully transparent.</p>
+                    <div class="copy-meta">
+                        <div class="cmeta"><div class="label">Top Bot Return</div><div class="value g">+227% ann.</div></div>
+                        <div class="cmeta"><div class="label">Mode</div><div class="value gold">Fully Auto</div></div>
+                        <div class="cmeta"><div class="label">Transparency</div><div class="value g">Full</div></div>
+                    </div>
+                    <div class="timeframe-pills">
+                        <span class="tf-pill">Proportional Sizing</span>
+                        <span class="tf-pill">Performance History</span>
+                        <span class="tf-pill">Hands-Off</span>
+                    </div>
+                    <a href="index.html#contact" class="btn-card">Copy Now</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 — ACADEMY
+══════════════════════════════════════════ -->
+<section class="products-section" id="academy" style="padding-top:2rem;">
+    <div class="section-wrap">
+        <div class="section-head">
+            <span class="section-eyebrow"><i class="fas fa-graduation-cap"></i> &nbsp;Trading Academy</span>
+            <h2>Learn to Trade with AI.<br>At Your Own Pace.</h2>
+            <p>From beginner webcasts to advanced algorithmic strategy courses — everything you need to master AI-powered trading.</p>
+        </div>
+
+        <div class="academy-layout">
+
+            <!-- Category sidebar -->
+            <div class="academy-categories">
+                <div class="acad-cat active"><i class="fas fa-video"></i> Video Courses <span class="count">12+</span></div>
+                <div class="acad-cat"><i class="fas fa-broadcast-tower"></i> Live Webcasts <span class="count">Weekly</span></div>
+                <div class="acad-cat"><i class="fas fa-user-tie"></i> 1-on-1 Lessons <span class="count">Custom</span></div>
+                <div class="acad-cat"><i class="fas fa-book"></i> eBooks & Articles <span class="count">50+</span></div>
+                <div class="acad-cat"><i class="fas fa-play-circle"></i> Video Library <span class="count">200+</span></div>
+            </div>
+
+            <!-- Courses grid -->
+            <div class="academy-courses">
+
+                <div class="gcard course-card">
+                    <div class="course-thumb ct-gold">📈</div>
+                    <h4>AI Trading Fundamentals</h4>
+                    <p>How AI models predict markets, understand LSTM networks, and set up your first bot in under an hour.</p>
+                    <div class="course-meta">
+                        <span class="course-type">Video Course</span>
+                        <span class="course-level">Beginner</span>
+                    </div>
+                </div>
+
+                <div class="gcard course-card">
+                    <div class="course-thumb ct-purple">🧠</div>
+                    <h4>Deep Learning for Traders</h4>
+                    <p>Build and train your own LSTM & Transformer models for stock price prediction using PyTorch.</p>
+                    <div class="course-meta">
+                        <span class="course-type">Video Course</span>
+                        <span class="course-level">Advanced</span>
+                    </div>
+                </div>
+
+                <div class="gcard course-card">
+                    <div class="course-thumb ct-green">🎙️</div>
+                    <h4>Weekly Market Webcast</h4>
+                    <p>Live weekly sessions covering market outlook, AI bot performance reviews, and upcoming opportunities.</p>
+                    <div class="course-meta">
+                        <span class="course-type">Live Webcast</span>
+                        <span class="course-level">All Levels</span>
+                    </div>
+                </div>
+
+                <div class="gcard course-card">
+                    <div class="course-thumb ct-blue">📚</div>
+                    <h4>Strategy Optimization Guide</h4>
+                    <p>Comprehensive eBook on genetic algorithms, backtesting best practices, and avoiding overfitting.</p>
+                    <div class="course-meta">
+                        <span class="course-type">eBook</span>
+                        <span class="course-level">Intermediate</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Academy CTA -->
+        <div style="margin-top:2rem;padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;" class="gcard">
+            <div>
+                <h4 style="font-size:1.15rem;margin-bottom:0.4rem;">Want personalized 1-on-1 training?</h4>
+                <p style="color:var(--text-muted);font-size:0.9rem;margin:0;">Book a private session with one of our AI trading specialists — tailored to your strategy and experience level.</p>
+            </div>
+            <a href="index.html#contact" class="btn-card" style="white-space:nowrap;">Book a Session <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2>Start Trading with<br><span style="background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AI on Your Side</span></h2>
+        <p>Deploy a bot, access AI tools, follow real-time signals, or start learning — all in one platform.</p>
+        <div class="cta-btns">
+            <a href="index.html#contact" class="btn-cta-primary">Get Started Free</a>
+            <a href="index.html#contact" class="btn-cta-secondary">Talk to Our Team</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <a href="index.html" class="logo" style="margin-bottom:1.5rem;display:inline-flex;"><img src="logo_yellow_valour-r.png" alt="Valour" style="height:32px;"> <span style="margin-left:0.75rem;">ValourAI</span></a>
+            <p>AI-powered trading suite — bots, tools, signals, and education to give every trader an unfair edge.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/valourAI" class="social-link"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Products</h4>
+            <ul>
+                <li><a href="#bots">AI Bots & Agents</a></li>
+                <li><a href="#tools">AI DIY Tools</a></li>
+                <li><a href="#copy">Copy Trading</a></li>
+                <li><a href="#academy">Academy</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#industries">Industries</a></li>
-                <li><a href="products.html" class="active">Portfolio</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="index.html#contact" class="btn-primary">Talk to Us</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="menuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="section-tag">Portfolio</div>
-        <h1>Our Projects</h1>
-        <p>A comprehensive portfolio of 35+ projects delivered across AI, software development, automation, and data engineering.</p>
-    </div>
-
-    <!-- Filter Section -->
-    <div class="filter-section">
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="ai">AI & ML</button>
-            <button class="filter-btn" data-filter="web">Web Development</button>
-            <button class="filter-btn" data-filter="automation">Automation</button>
-            <button class="filter-btn" data-filter="fintech">Fintech</button>
-            <button class="filter-btn" data-filter="data">Data & Analytics</button>
         </div>
     </div>
-
-    <!-- Projects Grid -->
-    <div class="container">
-        <div class="projects-grid">
-            
-            <!-- Project 1 -->
-            <div class="project-card" data-category="fintech">
-                <div class="project-header">
-                    <span class="project-tag">Enterprise Platform</span>
-                    <span class="project-icon">🚀</span>
-                </div>
-                <h3>Valour.AI Platform</h3>
-                <p>AI-based platform serving 6,000+ users with automated strategies, risk management, and real-time analytics.</p>
-                <ul class="project-features">
-                    <li>Automated Strategies</li>
-                    <li>Real-time Analytics</li>
-                    <li>Risk Management</li>
-                </ul>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card" data-category="fintech">
-                <div class="project-header">
-                    <span class="project-tag">Fintech</span>
-                    <span class="project-icon">🛡️</span>
-                </div>
-                <h3>CryptoProfitShield</h3>
-                <p>Web-based risk management system for position sizing, stop-loss management, and portfolio analytics.</p>
-                <ul class="project-features">
-                    <li>Position Sizing</li>
-                    <li>Portfolio Analytics</li>
-                    <li>Risk Controls</li>
-                </ul>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card" data-category="data">
-                <div class="project-header">
-                    <span class="project-tag">Analytics</span>
-                    <span class="project-icon">📈</span>
-                </div>
-                <h3>MarketAlphaQuest</h3>
-                <p>Advanced market analytics platform with AI-based insights, technical indicators, and predictive models.</p>
-                <ul class="project-features">
-                    <li>Market Analysis</li>
-                    <li>Trend Detection</li>
-                    <li>Predictive Models</li>
-                </ul>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">AI/ML</span>
-                    <span class="project-icon">🧠</span>
-                </div>
-                <h3>Deep Learning Models</h3>
-                <p>Sophisticated neural networks for price prediction and pattern recognition in financial data.</p>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">Optimization</span>
-                    <span class="project-icon">⚙️</span>
-                </div>
-                <h3>Strategy Optimization</h3>
-                <p>System for optimizing business strategies using genetic algorithms and machine learning.</p>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">NLP</span>
-                    <span class="project-icon">📝</span>
-                </div>
-                <h3>Arabic Text Sentiment</h3>
-                <p>NLP model for classifying sentiment in Arabic text for market and social media analysis.</p>
-            </div>
-
-            <!-- Project 7 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">AI/Chat</span>
-                    <span class="project-icon">💬</span>
-                </div>
-                <h3>Enterprise AI Chatbot</h3>
-                <p>Intelligent chatbot built with OpenAI & LangChain for customer support automation.</p>
-            </div>
-
-            <!-- Project 8 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">Computer Vision</span>
-                    <span class="project-icon">👁️</span>
-                </div>
-                <h3>Video Ad Detection</h3>
-                <p>Computer vision system for detecting and fingerprinting video advertisements.</p>
-            </div>
-
-            <!-- Project 9 -->
-            <div class="project-card" data-category="automation">
-                <div class="project-header">
-                    <span class="project-tag">Integration</span>
-                    <span class="project-icon">📊</span>
-                </div>
-                <h3>TradingView Integration</h3>
-                <p>Neural network-based automation integrated with TradingView for real-time analysis.</p>
-            </div>
-
-            <!-- Project 10 -->
-            <div class="project-card" data-category="automation">
-                <div class="project-header">
-                    <span class="project-tag">Automation</span>
-                    <span class="project-icon">🔄</span>
-                </div>
-                <h3>Crypto Analysis Bot</h3>
-                <p>Automated bot for real-time cryptocurrency market analysis and alert notifications.</p>
-            </div>
-
-            <!-- Project 11 -->
-            <div class="project-card" data-category="fintech">
-                <div class="project-header">
-                    <span class="project-tag">Integration</span>
-                    <span class="project-icon">🔗</span>
-                </div>
-                <h3>Exchange API Integration</h3>
-                <p>Custom integration solutions for major exchange APIs with trailing stop-loss functionality.</p>
-            </div>
-
-            <!-- Project 12 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">ML Platform</span>
-                    <span class="project-icon">📉</span>
-                </div>
-                <h3>ML Trading Automation</h3>
-                <p>Python-based machine learning automation for various trading platforms.</p>
-            </div>
-
-            <!-- Project 13 -->
-            <div class="project-card" data-category="fintech">
-                <div class="project-header">
-                    <span class="project-tag">High Performance</span>
-                    <span class="project-icon">⚡</span>
-                </div>
-                <h3>Scala Trading Algorithm</h3>
-                <p>High-performance trading algorithm implemented in Scala/Java for low-latency execution.</p>
-            </div>
-
-            <!-- Project 14 -->
-            <div class="project-card" data-category="data">
-                <div class="project-header">
-                    <span class="project-tag">Real-time</span>
-                    <span class="project-icon">💹</span>
-                </div>
-                <h3>Real-Time Prediction</h3>
-                <p>Real-time market prediction system using advanced streaming data pipelines.</p>
-            </div>
-
-            <!-- Project 15 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">Mobile</span>
-                    <span class="project-icon">📱</span>
-                </div>
-                <h3>Stock Prediction App</h3>
-                <p>Mobile application for tracking and predicting stock market movements.</p>
-            </div>
-
-            <!-- Project 16 -->
-            <div class="project-card" data-category="automation">
-                <div class="project-header">
-                    <span class="project-tag">Automation</span>
-                    <span class="project-icon">🤖</span>
-                </div>
-                <h3>Digital Workflow Bot</h3>
-                <p>Agent bot designed for automating various digital workflows and repetitive tasks.</p>
-            </div>
-
-            <!-- Project 17 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">Custom AI</span>
-                    <span class="project-icon">🎓</span>
-                </div>
-                <h3>Custom AI Training</h3>
-                <p>Custom AI chatbot trained on specific domain content for personalized interactions.</p>
-            </div>
-
-            <!-- Project 18 -->
-            <div class="project-card" data-category="automation">
-                <div class="project-header">
-                    <span class="project-tag">Scraping</span>
-                    <span class="project-icon">🕸️</span>
-                </div>
-                <h3>LinkedIn Data Scraper</h3>
-                <p>Tool for scraping and managing LinkedIn connections for lead generation.</p>
-            </div>
-
-            <!-- Project 19 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">Optimization</span>
-                    <span class="project-icon">📋</span>
-                </div>
-                <h3>Scheduling Algorithm</h3>
-                <p>Optimization algorithm for complex resource scheduling and allocation problems.</p>
-            </div>
-
-            <!-- Project 20 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">Security</span>
-                    <span class="project-icon">🔐</span>
-                </div>
-                <h3>McEliece Cryptosystem</h3>
-                <p>Implementation of post-quantum McEliece public-key cryptosystem for secure communications.</p>
-            </div>
-
-            <!-- Project 21 -->
-            <div class="project-card" data-category="data">
-                <div class="project-header">
-                    <span class="project-tag">Data Science</span>
-                    <span class="project-icon">📊</span>
-                </div>
-                <h3>Churn Prediction</h3>
-                <p>Application to predict customer churn using historical behavioral data and ML models.</p>
-            </div>
-
-            <!-- Project 22 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">Real Estate</span>
-                    <span class="project-icon">🏠</span>
-                </div>
-                <h3>Booking Calculator</h3>
-                <p>Algorithm for calculating dynamic apartment booking prices based on market factors.</p>
-            </div>
-
-            <!-- Project 23 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">Web Development</span>
-                    <span class="project-icon">🌐</span>
-                </div>
-                <h3>Social Platform Backend</h3>
-                <p>Backend architecture for a social networking platform with Python and Django.</p>
-            </div>
-
-            <!-- Project 24 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">E-commerce</span>
-                    <span class="project-icon">🛍️</span>
-                </div>
-                <h3>Product Comparison</h3>
-                <p>Comprehensive website for comparing consumer products across multiple categories.</p>
-            </div>
-
-            <!-- Project 25 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">Social</span>
-                    <span class="project-icon">👥</span>
-                </div>
-                <h3>Social Media Platform</h3>
-                <p>Full-featured social media platform with user profiles, posts, and messaging.</p>
-            </div>
-
-            <!-- Project 26 -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <span class="project-tag">Healthcare</span>
-                    <span class="project-icon">🏥</span>
-                </div>
-                <h3>Patient Scheduling</h3>
-                <p>Software solution for managing patient appointments and hospital resources.</p>
-            </div>
-
-            <!-- Project 27 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">AI/DL</span>
-                    <span class="project-icon">🧠</span>
-                </div>
-                <h3>Decision Support System</h3>
-                <p>Advanced decision support system utilizing deep learning models for business intelligence.</p>
-            </div>
-
-            <!-- Project 28 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">NLP</span>
-                    <span class="project-icon">🐦</span>
-                </div>
-                <h3>Disaster Detection</h3>
-                <p>System to detect real-time disasters by analyzing social media data streams.</p>
-            </div>
-
-            <!-- Project 29 -->
-            <div class="project-card" data-category="fintech">
-                <div class="project-header">
-                    <span class="project-tag">Forex</span>
-                    <span class="project-icon">💱</span>
-                </div>
-                <h3>Forex Trading Bot</h3>
-                <p>Automated trading bot optimized for Forex market conditions and currency pairs.</p>
-            </div>
-
-            <!-- Project 30 -->
-            <div class="project-card" data-category="ai">
-                <div class="project-header">
-                    <span class="project-tag">Historical Analysis</span>
-                    <span class="project-icon">📜</span>
-                </div>
-                <h3>Historical Data Analysis</h3>
-                <p>ML model trained on extensive historical data for pattern recognition and prediction.</p>
-            </div>
-
-        </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Valour.ai · All rights reserved · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
     </div>
+</footer>
 
-    <!-- Benefits Section -->
-    <div class="benefits-section">
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h4>Dedicated Support</h4>
-                <p>Ongoing technical support for all delivered projects</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-sync-alt"></i>
-                </div>
-                <h4>Continuous Updates</h4>
-                <p>Regular improvements and feature enhancements</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h4>Quality Guarantee</h4>
-                <p>100% satisfaction with every project delivery</p>
-            </div>
-        </div>
-    </div>
+<script>
+    // Mobile menu
+    document.getElementById('menuBtn').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('active');
+    });
 
-    <!-- CTA Section -->
-    <div class="cta-section">
-        <h2>Ready to Start Your Project?</h2>
-        <p>Let's discuss how we can help bring your ideas to life.</p>
-        <a href="index.html#contact" class="btn-primary" style="padding: 1rem 2.5rem;">Get in Touch</a>
-    </div>
+    // Tab scroll
+    function scrollTo(id) {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+    }
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <a href="index.html" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">Valour<span>.</span></a>
-                <p>Technology partner for digital transformation. Building intelligent, scalable solutions for startups and enterprises.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="index.html#services">Software Engineering</a></li>
-                    <li><a href="index.html#services">AI & Data</a></li>
-                    <li><a href="index.html#services">Automation</a></li>
-                    <li><a href="index.html#services">Cloud & Infrastructure</a></li>
-                    <li><a href="index.html#services">Fintech Solutions</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="products.html">Portfolio</a></li>
-                    <li><a href="index.html#industries">Industries</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Valour. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    // Highlight active tab on scroll
+    const sections = ['bots','tools','copy','academy'];
+    const tabs = document.querySelectorAll('.cat-tab');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && window.scrollY >= el.offsetTop - 140) current = id;
         });
-
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
+        tabs.forEach((tab, i) => {
+            tab.classList.toggle('active', sections[i] === current);
         });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

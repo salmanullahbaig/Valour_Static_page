@@ -977,6 +977,18 @@ body{background:transparent}
   background:linear-gradient(180deg,rgba(6,17,29,.10),rgba(7,26,15,.35) 70%,rgba(12,24,40,.85));
 }
 
+/* ---------- section banner photos ---------- */
+.sec-photo{
+  position:relative;height:240px;overflow:hidden;margin:-14px 0 38px;
+  border-radius:var(--radius);border:1px solid var(--line-soft);
+}
+.sec-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
+.sec-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,17,29,.10),rgba(7,26,15,.35) 70%,rgba(12,24,40,.85));
+}
+@media (max-width:700px){.sec-photo{height:150px;margin:-6px 0 30px}}
+
 /* ---------- industry row photos ---------- */
 .ind-icon.ind-photo{width:54px;height:54px;padding:0;overflow:hidden;border-color:rgba(47,201,77,.28)}
 .ind-icon.ind-photo img{width:100%;height:100%;object-fit:cover;display:block}

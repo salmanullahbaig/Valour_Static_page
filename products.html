@@ -1,1139 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Trading Suite — Valour.ai</title>
-    <meta name="description" content="AI-powered trading bots, DIY tools, copy trading signals, and education. Build your trading edge with Valour.ai">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="logo_yellow_valour-r.png">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --accent: #d4af37;
-            --accent-light: #facc15;
-            --accent-dim: rgba(212, 175, 55, 0.12);
-            --accent-glow: rgba(212, 175, 55, 0.4);
-            --bg-dark: #020617;
-            --glass-bg: rgba(255, 255, 255, 0.06);
-            --glass-bg-hover: rgba(212, 175, 55, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-border-hover: rgba(212, 175, 55, 0.5);
-            --glass-blur: blur(22px);
-            --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.16);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dark: #64748b;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --purple: #8b5cf6;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background:
-                radial-gradient(ellipse at 8% 12%, rgba(212, 175, 55, 0.28) 0%, transparent 38%),
-                radial-gradient(ellipse at 88% 82%, rgba(139, 92, 246, 0.5) 0%, transparent 38%),
-                radial-gradient(ellipse at 55% 45%, rgba(30, 58, 138, 0.45) 0%, transparent 48%),
-                radial-gradient(ellipse at 22% 88%, rgba(180, 140, 20, 0.35) 0%, transparent 30%),
-                radial-gradient(ellipse at 78% 8%, rgba(99, 102, 241, 0.4) 0%, transparent 32%);
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(2, 6, 23, 0.55);
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
-            z-index: 1000; padding: 1rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        .nav-container {
-            max-width: 1280px; margin: 0 auto;
-            padding: 0 2rem;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-size: 1.4rem; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0.75rem; }
-        .logo img { height: 38px; width: auto; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .btn-nav {
-            background: linear-gradient(135deg, var(--accent), #b8941e);
-            color: #0a0a0a; padding: 0.6rem 1.25rem; border-radius: 0.5rem;
-            font-weight: 700; font-size: 0.875rem; text-decoration: none;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-        .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45); color: #0a0a0a; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
-
-        /* ── PAGE HERO ── */
-        .page-hero {
-            padding: 9rem 2rem 5rem;
-            text-align: center;
-            max-width: 1280px; margin: 0 auto;
-        }
-        .hero-eyebrow {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(212, 175, 55, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 0.45rem 1.1rem; border-radius: 2rem;
-            font-size: 0.8rem; font-weight: 600; color: var(--accent);
-            margin-bottom: 1.75rem; letter-spacing: 0.05em; text-transform: uppercase;
-        }
-        .page-hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
-            line-height: 1.1; margin-bottom: 1.25rem;
-        }
-        .page-hero h1 span {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .page-hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 3rem; line-height: 1.75; }
-
-        .platform-stats {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
-            max-width: 860px; margin: 0 auto;
-        }
-        .pstat {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem; padding: 1.5rem 1rem;
-            text-align: center;
-            box-shadow: var(--glass-shine);
-            transition: all 0.3s;
-        }
-        .pstat:hover { border-color: var(--glass-border-hover); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(212,175,55,0.2), var(--glass-shine); }
-        .pstat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); display: block; }
-        .pstat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
-
-        /* ── CATEGORY TABS ── */
-        .cat-tabs-wrap {
-            position: sticky; top: 64px; z-index: 90;
-            background: rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 0;
-        }
-        .cat-tabs {
-            max-width: 1280px; margin: 0 auto;
-            display: flex; padding: 0 2rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .cat-tabs::-webkit-scrollbar { display: none; }
-        .cat-tab {
-            display: flex; align-items: center; gap: 0.6rem;
-            padding: 1.1rem 1.5rem;
-            color: var(--text-muted); font-size: 0.9rem; font-weight: 600;
-            cursor: pointer; border: none; background: none;
-            white-space: nowrap;
-            border-bottom: 2px solid transparent;
-            transition: all 0.25s;
-        }
-        .cat-tab:hover { color: var(--text); }
-        .cat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-        .cat-tab i { font-size: 1rem; }
-        .tab-badge {
-            background: var(--accent-dim);
-            border: 1px solid rgba(212,175,55,0.25);
-            color: var(--accent); font-size: 0.7rem; font-weight: 700;
-            padding: 0.15rem 0.45rem; border-radius: 0.3rem;
-        }
-
-        /* ── SECTION SHARED ── */
-        .products-section { padding: 5rem 2rem; }
-        .section-wrap { max-width: 1280px; margin: 0 auto; }
-        .section-head { margin-bottom: 3rem; }
-        .section-eyebrow {
-            display: inline-block;
-            font-size: 0.75rem; font-weight: 700; color: var(--accent);
-            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;
-        }
-        .section-head h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; }
-        .section-head p { color: var(--text-muted); font-size: 1rem; max-width: 560px; }
-
-        /* glass card base */
-        .gcard {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1.25rem;
-            box-shadow: var(--glass-shine);
-            transition: all 0.35s ease;
-        }
-        .gcard:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 16px 48px rgba(212,175,55,0.18), var(--glass-shine);
-            transform: translateY(-5px);
-        }
-
-        /* ── BOTS SECTION ── */
-        .featured-bot {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        .featured-bot-info { display: flex; flex-direction: column; justify-content: space-between; }
-        .bot-category-badge {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
-            color: var(--accent); font-size: 0.75rem; font-weight: 700;
-            padding: 0.3rem 0.75rem; border-radius: 0.4rem;
-            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
-        }
-        .featured-bot-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; }
-        .featured-bot-info p { color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
-        .perf-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.75rem; }
-        .perf-metric {
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 0.75rem; padding: 1rem; text-align: center;
-        }
-        .perf-metric-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 800; display: block; }
-        .perf-metric-val.green { color: var(--success); }
-        .perf-metric-val.gold { color: var(--accent); }
-        .perf-metric-val.purple { color: var(--purple); }
-        .perf-metric-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; }
-
-        /* mock chart */
-        .chart-area {
-            background: rgba(0,0,0,0.25);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 1rem; padding: 1.25rem;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            min-height: 220px; position: relative; overflow: hidden;
-        }
-        .chart-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; }
-        .chart-label strong { color: var(--success); font-size: 1.1rem; margin-right: 0.5rem; }
-        .chart-bars { display: flex; align-items: flex-end; gap: 4px; height: 140px; }
-        .chart-bar {
-            flex: 1; border-radius: 3px 3px 0 0;
-            background: linear-gradient(180deg, var(--success), rgba(34,197,94,0.3));
-            transition: opacity 0.3s;
-        }
-        .chart-bar.loss { background: linear-gradient(180deg, var(--danger), rgba(239,68,68,0.3)); }
-        .chart-line-overlay {
-            position: absolute; bottom: 50px; left: 1.25rem; right: 1.25rem; height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            opacity: 0.5;
-            border-radius: 1px;
-        }
-        .chart-line-overlay::after {
-            content: '';
-            position: absolute; right: 0; top: -4px;
-            width: 10px; height: 10px; border-radius: 50%;
-            background: var(--accent); box-shadow: 0 0 12px rgba(212,175,55,0.8);
-        }
-
-        .bots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .bot-card { padding: 1.75rem; }
-        .bot-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-        .bot-icon {
-            width: 48px; height: 48px;
-            background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.25);
-            border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem;
-        }
-        .bot-type-tag {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-            padding: 0.25rem 0.6rem; border-radius: 0.35rem;
-        }
-        .tag-stocks { background: rgba(34,197,94,0.12); color: var(--success); border: 1px solid rgba(34,197,94,0.25); }
-        .tag-crypto { background: rgba(212,175,55,0.12); color: var(--accent); border: 1px solid rgba(212,175,55,0.25); }
-        .tag-forex  { background: rgba(139,92,246,0.12); color: var(--purple); border: 1px solid rgba(139,92,246,0.25); }
-        .tag-etf    { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
-        .bot-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .bot-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem; }
-        .bot-stats { display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
-        .bot-stat { font-size: 0.78rem; display: flex; align-items: center; gap: 0.3rem; }
-        .bot-stat .val { font-weight: 700; }
-        .bot-stat .val.g { color: var(--success); }
-        .bot-stat .val.gold { color: var(--accent); }
-        .bot-stat .sep { color: var(--text-dark); }
-        .bot-features { list-style: none; margin-bottom: 1.5rem; }
-        .bot-features li {
-            font-size: 0.82rem; color: var(--text-muted);
-            padding: 0.3rem 0 0.3rem 1.25rem; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-        .bot-features li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
-        .btn-card {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: linear-gradient(135deg, var(--accent), #b8941e);
-            color: #0a0a0a; padding: 0.65rem 1.25rem; border-radius: 0.5rem;
-            font-weight: 700; font-size: 0.85rem; text-decoration: none;
-            box-shadow: 0 4px 16px rgba(212,175,55,0.25); transition: all 0.3s; cursor: pointer; border: none;
-        }
-        .btn-card:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,175,55,0.4); }
-        .btn-outline {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
-            color: var(--text); padding: 0.65rem 1.25rem; border-radius: 0.5rem;
-            font-weight: 600; font-size: 0.85rem; text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.18); transition: all 0.3s; cursor: pointer;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
-        }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(212,175,55,0.08); }
-
-        /* ── DIY TOOLS ── */
-        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        .tool-card { padding: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; }
-        .tool-icon-wrap {
-            width: 56px; height: 56px; border-radius: 1rem; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
-        }
-        .ti-gold { background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3); }
-        .ti-purple { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); }
-        .ti-green { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); }
-        .ti-blue { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); }
-        .tool-body h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .tool-body p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1rem; }
-        .tool-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
-        .tool-pill {
-            font-size: 0.72rem; font-weight: 600; padding: 0.25rem 0.65rem;
-            border-radius: 0.35rem; background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
-        }
-        .tool-demo {
-            background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 0.75rem; padding: 0.85rem 1rem; margin-bottom: 1.25rem;
-            font-size: 0.8rem;
-        }
-        .demo-row { display: flex; justify-content: space-between; align-items: center; padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-        .demo-row:last-child { border-bottom: none; }
-        .demo-label { color: var(--text-muted); }
-        .demo-val { font-weight: 700; }
-        .demo-val.g { color: var(--success); }
-        .demo-val.gold { color: var(--accent); }
-        .demo-val.r { color: var(--danger); }
-
-        /* ── COPY TRADING ── */
-        .copy-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .signals-feed { padding: 1.75rem; }
-        .feed-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
-        .feed-header h4 { font-size: 1rem; font-weight: 700; }
-        .live-dot {
-            display: flex; align-items: center; gap: 0.4rem;
-            font-size: 0.75rem; color: var(--success); font-weight: 600;
-        }
-        .live-dot::before {
-            content: ''; width: 8px; height: 8px; border-radius: 50%;
-            background: var(--success); box-shadow: 0 0 8px var(--success);
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-        .signal-item {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .signal-item:last-child { border-bottom: none; }
-        .signal-side {
-            width: 44px; height: 28px; border-radius: 0.35rem;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; flex-shrink: 0;
-        }
-        .sig-buy { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.35); color: var(--success); }
-        .sig-sell { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: var(--danger); }
-        .signal-info { flex: 1; min-width: 0; }
-        .signal-ticker { font-size: 0.9rem; font-weight: 700; }
-        .signal-detail { font-size: 0.75rem; color: var(--text-muted); }
-        .signal-right { text-align: right; flex-shrink: 0; }
-        .signal-price { font-size: 0.9rem; font-weight: 700; }
-        .signal-conf { font-size: 0.72rem; color: var(--text-muted); }
-        .signal-conf span { color: var(--accent); font-weight: 700; }
-
-        .copy-cards { display: flex; flex-direction: column; gap: 1.5rem; }
-        .copy-card { padding: 1.75rem; }
-        .copy-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-        .copy-card-head h4 { font-size: 1.05rem; font-weight: 700; }
-        .copy-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem; }
-        .copy-meta { display: flex; gap: 1.5rem; margin-bottom: 1.25rem; }
-        .cmeta { font-size: 0.8rem; }
-        .cmeta .label { color: var(--text-muted); }
-        .cmeta .value { font-weight: 700; margin-top: 0.1rem; }
-        .cmeta .value.g { color: var(--success); }
-        .cmeta .value.gold { color: var(--accent); }
-        .timeframe-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tf-pill {
-            font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.6rem;
-            border-radius: 0.35rem; background: rgba(212,175,55,0.1);
-            border: 1px solid rgba(212,175,55,0.2); color: var(--accent);
-        }
-
-        /* ── ACADEMY ── */
-        .academy-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
-        .academy-categories { display: flex; flex-direction: column; gap: 0.75rem; }
-        .acad-cat {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 1.1rem 1.25rem;
-            border-radius: 0.75rem; cursor: pointer;
-            border: 1px solid transparent;
-            transition: all 0.25s; font-size: 0.9rem; font-weight: 600;
-            background: rgba(255,255,255,0.03);
-        }
-        .acad-cat:hover, .acad-cat.active {
-            background: var(--accent-dim); border-color: rgba(212,175,55,0.35);
-            color: var(--accent);
-        }
-        .acad-cat i { width: 20px; text-align: center; font-size: 1.1rem; }
-        .acad-cat .count { margin-left: auto; font-size: 0.72rem; color: var(--text-muted); }
-
-        .academy-courses { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-        .course-card { padding: 1.5rem; }
-        .course-thumb {
-            height: 100px; border-radius: 0.75rem; margin-bottom: 1.1rem;
-            display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
-        }
-        .ct-gold { background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.2); }
-        .ct-purple { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.05)); border: 1px solid rgba(139,92,246,0.2); }
-        .ct-green { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.05)); border: 1px solid rgba(34,197,94,0.2); }
-        .ct-blue { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.2); }
-        .course-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-        .course-card p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin-bottom: 1rem; }
-        .course-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }
-        .course-type { color: var(--accent); font-weight: 700; }
-        .course-level { color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 0.2rem 0.5rem; border-radius: 0.3rem; border: 1px solid rgba(255,255,255,0.08); }
-
-        /* ── CTA ── */
-        .cta-section {
-            padding: 6rem 2rem; text-align: center;
-        }
-        .cta-inner {
-            max-width: 700px; margin: 0 auto;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(212,175,55,0.25);
-            border-radius: 2rem; padding: 4rem 3rem;
-            box-shadow: 0 0 60px rgba(212,175,55,0.12), var(--glass-shine);
-        }
-        .cta-inner h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
-        .cta-inner p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
-        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-cta-primary {
-            background: linear-gradient(135deg, var(--accent), #b8941e);
-            color: #0a0a0a; padding: 1rem 2.25rem; border-radius: 0.75rem;
-            font-weight: 700; font-size: 1rem; text-decoration: none;
-            box-shadow: 0 8px 32px rgba(212,175,55,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-        .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(212,175,55,0.5); }
-        .btn-cta-secondary {
-            background: rgba(255,255,255,0.07); backdrop-filter: blur(12px);
-            color: #fff; padding: 1rem 2.25rem; border-radius: 0.75rem;
-            font-weight: 600; font-size: 1rem; text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.3);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
-            transition: all 0.3s;
-        }
-        .btn-cta-secondary:hover { border-color: var(--accent); color: var(--accent); background: rgba(212,175,55,0.1); }
-
-        /* ── FOOTER ── */
-        footer {
-            background: rgba(2,6,23,0.7); backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-top: 1px solid rgba(212,175,55,0.12);
-            padding: 4rem 2rem 2rem;
-        }
-        .footer-content { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
-        .footer-section h4 { margin-bottom: 1.5rem; color: var(--white); font-size: 0.95rem; }
-        .footer-section p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.9rem; }
-        .footer-section ul { list-style: none; }
-        .footer-section ul li { margin-bottom: 0.75rem; }
-        .footer-section a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-        .footer-section a:hover { color: var(--accent); }
-        .social-links { display: flex; gap: 0.75rem; }
-        .social-link {
-            width: 38px; height: 38px;
-            background: rgba(255,255,255,0.05); backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); transition: all 0.3s; text-decoration: none;
-        }
-        .social-link:hover { background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.3); color: var(--accent); }
-        .footer-bottom { max-width: 1280px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .tools-grid { grid-template-columns: 1fr; }
-            .academy-layout { grid-template-columns: 1fr; }
-            .academy-categories { flex-direction: row; flex-wrap: wrap; }
-            .featured-bot { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-links {
-                position: fixed; top: 65px; left: -100%; width: 100%;
-                height: calc(100vh - 65px);
-                background: rgba(2,6,23,0.9); backdrop-filter: blur(24px);
-                flex-direction: column; padding: 2rem; transition: left 0.3s; z-index: 999;
-            }
-            .nav-links.active { left: 0; }
-            .platform-stats { grid-template-columns: repeat(2,1fr); }
-            .bots-grid { grid-template-columns: 1fr; }
-            .copy-layout { grid-template-columns: 1fr; }
-            .academy-courses { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
-            .perf-metrics { grid-template-columns: 1fr 1fr 1fr; }
-            .tool-card { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — ValourAI</title>
+<meta name="description" content="The Valour AI Trading Suite — AI trading bots and agents, DIY pattern and prediction tools, copy trading and signals, and a complete trading academy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<!-- ============================================================ HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="ValourAI home">
+      <img class="logo-img" src="assets/img/logo.svg" alt="">
+      Valour<em>AI</em>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="projects.html">Projects</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a href="contact.html" class="btn btn-green">Book a Consultation</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
 
-<!-- ── NAVIGATION ── -->
-<nav>
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <img src="logo_yellow_valour-r.png" alt="Valour">
-            ValourAI
-        </a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#industries">Industries</a></li>
-            <li><a href="products.html" class="active">Products</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="index.html#contact" class="btn-nav">Talk to Us</a></li>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="index.html"><span>Home</span><span class="idx">01</span></a>
+    <a href="services.html"><span>Services</span><span class="idx">02</span></a>
+    <a href="industries.html"><span>Industries</span><span class="idx">03</span></a>
+    <a href="projects.html"><span>Projects</span><span class="idx">04</span></a>
+    <a href="products.html"><span>Products</span><span class="idx">05</span></a>
+    <a href="blog.html"><span>Blog</span><span class="idx">06</span></a>
+    <a href="about.html"><span>About</span><span class="idx">07</span></a>
+    <a href="contact.html"><span>Contact</span><span class="idx">08</span></a>
+  </nav>
+  <a href="contact.html" class="btn btn-green">Book a Consultation</a>
+</div>
+
+<main id="top">
+
+<!-- ============================================================ PAGE HERO -->
+<section class="page-hero" aria-label="Products introduction">
+  <div class="grid-lines" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container">
+    <p class="crumb"><a href="index.html">Home</a><span class="sep">/</span><span>Products</span></p>
+    <span class="eyebrow rv in">The Valour AI Trading Suite</span>
+    <h1 class="rv in">Your Edge in <span class="hl">Every Market</span>, Every Trade</h1>
+    <p class="lede rv in rv-d1">A complete suite of AI trading products built and operated by our own engineering team — automated bots and agents, DIY analysis tools, real-time signals and copy trading, and a structured trading academy.</p>
+  </div>
+</section>
+
+<!-- ============================================================ METRICS -->
+<section class="metrics" aria-label="Product metrics">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric rv"><div class="num"><span class="count" data-target="7">0</span></div><div class="lbl">Active Bot Types</div></div>
+      <div class="metric rv rv-d1"><div class="num"><span class="count" data-target="5200" data-comma="1">0</span><sup>+</sup></div><div class="lbl">Stocks Screened by AI</div></div>
+      <div class="metric rv rv-d2"><div class="num">24/7</div><div class="lbl">Real-Time Signals</div></div>
+      <div class="metric rv rv-d3"><div class="num"><span class="count" data-target="200">0</span><sup>+</sup></div><div class="lbl">Academy Library Videos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ BOTS & AGENTS -->
+<section class="section" id="bots">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">AI Trading Bots &amp; Agents</span>
+      <h2 class="rv rv-d1">Automated Strategies for Every Trading Style</h2>
+      <p class="lede rv rv-d2">Fully automated robots and virtual agents targeting stocks, ETFs, forex and crypto — from intraday momentum to multi-month macro trends.</p>
+    </div>
+    <div class="services-grid">
+
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 14 21 6"/><polyline points="16 6 21 6 21 11"/></svg>
+        </div>
+        <h3>AI Trending Robots</h3>
+        <p class="desc">Short-term momentum bots that exploit fast-moving opportunities in stocks and ETFs.</p>
+        <ul class="svc-caps">
+          <li>+227% peak annualized return (historical)</li>
+          <li>70–80% historical win rate</li>
+          <li>Under 9% maximum drawdown</li>
         </ul>
-        <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-    </div>
-</nav>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
 
-<!-- ── PAGE HERO ── -->
-<div class="page-hero">
-    <div class="hero-eyebrow"><i class="fas fa-robot"></i> AI-Powered Trading Suite</div>
-    <h1>Your Edge in Every<br><span>Market, Every Trade</span></h1>
-    <p>Automated bots, intelligent DIY tools, copy trading signals, and a full trading academy — everything you need to trade smarter with AI.</p>
-    <div class="platform-stats">
-        <div class="pstat"><span class="pstat-num">+227%</span><div class="pstat-label">Peak Annualized Return</div></div>
-        <div class="pstat"><span class="pstat-num">80%</span><div class="pstat-label">Win Rate (Top Bots)</div></div>
-        <div class="pstat"><span class="pstat-num">7</span><div class="pstat-label">Active Bot Types</div></div>
-        <div class="pstat"><span class="pstat-num">24/7</span><div class="pstat-label">Real-Time Signals</div></div>
-    </div>
-</div>
-
-<!-- ── CATEGORY TABS ── -->
-<div class="cat-tabs-wrap">
-    <div class="cat-tabs">
-        <button class="cat-tab active" onclick="scrollTo('bots')"><i class="fas fa-robot"></i> Bots & Agents <span class="tab-badge">7</span></button>
-        <button class="cat-tab" onclick="scrollTo('tools')"><i class="fas fa-tools"></i> AI DIY Tools <span class="tab-badge">4</span></button>
-        <button class="cat-tab" onclick="scrollTo('copy')"><i class="fas fa-copy"></i> Copy Trading</button>
-        <button class="cat-tab" onclick="scrollTo('academy')"><i class="fas fa-graduation-cap"></i> Academy</button>
-    </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     SECTION 1 — AI TRADING BOTS & AGENTS
-══════════════════════════════════════════ -->
-<section class="products-section" id="bots">
-    <div class="section-wrap">
-        <div class="section-head">
-            <span class="section-eyebrow"><i class="fas fa-robot"></i> &nbsp;AI Trading Bots & Agents</span>
-            <h2>Automated Intelligence,<br>Trading 24/7 for You</h2>
-            <p>Deploy pre-built AI robots that exploit momentum, volatility, and market rotations across stocks, ETFs, forex, and crypto.</p>
+      <article class="svc-card rv rv-d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13.5l9 5 9-5"/></svg>
         </div>
+        <h3>AI Virtual Agents</h3>
+        <p class="desc">Agents specialised in leveraged ETF and volatility strategies for amplified market moves.</p>
+        <ul class="svc-caps">
+          <li>+125% annualized return (historical)</li>
+          <li>Leveraged ETF strategies</li>
+          <li>Volatility-driven positioning</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
 
-        <!-- Featured Bot -->
-        <div class="gcard featured-bot" style="margin-bottom:2rem;">
-            <div class="featured-bot-info">
-                <div>
-                    <div class="bot-category-badge"><i class="fas fa-fire"></i> Featured · Stocks & ETFs</div>
-                    <h3>AI Trending Robots</h3>
-                    <p>Exploit short-term momentum, volatility spikes, and sector rotations across stocks and ETFs. Powered by deep learning models trained on tick-level market data with adaptive risk management.</p>
-                    <div class="perf-metrics">
-                        <div class="perf-metric"><span class="perf-metric-val green">+227%</span><div class="perf-metric-label">Annualized Return</div></div>
-                        <div class="perf-metric"><span class="perf-metric-val gold">70–80%</span><div class="perf-metric-label">Win Rate</div></div>
-                        <div class="perf-metric"><span class="perf-metric-val purple">&lt;9%</span><div class="perf-metric-label">Avg Drawdown</div></div>
-                    </div>
-                </div>
-                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-                    <a href="index.html#contact" class="btn-card"><i class="fas fa-play"></i> Deploy Bot</a>
-                    <a href="index.html#contact" class="btn-outline">View Details</a>
-                </div>
-            </div>
-            <div class="chart-area">
-                <div class="chart-label"><strong>+227%</strong> Annualized · Last 12 months</div>
-                <div class="chart-bars">
-                    <div class="chart-bar" style="height:35%"></div>
-                    <div class="chart-bar" style="height:52%"></div>
-                    <div class="chart-bar loss" style="height:20%"></div>
-                    <div class="chart-bar" style="height:68%"></div>
-                    <div class="chart-bar" style="height:75%"></div>
-                    <div class="chart-bar loss" style="height:15%"></div>
-                    <div class="chart-bar" style="height:82%"></div>
-                    <div class="chart-bar" style="height:90%"></div>
-                    <div class="chart-bar loss" style="height:22%"></div>
-                    <div class="chart-bar" style="height:95%"></div>
-                    <div class="chart-bar" style="height:88%"></div>
-                    <div class="chart-bar" style="height:100%"></div>
-                </div>
-                <div class="chart-line-overlay"></div>
-            </div>
+      <article class="svc-card rv rv-d2">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         </div>
+        <h3>Brokerage Agents</h3>
+        <p class="desc">Multi-timeframe agents generating signals across short and medium horizons.</p>
+        <ul class="svc-caps">
+          <li>5-minute chart signals</li>
+          <li>15-minute chart signals</li>
+          <li>60-minute chart signals</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
 
-        <!-- Bot Grid -->
-        <div class="bots-grid">
-
-            <div class="gcard bot-card">
-                <div class="bot-card-top">
-                    <div class="bot-icon">🤖</div>
-                    <span class="bot-type-tag tag-etf">ETFs</span>
-                </div>
-                <h4>AI Virtual Agents</h4>
-                <p>Specialized agents for leveraged ETFs, volatility spikes, and strategic dip-buying across major indices.</p>
-                <div class="bot-stats">
-                    <div class="bot-stat"><span class="val g">+125%</span><span class="sep">|</span><span style="color:var(--text-muted)">Annualized</span></div>
-                    <div class="bot-stat"><span class="val gold">75%</span><span class="sep">|</span><span style="color:var(--text-muted)">Win Rate</span></div>
-                </div>
-                <ul class="bot-features">
-                    <li>Leveraged ETF strategies (3x)</li>
-                    <li>Volatility spike detection</li>
-                    <li>Dip-buying automation</li>
-                    <li>Adaptive position sizing</li>
-                </ul>
-                <a href="index.html#contact" class="btn-card">Get Access</a>
-            </div>
-
-            <div class="gcard bot-card">
-                <div class="bot-card-top">
-                    <div class="bot-icon">📡</div>
-                    <span class="bot-type-tag tag-stocks">Stocks</span>
-                </div>
-                <h4>Brokerage Agents</h4>
-                <p>Real-time trading signals on 5-, 15-, and 60-minute timeframes using tick-level brokerage data feeds.</p>
-                <div class="bot-stats">
-                    <div class="bot-stat"><span class="val gold">5/15/60</span><span class="sep">|</span><span style="color:var(--text-muted)">Min TF</span></div>
-                    <div class="bot-stat"><span class="val g">Real-time</span></div>
-                </div>
-                <ul class="bot-features">
-                    <li>Tick-level data processing</li>
-                    <li>Multi-timeframe confluence</li>
-                    <li>Broker API integration</li>
-                    <li>Instant signal delivery</li>
-                </ul>
-                <a href="index.html#contact" class="btn-card">Get Access</a>
-            </div>
-
-            <div class="gcard bot-card">
-                <div class="bot-card-top">
-                    <div class="bot-icon">⚡</div>
-                    <span class="bot-type-tag tag-stocks">Day Trade</span>
-                </div>
-                <h4>Day Trader Bot</h4>
-                <p>Intraday momentum bot operating on 60-min charts. Opens and closes all positions within the trading session.</p>
-                <div class="bot-stats">
-                    <div class="bot-stat"><span class="val g">Intraday</span><span class="sep">|</span><span style="color:var(--text-muted)">60-min Charts</span></div>
-                </div>
-                <ul class="bot-features">
-                    <li>No overnight risk exposure</li>
-                    <li>VWAP & volume analysis</li>
-                    <li>Auto stop-loss & take-profit</li>
-                    <li>Pre-market gap scanner</li>
-                </ul>
-                <a href="index.html#contact" class="btn-card">Get Access</a>
-            </div>
-
-            <div class="gcard bot-card">
-                <div class="bot-card-top">
-                    <div class="bot-icon">📊</div>
-                    <span class="bot-type-tag tag-stocks">Swing</span>
-                </div>
-                <h4>Swing Trader Bot</h4>
-                <p>Captures multi-day price swings using trend-following and mean-reversion strategies on 60-min charts.</p>
-                <div class="bot-stats">
-                    <div class="bot-stat"><span class="val g">2–10 Days</span><span class="sep">|</span><span style="color:var(--text-muted)">Hold Period</span></div>
-                </div>
-                <ul class="bot-features">
-                    <li>Trend + reversion hybrid</li>
-                    <li>Fibonacci level targeting</li>
-                    <li>Earnings event avoidance</li>
-                    <li>Portfolio diversification logic</li>
-                </ul>
-                <a href="index.html#contact" class="btn-card">Get Access</a>
-            </div>
-
-            <div class="gcard bot-card">
-                <div class="bot-card-top">
-                    <div class="bot-icon">📈</div>
-                    <span class="bot-type-tag tag-etf">Trend</span>
-                </div>
-                <h4>Trend Trader Bot</h4>
-                <p>Macro trend-following bot that rides major market moves with dynamic position scaling on 60-min charts.</p>
-                <div class="bot-stats">
-                    <div class="bot-stat"><span class="val g">Weeks–Months</span><span class="sep">|</span><span style="color:var(--text-muted)">Hold</span></div>
-                </div>
-                <ul class="bot-features">
-                    <li>Moving average crossover AI</li>
-                    <li>Dynamic trailing stop</li>
-                    <li>Pyramid position scaling</li>
-                    <li>Macro regime detection</li>
-                </ul>
-                <a href="index.html#contact" class="btn-card">Get Access</a>
-            </div>
-
-            <div class="gcard bot-card">
-                <div class="bot-card-top">
-                    <div class="bot-icon">₿</div>
-                    <span class="bot-type-tag tag-crypto">Crypto</span>
-                </div>
-                <h4>Crypto Virtual Agents</h4>
-                <p>Crypto-specific bots with real-time signals, money management, and multi-exchange support for BTC, ETH, and altcoins.</p>
-                <div class="bot-stats">
-                    <div class="bot-stat"><span class="val gold">24/7</span><span class="sep">|</span><span style="color:var(--text-muted)">Always On</span></div>
-                    <div class="bot-stat"><span class="val g">Multi-Exchange</span></div>
-                </div>
-                <ul class="bot-features">
-                    <li>Binance, Bybit, Coinbase</li>
-                    <li>On-chain data integration</li>
-                    <li>Funding rate arbitrage</li>
-                    <li>Smart money management</li>
-                </ul>
-                <a href="index.html#contact" class="btn-card">Get Access</a>
-            </div>
-
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/></svg>
         </div>
+        <h3>Day Trader Bot</h3>
+        <p class="desc">Intraday trading on 60-minute charts with every position closed before the session ends.</p>
+        <ul class="svc-caps">
+          <li>Intraday entries and exits</li>
+          <li>No overnight exposure</li>
+          <li>Disciplined session-based risk</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13c2.7-6 5.3-6 8 0s5.3 6 8 0"/><circle cx="20.8" cy="8.6" r="1.3"/></svg>
+        </div>
+        <h3>Swing Trader Bot</h3>
+        <p class="desc">Hybrid strategies that capture multi-day price swings without constant screen time.</p>
+        <ul class="svc-caps">
+          <li>2–10 day holding periods</li>
+          <li>Hybrid momentum and reversal logic</li>
+          <li>End-of-day management</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d2">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l5-7 4 4 6-9"/><path d="M3 21h18"/></svg>
+        </div>
+        <h3>Trend Trader Bot</h3>
+        <p class="desc">Rides macro market trends over weeks to months for patient, position-style trading.</p>
+        <ul class="svc-caps">
+          <li>Weeks-to-months holding periods</li>
+          <li>Macro trend identification</li>
+          <li>Low-turnover positioning</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8h4.2a1.9 1.9 0 0 1 0 3.8H9.5zM9.5 11.8h4.8a1.9 1.9 0 0 1 0 3.8H9.5z"/></svg>
+        </div>
+        <h3>Crypto Virtual Agents</h3>
+        <p class="desc">Around-the-clock crypto agents operating across the largest global exchanges.</p>
+        <ul class="svc-caps">
+          <li>24/7 market coverage</li>
+          <li>Binance, Bybit and Coinbase support</li>
+          <li>Multi-exchange execution</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1" style="display:flex;justify-content:center;align-items:center;background:linear-gradient(150deg,var(--card),#0B1A2C);text-align:center;padding:44px 30px">
+        <div>
+          <span class="eyebrow" style="justify-content:center">Not Sure?</span>
+          <h3 style="font-size:22px;margin:14px 0 12px;">Find the bot that fits your style</h3>
+          <p style="color:var(--muted);font-size:14.5px;margin:0 auto 24px;max-width:30ch">Tell us how you trade and we will point you to the right agent.</p>
+          <a href="contact.html" class="btn btn-green" style="justify-content:center">Talk to Our Team <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+
     </div>
+    <p class="rv" style="margin-top:28px;font-size:13px;color:var(--muted)">Performance figures are historical results from live platform operation. Past performance is not indicative of future results — trading involves risk of loss.</p>
+  </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     SECTION 2 — AI DIY TOOLS
-══════════════════════════════════════════ -->
-<section class="products-section" id="tools" style="padding-top:2rem;">
-    <div class="section-wrap">
-        <div class="section-head">
-            <span class="section-eyebrow"><i class="fas fa-tools"></i> &nbsp;AI DIY Tools</span>
-            <h2>Research Smarter,<br>Decide with Confidence</h2>
-            <p>Powerful AI engines that find patterns, predict direction, and screen opportunities — you stay in control.</p>
-        </div>
-
-        <div class="tools-grid">
-
-            <!-- Pattern Search -->
-            <div class="gcard tool-card">
-                <div class="tool-icon-wrap ti-gold">🔍</div>
-                <div class="tool-body">
-                    <h4>AI Pattern Search Engine</h4>
-                    <p>Scans thousands of charts end-of-day to find breakout patterns, targets, and confidence levels — with full backtesting history.</p>
-                    <div class="tool-pills">
-                        <span class="tool-pill">End-of-Day</span>
-                        <span class="tool-pill">Breakout Detection</span>
-                        <span class="tool-pill">Backtested</span>
-                        <span class="tool-pill">Confidence Score</span>
-                    </div>
-                    <div class="tool-demo">
-                        <div class="demo-row"><span class="demo-label">Pattern</span><span class="demo-val gold">Bull Flag</span></div>
-                        <div class="demo-row"><span class="demo-label">Breakout Target</span><span class="demo-val g">$187.40 (+8.2%)</span></div>
-                        <div class="demo-row"><span class="demo-label">Confidence</span><span class="demo-val gold">87%</span></div>
-                        <div class="demo-row"><span class="demo-label">Historical Win Rate</span><span class="demo-val g">74%</span></div>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Try Tool</a>
-                </div>
-            </div>
-
-            <!-- TPE -->
-            <div class="gcard tool-card">
-                <div class="tool-icon-wrap ti-purple">🧠</div>
-                <div class="tool-body">
-                    <h4>AI Trend Prediction Engine (TPE)</h4>
-                    <p>Predicts whether a stock will go up or down over the next 1–5 days, with precise entry/exit prices and confidence levels.</p>
-                    <div class="tool-pills">
-                        <span class="tool-pill">Direction Prediction</span>
-                        <span class="tool-pill">Entry & Exit Prices</span>
-                        <span class="tool-pill">1–5 Day Forecast</span>
-                        <span class="tool-pill">ML-Powered</span>
-                    </div>
-                    <div class="tool-demo">
-                        <div class="demo-row"><span class="demo-label">Ticker</span><span class="demo-val">NVDA</span></div>
-                        <div class="demo-row"><span class="demo-label">Prediction</span><span class="demo-val g">↑ Bullish (3-day)</span></div>
-                        <div class="demo-row"><span class="demo-label">Entry / Exit</span><span class="demo-val gold">$782 → $821</span></div>
-                        <div class="demo-row"><span class="demo-label">Confidence</span><span class="demo-val g">91%</span></div>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Try Tool</a>
-                </div>
-            </div>
-
-            <!-- Stock Screener -->
-            <div class="gcard tool-card">
-                <div class="tool-icon-wrap ti-green">📋</div>
-                <div class="tool-body">
-                    <h4>AI Stock Screener</h4>
-                    <p>Filter and screen thousands of stocks using AI-generated signals with entry/exit prices and confidence scores — no manual scanning.</p>
-                    <div class="tool-pills">
-                        <span class="tool-pill">Multi-Market</span>
-                        <span class="tool-pill">Entry/Exit Prices</span>
-                        <span class="tool-pill">Confidence Ranked</span>
-                        <span class="tool-pill">Custom Filters</span>
-                    </div>
-                    <div class="tool-demo">
-                        <div class="demo-row"><span class="demo-label">Screened</span><span class="demo-val">5,200+ stocks</span></div>
-                        <div class="demo-row"><span class="demo-label">Opportunities Found</span><span class="demo-val gold">34 signals</span></div>
-                        <div class="demo-row"><span class="demo-label">Top Signal Conf.</span><span class="demo-val g">94%</span></div>
-                        <div class="demo-row"><span class="demo-label">Updated</span><span class="demo-val">End-of-Day</span></div>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Try Tool</a>
-                </div>
-            </div>
-
-            <!-- RTP -->
-            <div class="gcard tool-card">
-                <div class="tool-icon-wrap ti-blue">⚡</div>
-                <div class="tool-body">
-                    <h4>AI Real-Time Patterns (RTP)</h4>
-                    <p>Discovers live intraday patterns in real-time as they form, complete with historical success rate analysis for each pattern type.</p>
-                    <div class="tool-pills">
-                        <span class="tool-pill">Real-Time</span>
-                        <span class="tool-pill">Intraday Patterns</span>
-                        <span class="tool-pill">Success Rate</span>
-                        <span class="tool-pill">Live Alerts</span>
-                    </div>
-                    <div class="tool-demo">
-                        <div class="demo-row"><span class="demo-label">Pattern Detected</span><span class="demo-val gold">Double Bottom</span></div>
-                        <div class="demo-row"><span class="demo-label">Timeframe</span><span class="demo-val">15-min · AAPL</span></div>
-                        <div class="demo-row"><span class="demo-label">Hist. Success Rate</span><span class="demo-val g">68%</span></div>
-                        <div class="demo-row"><span class="demo-label">Alert Sent</span><span class="demo-val g">✓ 2 mins ago</span></div>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Try Tool</a>
-                </div>
-            </div>
-
-        </div>
+<!-- ============================================================ DIY TOOLS -->
+<section class="section section-alt" id="diy-tools">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">AI DIY Tools</span>
+      <h2 class="rv rv-d1">Pattern Recognition and Prediction, In Your Hands</h2>
+      <p class="lede rv rv-d2">For independent traders who want AI-assisted analysis while keeping full control of every decision.</p>
     </div>
+    <div class="products-grid">
+
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.4" y1="15.4" x2="21" y2="21"/><polyline points="7.4 12.2 9.4 9.6 11 11.2 13.6 8"/></svg>
+        </div>
+        <h3>AI Pattern Search Engine</h3>
+        <p class="desc">End-of-day breakout detection ranked by backtested confidence scores.</p>
+        <ul class="svc-caps">
+          <li>Daily breakout candidates</li>
+          <li>Backtested confidence ratings</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 16 8 11 12 14"/><path d="M12 14l8-8" stroke-dasharray="3 3"/><polyline points="15.5 6 20 6 20 10.5"/></svg>
+        </div>
+        <h3>AI Trend Prediction Engine</h3>
+        <p class="desc">Short-horizon directional forecasts with concrete price levels to act on.</p>
+        <ul class="svc-caps">
+          <li>1–5 day directional forecasts</li>
+          <li>Suggested entry and exit prices</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d2">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v5.5l-4 2.5v-8L3 5z"/></svg>
+        </div>
+        <h3>AI Stock Screener</h3>
+        <p class="desc">The full market filtered down to the setups worth your attention.</p>
+        <ul class="svc-caps">
+          <li>5,200+ stocks covered</li>
+          <li>Filtered by live AI signals</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d3">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 2.5-6h7"/></svg>
+        </div>
+        <h3>AI Real-Time Patterns</h3>
+        <p class="desc">Live intraday pattern discovery while the market is still moving.</p>
+        <ul class="svc-caps">
+          <li>Real-time pattern alerts</li>
+          <li>Historical success-rate analysis</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     SECTION 3 — COPY TRADING & SIGNALS
-══════════════════════════════════════════ -->
-<section class="products-section" id="copy" style="padding-top:2rem;">
-    <div class="section-wrap">
-        <div class="section-head">
-            <span class="section-eyebrow"><i class="fas fa-copy"></i> &nbsp;Copy Trading & Signals</span>
-            <h2>Follow the AI.<br>Profit Automatically.</h2>
-            <p>Get daily buy/sell signals, real-time copy trading with AI agents, and automatic position following with no minimum balance.</p>
-        </div>
-
-        <div class="copy-layout">
-
-            <!-- Live Signal Feed -->
-            <div class="gcard signals-feed">
-                <div class="feed-header">
-                    <h4>Live Signal Feed</h4>
-                    <div class="live-dot">Live</div>
-                </div>
-                <div class="signal-item">
-                    <div class="signal-side sig-buy">BUY</div>
-                    <div class="signal-info">
-                        <div class="signal-ticker">NVDA</div>
-                        <div class="signal-detail">Momentum breakout · 15-min</div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-price" style="color:var(--success)">$867.50</div>
-                        <div class="signal-conf">Conf. <span>92%</span></div>
-                    </div>
-                </div>
-                <div class="signal-item">
-                    <div class="signal-side sig-sell">SELL</div>
-                    <div class="signal-info">
-                        <div class="signal-ticker">SPY</div>
-                        <div class="signal-detail">Reversal pattern · 60-min</div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-price" style="color:var(--danger)">$528.10</div>
-                        <div class="signal-conf">Conf. <span>85%</span></div>
-                    </div>
-                </div>
-                <div class="signal-item">
-                    <div class="signal-side sig-buy">BUY</div>
-                    <div class="signal-info">
-                        <div class="signal-ticker">AAPL</div>
-                        <div class="signal-detail">Dip buy · sector rotation</div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-price" style="color:var(--success)">$192.35</div>
-                        <div class="signal-conf">Conf. <span>88%</span></div>
-                    </div>
-                </div>
-                <div class="signal-item">
-                    <div class="signal-side sig-buy">BUY</div>
-                    <div class="signal-info">
-                        <div class="signal-ticker">BTC/USDT</div>
-                        <div class="signal-detail">Crypto agent · support level</div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-price" style="color:var(--success)">$67,420</div>
-                        <div class="signal-conf">Conf. <span>79%</span></div>
-                    </div>
-                </div>
-                <div class="signal-item">
-                    <div class="signal-side sig-sell">SELL</div>
-                    <div class="signal-info">
-                        <div class="signal-ticker">QQQ</div>
-                        <div class="signal-detail">Overbought · 5-min exit</div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-price" style="color:var(--danger)">$448.90</div>
-                        <div class="signal-conf">Conf. <span>83%</span></div>
-                    </div>
-                </div>
-                <div class="signal-item">
-                    <div class="signal-side sig-buy">BUY</div>
-                    <div class="signal-info">
-                        <div class="signal-ticker">TSLA</div>
-                        <div class="signal-detail">Breakout pattern · 60-min</div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-price" style="color:var(--success)">$183.20</div>
-                        <div class="signal-conf">Conf. <span>76%</span></div>
-                    </div>
-                </div>
-                <div style="margin-top:1.25rem;">
-                    <a href="index.html#contact" class="btn-card" style="width:100%;justify-content:center;">Subscribe to Signals</a>
-                </div>
-            </div>
-
-            <!-- Copy Cards -->
-            <div class="copy-cards">
-
-                <div class="gcard copy-card">
-                    <div class="copy-card-head">
-                        <h4>Daily Buy/Sell Signals</h4>
-                        <span class="bot-type-tag tag-stocks">EOD</span>
-                    </div>
-                    <p>End-of-day swing trade ideas for stocks and ETFs generated by machine learning models. Delivered every market close with full entry, target, and stop levels.</p>
-                    <div class="copy-meta">
-                        <div class="cmeta"><div class="label">Avg Signals/Day</div><div class="value gold">8–15</div></div>
-                        <div class="cmeta"><div class="label">Win Rate</div><div class="value g">72%</div></div>
-                        <div class="cmeta"><div class="label">Markets</div><div class="value">Stocks, ETFs</div></div>
-                    </div>
-                    <div class="timeframe-pills">
-                        <span class="tf-pill">Swing 2–10 Days</span>
-                        <span class="tf-pill">Entry Price</span>
-                        <span class="tf-pill">Target Price</span>
-                        <span class="tf-pill">Stop Loss</span>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Get Signals</a>
-                </div>
-
-                <div class="gcard copy-card">
-                    <div class="copy-card-head">
-                        <h4>Signal Agents</h4>
-                        <span class="bot-type-tag tag-crypto">Real-Time</span>
-                    </div>
-                    <p>AI-powered real-time copy trading with fixed trade sizes. No minimum balance required — the agent executes trades directly in your brokerage account.</p>
-                    <div class="copy-meta">
-                        <div class="cmeta"><div class="label">Min. Balance</div><div class="value g">None</div></div>
-                        <div class="cmeta"><div class="label">Trade Size</div><div class="value gold">Fixed</div></div>
-                        <div class="cmeta"><div class="label">Execution</div><div class="value">Automated</div></div>
-                    </div>
-                    <div class="timeframe-pills">
-                        <span class="tf-pill">Auto-Execute</span>
-                        <span class="tf-pill">Risk Managed</span>
-                        <span class="tf-pill">No Min Balance</span>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Start Copying</a>
-                </div>
-
-                <div class="gcard copy-card">
-                    <div class="copy-card-head">
-                        <h4>Copy Trader</h4>
-                        <span class="bot-type-tag tag-etf">Passive</span>
-                    </div>
-                    <p>Follow our top-performing AI robots automatically. Mirror every trade proportionally to your balance — fully hands-off, fully transparent.</p>
-                    <div class="copy-meta">
-                        <div class="cmeta"><div class="label">Top Bot Return</div><div class="value g">+227% ann.</div></div>
-                        <div class="cmeta"><div class="label">Mode</div><div class="value gold">Fully Auto</div></div>
-                        <div class="cmeta"><div class="label">Transparency</div><div class="value g">Full</div></div>
-                    </div>
-                    <div class="timeframe-pills">
-                        <span class="tf-pill">Proportional Sizing</span>
-                        <span class="tf-pill">Performance History</span>
-                        <span class="tf-pill">Hands-Off</span>
-                    </div>
-                    <a href="index.html#contact" class="btn-card">Copy Now</a>
-                </div>
-
-            </div>
-        </div>
+<!-- ============================================================ SIGNALS & COPY TRADING -->
+<section class="section" id="signals">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">Copy Trading &amp; Signals</span>
+      <h2 class="rv rv-d1">Trade Alongside the Strategies That Perform</h2>
+      <p class="lede rv rv-d2">Real-time alerts and automated copy trading for traders who want results without building their own system.</p>
     </div>
+    <div class="products-grid">
+
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 6.9a9.5 9.5 0 0 1 14.2 0"/><path d="M7.7 9.7a5.6 5.6 0 0 1 8.6 0"/><circle cx="12" cy="13" r="1.6"/><path d="M12 14.6V21"/></svg>
+        </div>
+        <h3>Live Signal Feed</h3>
+        <p class="desc">Real-time buy and sell alerts streamed across multiple asset classes.</p>
+        <ul class="svc-caps">
+          <li>Stocks, ETFs, forex and crypto</li>
+          <li>Instant alert delivery</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><path d="M9 15l2 2 4-4"/></svg>
+        </div>
+        <h3>Daily Buy/Sell Signals</h3>
+        <p class="desc">End-of-day swing trade ideas delivered every trading day.</p>
+        <ul class="svc-caps">
+          <li>8–15 signals per day</li>
+          <li>72% historical win rate</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d2">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="10" rx="2.5"/><path d="M12 8V5.2"/><circle cx="12" cy="3.8" r="1.3"/><circle cx="9.2" cy="12.4" r="1"/><circle cx="14.8" cy="12.4" r="1"/><path d="M9.5 15.3h5"/></svg>
+        </div>
+        <h3>Signal Agents</h3>
+        <p class="desc">Automated copy trading that executes signals with fixed position sizes.</p>
+        <ul class="svc-caps">
+          <li>Hands-free execution</li>
+          <li>No minimum balance required</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d3">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15h-.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg>
+        </div>
+        <h3>Copy Trader</h3>
+        <p class="desc">Mirror the suite's top-performing bots proportionally to your own account.</p>
+        <ul class="svc-caps">
+          <li>Proportional position sizing</li>
+          <li>Follow top-ranked strategies</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Get Started <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     SECTION 4 — ACADEMY
-══════════════════════════════════════════ -->
-<section class="products-section" id="academy" style="padding-top:2rem;">
-    <div class="section-wrap">
-        <div class="section-head">
-            <span class="section-eyebrow"><i class="fas fa-graduation-cap"></i> &nbsp;Trading Academy</span>
-            <h2>Learn to Trade with AI.<br>At Your Own Pace.</h2>
-            <p>From beginner webcasts to advanced algorithmic strategy courses — everything you need to master AI-powered trading.</p>
-        </div>
-
-        <div class="academy-layout">
-
-            <!-- Category sidebar -->
-            <div class="academy-categories">
-                <div class="acad-cat active"><i class="fas fa-video"></i> Video Courses <span class="count">12+</span></div>
-                <div class="acad-cat"><i class="fas fa-broadcast-tower"></i> Live Webcasts <span class="count">Weekly</span></div>
-                <div class="acad-cat"><i class="fas fa-user-tie"></i> 1-on-1 Lessons <span class="count">Custom</span></div>
-                <div class="acad-cat"><i class="fas fa-book"></i> eBooks & Articles <span class="count">50+</span></div>
-                <div class="acad-cat"><i class="fas fa-play-circle"></i> Video Library <span class="count">200+</span></div>
-            </div>
-
-            <!-- Courses grid -->
-            <div class="academy-courses">
-
-                <div class="gcard course-card">
-                    <div class="course-thumb ct-gold">📈</div>
-                    <h4>AI Trading Fundamentals</h4>
-                    <p>How AI models predict markets, understand LSTM networks, and set up your first bot in under an hour.</p>
-                    <div class="course-meta">
-                        <span class="course-type">Video Course</span>
-                        <span class="course-level">Beginner</span>
-                    </div>
-                </div>
-
-                <div class="gcard course-card">
-                    <div class="course-thumb ct-purple">🧠</div>
-                    <h4>Deep Learning for Traders</h4>
-                    <p>Build and train your own LSTM & Transformer models for stock price prediction using PyTorch.</p>
-                    <div class="course-meta">
-                        <span class="course-type">Video Course</span>
-                        <span class="course-level">Advanced</span>
-                    </div>
-                </div>
-
-                <div class="gcard course-card">
-                    <div class="course-thumb ct-green">🎙️</div>
-                    <h4>Weekly Market Webcast</h4>
-                    <p>Live weekly sessions covering market outlook, AI bot performance reviews, and upcoming opportunities.</p>
-                    <div class="course-meta">
-                        <span class="course-type">Live Webcast</span>
-                        <span class="course-level">All Levels</span>
-                    </div>
-                </div>
-
-                <div class="gcard course-card">
-                    <div class="course-thumb ct-blue">📚</div>
-                    <h4>Strategy Optimization Guide</h4>
-                    <p>Comprehensive eBook on genetic algorithms, backtesting best practices, and avoiding overfitting.</p>
-                    <div class="course-meta">
-                        <span class="course-type">eBook</span>
-                        <span class="course-level">Intermediate</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Academy CTA -->
-        <div style="margin-top:2rem;padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;" class="gcard">
-            <div>
-                <h4 style="font-size:1.15rem;margin-bottom:0.4rem;">Want personalized 1-on-1 training?</h4>
-                <p style="color:var(--text-muted);font-size:0.9rem;margin:0;">Book a private session with one of our AI trading specialists — tailored to your strategy and experience level.</p>
-            </div>
-            <a href="index.html#contact" class="btn-card" style="white-space:nowrap;">Book a Session <i class="fas fa-arrow-right"></i></a>
-        </div>
+<!-- ============================================================ ACADEMY -->
+<section class="section section-alt" id="academy">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">Trading Academy</span>
+      <h2 class="rv rv-d1">Learn to Trade With AI, From Fundamentals to Deep Learning</h2>
+      <p class="lede rv rv-d2">12+ video courses, weekly webcasts, a 200+ video library, 50+ eBooks and one-on-one lessons with expert traders.</p>
     </div>
+    <div class="products-grid">
+
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+        </div>
+        <h3>AI Trading Fundamentals</h3>
+        <p class="desc">A beginner-friendly video course covering how AI-driven trading actually works.</p>
+        <ul class="svc-caps">
+          <li>Beginner level</li>
+          <li>Video course format</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Enroll <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="4.5" cy="18" r="1.8"/><circle cx="19.5" cy="18" r="1.8"/><line x1="6.1" y1="7.1" x2="10.2" y2="10.4"/><line x1="17.9" y1="7.1" x2="13.8" y2="10.4"/><line x1="6.1" y1="16.9" x2="10.2" y2="13.6"/><line x1="17.9" y1="16.9" x2="13.8" y2="13.6"/></svg>
+        </div>
+        <h3>Deep Learning for Traders</h3>
+        <p class="desc">An advanced, PyTorch-focused course on building your own trading models.</p>
+        <ul class="svc-caps">
+          <li>Advanced level</li>
+          <li>Hands-on PyTorch projects</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Enroll <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d2">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 21h7M12 17v4"/><path d="M9.5 8.5l5 2.5-5 2.5z"/></svg>
+        </div>
+        <h3>Weekly Market Webcast</h3>
+        <p class="desc">Live weekly sessions breaking down current markets and active strategies.</p>
+        <ul class="svc-caps">
+          <li>All experience levels</li>
+          <li>Live every week</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Enroll <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d3">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></svg>
+        </div>
+        <h3>Strategy Optimization Guide</h3>
+        <p class="desc">An intermediate eBook on tuning, testing and hardening trading strategies.</p>
+        <ul class="svc-caps">
+          <li>Intermediate level</li>
+          <li>Part of a 50+ eBook library</li>
+        </ul>
+        <a href="contact.html" class="svc-link">Enroll <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<!-- ── CTA ── -->
-<section class="cta-section">
-    <div class="cta-inner">
-        <h2>Start Trading with<br><span style="background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AI on Your Side</span></h2>
-        <p>Deploy a bot, access AI tools, follow real-time signals, or start learning — all in one platform.</p>
-        <div class="cta-btns">
-            <a href="index.html#contact" class="btn-cta-primary">Get Started Free</a>
-            <a href="index.html#contact" class="btn-cta-secondary">Talk to Our Team</a>
-        </div>
+<!-- ============================================================ FINAL CTA -->
+<section class="final-cta section" id="cta">
+  <div class="cube-scene cta-cube-l" style="--cs:150px" aria-hidden="true">
+    <div class="cube3d"><i></i><i></i><i></i><i></i><i></i><i></i><b class="core-dot"></b></div>
+  </div>
+  <div class="cube-scene cta-cube-r" style="--cs:100px" aria-hidden="true">
+    <div class="cube3d"><i></i><i></i><i></i><i></i><i></i><i></i><b class="core-dot"></b></div>
+  </div>
+  <div class="container">
+    <span class="eyebrow rv" style="justify-content:center">Get Started</span>
+    <h2 class="rv rv-d1" style="margin-top:16px">Ready to Put AI on Your Side of the Trade?</h2>
+    <p class="rv rv-d2">Tell us how you trade — our team will help you pick the right bots, tools or signals for your goals.</p>
+    <div class="actions rv rv-d3">
+      <a href="contact.html" class="btn btn-green">Talk to Our Team <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a href="projects.html" class="btn btn-ghost">See Our Engineering Work</a>
     </div>
+  </div>
 </section>
 
-<!-- ── FOOTER ── -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <a href="index.html" class="logo" style="margin-bottom:1.5rem;display:inline-flex;"><img src="logo_yellow_valour-r.png" alt="Valour" style="height:32px;"> <span style="margin-left:0.75rem;">ValourAI</span></a>
-            <p>AI-powered trading suite — bots, tools, signals, and education to give every trader an unfair edge.</p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="https://t.me/valourAI" class="social-link"><i class="fab fa-telegram"></i></a>
-            </div>
+</main>
+
+<!-- ============================================================ FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="f-col">
+        <a href="index.html" class="logo"><img class="logo-img" src="assets/img/logo.svg" alt="">Valour<em>AI</em></a>
+        <p class="desc">A technology partner for digital transformation — intelligent, secure and scalable solutions for startups and established enterprises.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/valourai/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.49 2.49 0 1 1 5 8.48a2.49 2.49 0 0 1-.02-4.98zM3 9.75h4V21H3zM9.5 9.75h3.8v1.54h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.06c0-1.21-.02-2.76-1.68-2.76-1.68 0-1.94 1.31-1.94 2.67V21h-3.98z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.9-6.4L6.5 22H3.34l7.24-8.28L1.4 2h6.4l4.42 5.85zm-1.1 18h1.73L7.02 3.9H5.16z"/></svg></a>
         </div>
-        <div class="footer-section">
-            <h4>Products</h4>
-            <ul>
-                <li><a href="#bots">AI Bots & Agents</a></li>
-                <li><a href="#tools">AI DIY Tools</a></li>
-                <li><a href="#copy">Copy Trading</a></li>
-                <li><a href="#academy">Academy</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Company</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Software Engineering</a></li>
+          <li><a href="services.html">AI and Data</a></li>
+          <li><a href="services.html">Intelligent Automation</a></li>
+          <li><a href="services.html">Cloud and Infrastructure</a></li>
+          <li><a href="services.html">Fintech Solutions</a></li>
+          <li><a href="services.html">Data Engineering</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="products.html#bots">AI Trading Bots &amp; Agents</a></li>
+          <li><a href="products.html#diy-tools">AI DIY Tools</a></li>
+          <li><a href="products.html#signals">Copy Trading &amp; Signals</a></li>
+          <li><a href="products.html#academy">Trading Academy</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html#why">Why Valour</a></li>
+          <li><a href="about.html#process">Process</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:salmanullahbaig@valour.ai">salmanullahbaig@valour.ai</a></li>
+          <li><a href="tel:+923475083374">0347 5083374</a></li>
+          <li><a href="contact.html">Islamabad, Pakistan</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-green">Book a Consultation</a>
+      </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2025 Valour.ai · All rights reserved · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+      <span>&copy; 2026 ValourAI. All rights reserved.</span>
+      <span class="avail"><i aria-hidden="true"></i>Available for selected projects</span>
+      <span class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
     </div>
+  </div>
 </footer>
-
-<script>
-    // Mobile menu
-    document.getElementById('menuBtn').addEventListener('click', () => {
-        document.getElementById('navLinks').classList.toggle('active');
-    });
-
-    // Tab scroll
-    function scrollTo(id) {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-    }
-
-    // Highlight active tab on scroll
-    const sections = ['bots','tools','copy','academy'];
-    const tabs = document.querySelectorAll('.cat-tab');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(id => {
-            const el = document.getElementById(id);
-            if (el && window.scrollY >= el.offsetTop - 140) current = id;
-        });
-        tabs.forEach((tab, i) => {
-            tab.classList.toggle('active', sections[i] === current);
-        });
-    });
-</script>
+<script src="assets/main.js"></script>
 </body>
 </html>

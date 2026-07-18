@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="500" fill="#0C1828"/>
+  <rect x="40" y="36" width="1120" height="428" rx="22" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+  <text x="76" y="92" font-size="24" font-weight="bold" fill="#F7F8FA">Outbound Sequences — Active Campaigns</text>
+  <circle cx="1046" cy="84" r="6" fill="#2FC94D"/>
+  <text x="1062" y="90" font-size="15" fill="#2FC94D" letter-spacing="2">LIVE</text>
+  <rect x="76" y="112" width="1048" height="1" fill="rgba(255,255,255,.08)"/>
+
+  <!-- stat chips -->
+  <rect x="76" y="140" width="240" height="82" rx="14" fill="#0C1828" stroke="rgba(47,201,77,.3)"/>
+  <text x="96" y="168" font-size="13" fill="#A9B3C1" letter-spacing="2">PROSPECTS ENGAGED</text>
+  <text x="96" y="204" font-size="28" font-weight="bold" fill="#5BE873">2,840</text>
+  <rect x="332" y="140" width="240" height="82" rx="14" fill="#0C1828" stroke="rgba(76,201,240,.3)"/>
+  <text x="352" y="168" font-size="13" fill="#A9B3C1" letter-spacing="2">REPLY RATE</text>
+  <text x="352" y="204" font-size="28" font-weight="bold" fill="#4CC9F0">11.4%</text>
+  <rect x="588" y="140" width="240" height="82" rx="14" fill="#0C1828" stroke="rgba(47,201,77,.3)"/>
+  <text x="608" y="168" font-size="13" fill="#A9B3C1" letter-spacing="2">MEETINGS BOOKED</text>
+  <text x="608" y="204" font-size="28" font-weight="bold" fill="#5BE873">64</text>
+  <rect x="844" y="140" width="280" height="82" rx="14" fill="#0C1828" stroke="rgba(255,255,255,.08)"/>
+  <text x="864" y="168" font-size="13" fill="#A9B3C1" letter-spacing="2">FOLLOW-UPS AUTOMATED</text>
+  <text x="864" y="204" font-size="28" font-weight="bold" fill="#F7F8FA">100%</text>
+
+  <!-- campaign rows -->
+  <text x="76" y="264" font-size="14" fill="#A9B3C1" letter-spacing="2">SEQUENCE PERFORMANCE</text>
+  <g font-size="15">
+    <text x="76" y="300" fill="#C7D0DA">fintech-cto-q3</text>
+    <rect x="360" y="288" width="560" height="14" rx="7" fill="rgba(255,255,255,.07)"/>
+    <rect x="360" y="288" width="470" height="14" rx="7" fill="rgba(47,201,77,.6)"/>
+    <text x="940" y="300" fill="#5BE873">68% open</text>
+
+    <text x="76" y="342" fill="#C7D0DA">saas-founders-emea</text>
+    <rect x="360" y="330" width="560" height="14" rx="7" fill="rgba(255,255,255,.07)"/>
+    <rect x="360" y="330" width="392" height="14" rx="7" fill="rgba(47,201,77,.45)"/>
+    <text x="940" y="342" fill="#5BE873">54% open</text>
+
+    <text x="76" y="384" fill="#C7D0DA">ecom-ops-leaders</text>
+    <rect x="360" y="372" width="560" height="14" rx="7" fill="rgba(255,255,255,.07)"/>
+    <rect x="360" y="372" width="336" height="14" rx="7" fill="rgba(76,201,240,.55)"/>
+    <text x="940" y="384" fill="#4CC9F0">47% open</text>
+
+    <text x="76" y="426" fill="#C7D0DA">warm-referrals</text>
+    <rect x="360" y="414" width="560" height="14" rx="7" fill="rgba(255,255,255,.07)"/>
+    <rect x="360" y="414" width="515" height="14" rx="7" fill="rgba(47,201,77,.75)"/>
+    <text x="940" y="426" fill="#5BE873">74% open</text>
+  </g>
+  <text x="1124" y="426" font-size="13" fill="#7d8894" text-anchor="end">CRM-synced · auto-personalized</text>
+</svg>

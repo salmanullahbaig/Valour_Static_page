@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="500" fill="#0C1828"/>
+  <rect x="40" y="36" width="1120" height="428" rx="22" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+  <text x="76" y="92" font-size="24" font-weight="bold" fill="#F7F8FA">Inbound Pipeline — Last 90 Days</text>
+  <circle cx="1046" cy="84" r="6" fill="#2FC94D"/>
+  <text x="1062" y="90" font-size="15" fill="#2FC94D" letter-spacing="2">LIVE</text>
+  <rect x="76" y="112" width="1048" height="1" fill="rgba(255,255,255,.08)"/>
+
+  <!-- funnel -->
+  <text x="76" y="158" font-size="14" fill="#A9B3C1" letter-spacing="2">CONVERSION FUNNEL</text>
+  <rect x="76" y="176" width="520" height="46" rx="9" fill="rgba(47,201,77,.16)" stroke="rgba(47,201,77,.35)"/>
+  <text x="96" y="205" font-size="16" fill="#DFF7E4">Visitors</text>
+  <text x="576" y="205" font-size="16" fill="#5BE873" text-anchor="end">48,200</text>
+  <rect x="116" y="234" width="440" height="46" rx="9" fill="rgba(47,201,77,.24)" stroke="rgba(47,201,77,.4)"/>
+  <text x="136" y="263" font-size="16" fill="#DFF7E4">Leads captured</text>
+  <text x="536" y="263" font-size="16" fill="#5BE873" text-anchor="end">3,940</text>
+  <rect x="156" y="292" width="360" height="46" rx="9" fill="rgba(47,201,77,.34)" stroke="rgba(47,201,77,.5)"/>
+  <text x="176" y="321" font-size="16" fill="#DFF7E4">Qualified (MQL)</text>
+  <text x="496" y="321" font-size="16" fill="#5BE873" text-anchor="end">1,210</text>
+  <rect x="196" y="350" width="280" height="46" rx="9" fill="rgba(47,201,77,.55)"/>
+  <text x="216" y="379" font-size="16" font-weight="bold" fill="#07200F">Customers</text>
+  <text x="456" y="379" font-size="16" font-weight="bold" fill="#07200F" text-anchor="end">186</text>
+  <text x="76" y="432" font-size="13" fill="#7d8894">organic search · content · automation-nurtured</text>
+
+  <!-- traffic chart -->
+  <text x="676" y="158" font-size="14" fill="#A9B3C1" letter-spacing="2">ORGANIC TRAFFIC</text>
+  <rect x="676" y="172" width="448" height="230" rx="14" fill="#0C1828" stroke="rgba(255,255,255,.07)"/>
+  <g stroke="rgba(255,255,255,.06)">
+    <line x1="706" y1="220" x2="1096" y2="220"/>
+    <line x1="706" y1="270" x2="1096" y2="270"/>
+    <line x1="706" y1="320" x2="1096" y2="320"/>
+    <line x1="706" y1="370" x2="1096" y2="370"/>
+  </g>
+  <path d="M706 358 L760 348 L814 352 L868 330 L922 318 L976 296 L1030 268 L1096 232 L1096 380 L706 380 Z" fill="rgba(47,201,77,.16)"/>
+  <polyline points="706,358 760,348 814,352 868,330 922,318 976,296 1030,268 1096,232" fill="none" stroke="#2FC94D" stroke-width="3.5" stroke-linejoin="round"/>
+  <polyline points="706,368 760,364 814,366 868,356 922,352 976,342 1030,330 1096,314" fill="none" stroke="rgba(76,201,240,.7)" stroke-width="2.5" stroke-dasharray="6 6"/>
+  <circle cx="1096" cy="232" r="10" fill="none" stroke="rgba(91,232,115,.35)" stroke-width="2"/>
+  <circle cx="1096" cy="232" r="5" fill="#5BE873"/>
+  <rect x="962" y="192" width="122" height="26" rx="13" fill="rgba(47,201,77,.12)" stroke="rgba(47,201,77,.35)"/>
+  <text x="1023" y="210" font-size="13.5" fill="#5BE873" text-anchor="middle">▲ +64% QoQ</text>
+  <text x="676" y="432" font-size="13" fill="#7d8894"><tspan fill="#2FC94D">—</tspan> sessions   <tspan fill="#4CC9F0">- -</tspan> leads</text>
+</svg>

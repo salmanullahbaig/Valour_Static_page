@@ -1,1499 +1,984 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valour - Technology Partner for Digital Transformation</title>
-    <meta name="description" content="Custom software, AI solutions, and infrastructure for startups and enterprises. Full-stack technology partner across industries.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="logo valour.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --accent: #d4af37;
-            --accent-light: #facc15;
-            --accent-dim: rgba(212, 175, 55, 0.15);
-            --accent-glow: rgba(212, 175, 55, 0.4);
-
-            --bg-dark: #020617;
-
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-bg-hover: rgba(212, 175, 55, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-border-hover: rgba(212, 175, 55, 0.55);
-            --glass-blur: blur(24px);
-            --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-
-            --text: #f8fafc;
-            --text-muted: #ffffff;
-            --text-dark: #64748b;
-            --border: rgba(255, 255, 255, 0.1);
-            --success: #22c55e;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Fixed ambient background */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background:
-                radial-gradient(ellipse at 8% 12%, rgba(212, 175, 55, 0.28) 0%, transparent 38%),
-                radial-gradient(ellipse at 88% 82%, rgba(139, 92, 246, 0.5) 0%, transparent 38%),
-                radial-gradient(ellipse at 55% 45%, rgba(30, 58, 138, 0.45) 0%, transparent 48%),
-                radial-gradient(ellipse at 22% 88%, rgba(180, 140, 20, 0.35) 0%, transparent 30%),
-                radial-gradient(ellipse at 78% 8%, rgba(99, 102, 241, 0.4) 0%, transparent 32%);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(2, 6, 23, 0.55);
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #b8941e);
-            color: #0a0a0a;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            
-            display: inline-block;
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            color: #ffffff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--accent);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255,255,255,0.15);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            background: transparent;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(212, 175, 55, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            font-weight: 500;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1), inset 0 1px 0 rgba(255,255,255,0.08);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.15;
-            color: var(--white);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .stat-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.35s ease;
-            box-shadow: var(--glass-shine);
-        }
-
-        .stat-card:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.25), var(--glass-shine);
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .section-description {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.35s ease;
-            box-shadow: var(--glass-shine);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 16px 48px rgba(212, 175, 55, 0.22), var(--glass-shine);
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-icon i {
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--white);
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .service-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .service-list li {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            padding: 0.35rem 0;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .service-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* Industries Section */
-        .industries-section {
-            background: transparent;
-        }
-
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .industry-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.35s ease;
-            box-shadow: var(--glass-shine);
-        }
-
-        .industry-card:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.22), var(--glass-shine);
-            transform: translateY(-3px);
-        }
-
-        .industry-card i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .industry-card h4 {
-            font-size: 0.95rem;
-            color: var(--white);
-            margin-bottom: 0.25rem;
-        }
-
-        .industry-card p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: all 0.35s ease;
-            box-shadow: var(--glass-shine);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 16px 48px rgba(212, 175, 55, 0.22), var(--glass-shine);
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-tag {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.12);
-            color: var(--accent);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.75rem;
-            color: var(--white);
-        }
-
-        .project-card > .project-content > p {
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            line-height: 1.7;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .tech-tag {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            padding: 0.4rem 0.75rem;
-            border-radius: 0.4rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .project-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Why Valour Section */
-        .why-section {
-            background: transparent;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            transition: all 0.35s ease;
-        }
-
-        .why-card:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
-            transform: translateY(-4px);
-        }
-
-        .why-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .why-icon i {
-            font-size: 1.75rem;
-            color: var(--accent);
-        }
-
-        .why-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.75rem;
-            color: var(--white);
-        }
-
-        .why-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .about-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.35s ease;
-            box-shadow: var(--glass-shine);
-        }
-
-        .about-card:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.22), var(--glass-shine);
-        }
-
-        .about-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .about-card h3 i {
-            color: var(--accent);
-        }
-
-        .about-card p {
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* Process Steps */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
-
-        .process-step {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            transition: all 0.35s ease;
-        }
-
-        .process-step:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-
-        .process-number {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-        }
-
-        .process-step h4 {
-            font-size: 1rem;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .process-step p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .member-avatar {
-            width: 80px;
-            height: 80px;
-            background: var(--accent);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .team-member h4 {
-            font-size: 1rem;
-            color: var(--white);
-            margin-bottom: 0.25rem;
-        }
-
-        .team-member p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: transparent;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-form {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--glass-shine);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            color: var(--text);
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: rgba(212, 175, 55, 0.5);
-            background: rgba(212, 175, 55, 0.05);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1), 0 0 20px rgba(212, 175, 55, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            transition: all 0.35s ease;
-        }
-
-        .contact-card:hover {
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg-hover);
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-
-        .contact-icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-icon i {
-            color: var(--accent);
-            font-size: 1rem;
-        }
-
-        .contact-card h4 {
-            font-size: 0.95rem;
-            color: var(--white);
-            margin-bottom: 0.35rem;
-        }
-
-        .contact-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-top: 1px solid rgba(212, 175, 55, 0.12);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-
-        .footer-section p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-section a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: rgba(212, 175, 55, 0.12);
-            border-color: rgba(212, 175, 55, 0.3);
-            color: var(--accent);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 65px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 65px);
-                background: rgba(2, 6, 23, 0.85);
-                backdrop-filter: blur(24px);
-                -webkit-backdrop-filter: blur(24px);
-                flex-direction: column;
-                padding: 2rem;
-                transition: left 0.3s;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            h1 {
-                font-size: 2.25rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .services-grid,
-            .projects-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .industries-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ValourAI — Enterprise Software, AI & Automation Partner</title>
+<meta name="description" content="ValourAI designs and develops scalable software, AI, automation, data and cloud solutions that turn complex business challenges into reliable digital products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <img src="logo_yellow_valour-r.png" alt="Valour">
-                ValourAI<span></span>
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#industries">Industries</a></li>
-                <li><a href="#projects">Portfolio</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" class="btn-primary">Talk to Us</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="menuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+<!-- ============================================================ HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="ValourAI home">
+      <img class="logo-img" src="assets/img/logo.svg" alt="">
+      Valour<em>AI</em>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="projects.html">Projects</a>
+      <a href="products.html">Products</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
+    <div class="header-cta">
+      <a href="contact.html" class="btn btn-green">Book a Consultation</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="badge">
-                <i class="fas fa-building"></i>
-                <span>Enterprise Technology Solutions</span>
-            </div>
-            <h1>Technology Partner for<br>Digital Transformation</h1>
-            <p>Custom software, AI solutions, and infrastructure for startups and enterprises. We build scalable systems that drive measurable business outcomes across industries.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn-primary">View Services</a>
-                <a href="#contact" class="btn-secondary">Talk to Us</a>
-            </div>
-            <div class="stats">
-                <div class="stat-card">
-                    <span class="stat-number">35+</span>
-                    <div class="stat-label">Projects Delivered</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <div class="stat-label">Client Satisfaction</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">5+</span>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="index.html"><span>Home</span><span class="idx">01</span></a>
+    <a href="services.html"><span>Services</span><span class="idx">02</span></a>
+    <a href="industries.html"><span>Industries</span><span class="idx">03</span></a>
+    <a href="projects.html"><span>Projects</span><span class="idx">04</span></a>
+    <a href="products.html"><span>Products</span><span class="idx">05</span></a>
+    <a href="blog.html"><span>Blog</span><span class="idx">06</span></a>
+    <a href="about.html"><span>About</span><span class="idx">07</span></a>
+    <a href="contact.html"><span>Contact</span><span class="idx">08</span></a>
+  </nav>
+  <a href="contact.html" class="btn btn-green">Book a Consultation</a>
+</div>
 
-    <!-- Services Section -->
-    <section id="services" class="container">
-        <div class="section-header">
-            <div class="section-tag">What We Do</div>
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-description">Comprehensive technology solutions tailored to your business needs</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>Software Engineering</h3>
-                <p>Custom software solutions built with modern technologies and best practices.</p>
-                <ul class="service-list">
-                    <li>Web & Mobile Applications</li>
-                    <li>APIs & Backend Systems</li>
-                    <li>Enterprise Solutions</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>AI & Data</h3>
-                <p>Intelligent solutions that transform data into actionable business insights.</p>
-                <ul class="service-list">
-                    <li>Machine Learning Models</li>
-                    <li>Predictive Analytics</li>
-                    <li>NLP & Computer Vision</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>Automation</h3>
-                <p>Streamline operations and reduce manual effort with intelligent automation.</p>
-                <ul class="service-list">
-                    <li>Business Process Automation</li>
-                    <li>Bot Development</li>
-                    <li>Workflow Optimization</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3>Cloud & Infrastructure</h3>
-                <p>Scalable, secure infrastructure for modern applications.</p>
-                <ul class="service-list">
-                    <li>AWS, GCP, Azure</li>
-                    <li>DevOps & CI/CD</li>
-                    <li>Containerization</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Fintech Solutions</h3>
-                <p>Specialized solutions for finance and trading applications.</p>
-                <ul class="service-list">
-                    <li>Trading Systems</li>
-                    <li>Risk Management</li>
-                    <li>Financial Analytics</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3>Data Engineering</h3>
-                <p>Build robust data pipelines and infrastructure for analytics.</p>
-                <ul class="service-list">
-                    <li>ETL Pipelines</li>
-                    <li>Data Warehousing</li>
-                    <li>Real-time Processing</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<main id="top">
 
-    <!-- Industries Section -->
-    <section id="industries" class="industries-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Industries</div>
-                <h2 class="section-title">Industries We Serve</h2>
-                <p class="section-description">Cross-industry expertise delivering solutions for diverse business needs</p>
-            </div>
-            <div class="industries-grid">
-                <div class="industry-card">
-                    <i class="fas fa-rocket"></i>
-                    <h4>Startups</h4>
-                    <p>MVP to Scale</p>
-                </div>
-                <div class="industry-card">
-                    <i class="fas fa-building"></i>
-                    <h4>Enterprise</h4>
-                    <p>Digital Transformation</p>
-                </div>
-                <div class="industry-card">
-                    <i class="fas fa-coins"></i>
-                    <h4>Finance</h4>
-                    <p>Trading & Analytics</p>
-                </div>
-                <div class="industry-card">
-                    <i class="fas fa-heartbeat"></i>
-                    <h4>Healthcare</h4>
-                    <p>Health Tech</p>
-                </div>
-                <div class="industry-card">
-                    <i class="fas fa-shopping-cart"></i>
-                    <h4>E-commerce</h4>
-                    <p>Retail Solutions</p>
-                </div>
-                <div class="industry-card">
-                    <i class="fas fa-cloud"></i>
-                    <h4>SaaS</h4>
-                    <p>Product Development</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ============================================================ HERO -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid-lines"></div>
+    <div class="glow"></div>
+    <div class="glow-2"></div>
+    <canvas id="netCanvas"></canvas>
+    <div class="cube-scene hero-cube" style="--cs:120px">
+      <div class="cube3d"><i></i><i></i><i></i><i></i><i></i><i></i><b class="core-dot"></b></div>
+    </div>
+    <div class="noise"></div>
+  </div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow rv in">Enterprise Technology Solutions</span>
+      <h1 class="rv in">Engineering <span class="hl">Intelligent Systems</span> for Real Business Growth</h1>
+      <p class="lede rv in rv-d1">ValourAI designs and develops scalable software, AI, automation, data and cloud solutions that turn complex business challenges into reliable digital products.</p>
+      <div class="hero-actions rv in rv-d2">
+        <a href="#contact" class="btn btn-green">Discuss Your Project <span class="arr" aria-hidden="true">&rarr;</span></a>
+        <a href="#projects" class="btn btn-ghost">Explore Our Work</a>
+      </div>
+      <p class="trust-line rv in rv-d3">Software <b>&bull;</b> AI <b>&bull;</b> Automation <b>&bull;</b> Cloud <b>&bull;</b> Data</p>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="container">
-        <div class="section-header">
-            <div class="section-tag">Portfolio</div>
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-description">Showcasing our expertise across diverse technology domains</p>
+    <!-- Signature visual: enterprise system canvas -->
+    <div class="hero-visual rv in rv-d2" aria-label="Illustration of a ValourAI system architecture dashboard" role="img">
+      <div class="ring3d" aria-hidden="true"><span></span><span></span></div>
+      <div class="sys-float f1"><div class="k">Model Accuracy</div><div class="v">97.4%</div></div>
+      <div class="sys-float f2"><div class="k">Pipeline Uptime</div><div class="v">99.99%</div></div>
+      <div class="sys-frame">
+        <div class="sys-titlebar">
+          <div class="sys-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="sys-name">valour-core / production</span>
+          <span class="sys-live"><i></i>LIVE</span>
         </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-tag">Security & Cryptography</span>
-                    <h3>McEliece Cryptosystem</h3>
-                    <p>Complete implementation of post-quantum cryptographic system using Goppa codes for error correction. Includes key generation, encryption, and decryption modules.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Cryptography</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">SymPy</span>
-                    </div>
-                    <a href="https://www.freelancer.com/projects/python/McEliece-Crypto/details" target="_blank" class="project-link">View Details →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-tag">Web Development</span>
-                    <h3>Social Interaction Platform</h3>
-                    <p>Full-featured social networking website with profile creation, posts, messaging, and secure user authentication built with Django.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                    </div>
-                    <a href="https://www.freelancer.com/projects/python/Python-coding-for-website/details" target="_blank" class="project-link">View Details →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-tag">AI & Machine Learning</span>
-                    <h3>Stock Market Prediction</h3>
-                    <p>Machine learning model for market prediction using historical data, technical indicators, and trend analysis to generate actionable signals.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                    </div>
-                    <a href="#" class="project-link">View Details →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-tag">Enterprise Platform</span>
-                    <h3>Valour.AI Platform</h3>
-                    <p>AI-based platform serving 6,000+ users with automated strategies, risk management tools, and real-time analytics dashboard.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">AI</span>
-                        <span class="tech-tag">Automation</span>
-                        <span class="tech-tag">Data Science</span>
-                    </div>
-                    <a href="#" class="project-link">View Details →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-tag">Fintech</span>
-                    <h3>CryptoProfitShield</h3>
-                    <p>Web-based risk management system for position sizing, stop-loss management, and portfolio analytics for traders.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">APIs</span>
-                        <span class="tech-tag">Risk Management</span>
-                    </div>
-                    <a href="https://cryptoprofitshield.com/" target="_blank" class="project-link">View Details →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-tag">Analytics</span>
-                    <h3>MarketAlphaQuest</h3>
-                    <p>Advanced market analytics platform with AI-based insights, technical indicators, and predictive models for market analysis.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">AI</span>
-                        <span class="tech-tag">Financial Data</span>
-                    </div>
-                    <a href="https://marketalphaquest.com/home" target="_blank" class="project-link">View Details →</a>
-                </div>
-            </div>
+        <div class="sys-map">
+          <svg viewBox="0 0 560 250" preserveAspectRatio="none" aria-hidden="true">
+            <path class="link" d="M280 125 L120 52"/>
+            <path class="link" d="M280 125 L455 55"/>
+            <path class="link alt" d="M280 125 L95 190"/>
+            <path class="link" d="M280 125 L300 218"/>
+            <path class="link alt" d="M280 125 L478 185"/>
+            <path class="link alt" d="M120 52 L455 55"/>
+          </svg>
+          <div class="node core" style="left:50%;top:50%"><i></i>AI Model</div>
+          <div class="node" style="left:21%;top:21%"><i></i>API Gateway</div>
+          <div class="node cy" style="left:81%;top:22%"><i></i>Cloud</div>
+          <div class="node cy" style="left:17%;top:76%"><i></i>Data Pipeline</div>
+          <div class="node" style="left:54%;top:87%"><i></i>Automation</div>
+          <div class="node" style="left:85%;top:74%"><i></i>Analytics</div>
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="products.html" class="btn-secondary" style="padding: 1rem 2.5rem;">View All Projects →</a>
+        <div class="sys-cards">
+          <div class="sys-card">
+            <div class="k">Throughput / 24h</div>
+            <div class="spark" aria-hidden="true">
+              <i style="height:34%"></i><i style="height:52%"></i><i style="height:41%"></i><i style="height:66%"></i>
+              <i style="height:48%"></i><i style="height:74%"></i><i style="height:60%"></i><i style="height:88%"></i>
+              <i style="height:70%"></i><i style="height:96%"></i><i style="height:82%"></i><i style="height:100%"></i>
+            </div>
+          </div>
+          <div class="sys-card">
+            <div class="k">System Status</div>
+            <div class="sys-rows">
+              <div class="sys-row"><b>inference-svc</b><span class="ok">operational</span></div>
+              <div class="sys-row"><b>etl-worker</b><span class="ok">operational</span></div>
+              <div class="sys-row"><b>risk-engine</b><span class="up">deploying</span></div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Why Valour Section -->
-    <section class="why-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Why Choose Us</div>
-                <h2 class="section-title">Why Valour</h2>
-                <p class="section-description">What sets us apart as your technology partner</p>
-            </div>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>Technical Depth</h3>
-                    <p>Full-stack expertise across multiple technologies and domains, from infrastructure to user interfaces.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Cross-Industry Experience</h3>
-                    <p>Solutions for diverse sectors including finance, healthcare, e-commerce, and enterprise SaaS.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Results-Driven</h3>
-                    <p>Focus on measurable business outcomes, not just code delivery. Your success is our metric.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Reliable Delivery</h3>
-                    <p>Agile development process with consistent communication and on-time project completion.</p>
-                </div>
-            </div>
+<!-- ============================================================ METRICS -->
+<section class="metrics" aria-label="Company metrics">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric rv"><div class="num"><span class="count" data-target="35">0</span><sup>+</sup></div><div class="lbl">Projects Delivered</div></div>
+      <div class="metric rv rv-d1"><div class="num"><span class="count" data-target="100">0</span><sup>%</sup></div><div class="lbl">Client Satisfaction</div></div>
+      <div class="metric rv rv-d2"><div class="num"><span class="count" data-target="5">0</span><sup>+</sup></div><div class="lbl">Years of Experience</div></div>
+      <div class="metric rv rv-d3"><div class="num"><span class="count" data-target="6000" data-comma="1">0</span><sup>+</sup></div><div class="lbl">Platform Users</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TECH STRIP -->
+<div class="tech-strip" aria-label="Technologies we work with">
+  <div class="marquee">
+    <span><img src="assets/icons/python.svg" alt="">Python</span><span><img src="assets/icons/django.svg" alt="">Django</span><span><img src="assets/icons/javascript.svg" alt="">JavaScript</span><span><img src="assets/icons/react.svg" alt="">React</span><span><img src="assets/icons/nodejs.svg" alt="">Node.js</span><span><img src="assets/icons/postgresql.svg" alt="">PostgreSQL</span><span><img src="assets/icons/aws.svg" alt="">AWS</span><span><img src="assets/icons/azure.svg" alt="">Azure</span><span><img src="assets/icons/googlecloud.svg" alt="">Google Cloud</span><span><img src="assets/icons/docker.svg" alt="">Docker</span><span><img src="assets/icons/kubernetes.svg" alt="">Kubernetes</span><span><img src="assets/icons/ml.svg" alt="">Machine Learning</span><span><img src="assets/icons/data.svg" alt="">Data Engineering</span>
+    <span aria-hidden="true"><img src="assets/icons/python.svg" alt="">Python</span><span aria-hidden="true"><img src="assets/icons/django.svg" alt="">Django</span><span aria-hidden="true"><img src="assets/icons/javascript.svg" alt="">JavaScript</span><span aria-hidden="true"><img src="assets/icons/react.svg" alt="">React</span><span aria-hidden="true"><img src="assets/icons/nodejs.svg" alt="">Node.js</span><span aria-hidden="true"><img src="assets/icons/postgresql.svg" alt="">PostgreSQL</span><span aria-hidden="true"><img src="assets/icons/aws.svg" alt="">AWS</span><span aria-hidden="true"><img src="assets/icons/azure.svg" alt="">Azure</span><span aria-hidden="true"><img src="assets/icons/googlecloud.svg" alt="">Google Cloud</span><span aria-hidden="true"><img src="assets/icons/docker.svg" alt="">Docker</span><span aria-hidden="true"><img src="assets/icons/kubernetes.svg" alt="">Kubernetes</span><span aria-hidden="true"><img src="assets/icons/ml.svg" alt="">Machine Learning</span><span aria-hidden="true"><img src="assets/icons/data.svg" alt="">Data Engineering</span>
+  </div>
+</div>
+
+<!-- ============================================================ SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">What We Build</span>
+      <h2 class="rv rv-d1">Technology Solutions Built Around Your Business</h2>
+      <p class="lede rv rv-d2">From product strategy to deployment, we deliver secure and scalable systems designed to solve real operational challenges.</p>
+    </div>
+    <div class="services-grid">
+
+      <article class="svc-card rv">
+        <div class="svc-photo"><img src="assets/img/software.jpg" alt="" loading="lazy"></div>
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/><line x1="13.5" y1="4" x2="10.5" y2="20"/></svg>
         </div>
-    </section>
+        <h3>Software Engineering</h3>
+        <p class="desc">End-to-end product engineering, from architecture to release, built for stability and long-term maintainability.</p>
+        <ul class="svc-caps">
+          <li>Web and mobile applications</li>
+          <li>APIs and backend systems</li>
+          <li>Enterprise software solutions</li>
+        </ul>
+        <a href="services.html" class="svc-link">Explore Service <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
 
-    <!-- About Section -->
-    <section id="about" class="container">
-        <div class="section-header">
-            <div class="section-tag">About Us</div>
-            <h2 class="section-title">About Valour</h2>
+      <article class="svc-card rv rv-d1">
+        <div class="svc-photo"><img src="assets/img/ai.jpg" alt="" loading="lazy"></div>
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="4.5" cy="18" r="1.8"/><circle cx="19.5" cy="18" r="1.8"/><line x1="6.1" y1="7.1" x2="10.2" y2="10.4"/><line x1="17.9" y1="7.1" x2="13.8" y2="10.4"/><line x1="6.1" y1="16.9" x2="10.2" y2="13.6"/><line x1="17.9" y1="16.9" x2="13.8" y2="13.6"/></svg>
         </div>
-        <div class="about-grid">
-            <div class="about-card">
-                <h3><i class="fas fa-crosshairs"></i> Our Mission</h3>
-                <p>To deliver intelligent, scalable technology solutions that solve complex business challenges. We partner with organizations to transform ideas into production-ready systems that create real value.</p>
-            </div>
-            <div class="about-card">
-                <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                <p>To be a trusted technology partner for organizations seeking innovation and growth. We build systems that don't just work today, but evolve with your business needs.</p>
-            </div>
+        <h3>AI and Data</h3>
+        <p class="desc">Applied machine learning that moves beyond experimentation into measurable production outcomes.</p>
+        <ul class="svc-caps">
+          <li>Machine learning and predictive analytics</li>
+          <li>Natural language processing</li>
+          <li>Computer vision</li>
+        </ul>
+        <a href="services.html" class="svc-link">Explore Service <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d2">
+        <div class="svc-photo"><img src="assets/img/automation.jpg" alt="" loading="lazy"></div>
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><rect x="7.5" y="7.5" width="9" height="9" rx="2.5"/><circle cx="12" cy="12" r="1.4"/></svg>
         </div>
+        <h3>Intelligent Automation</h3>
+        <p class="desc">Automation that removes repetitive work, reduces operational cost and keeps critical processes consistent.</p>
+        <ul class="svc-caps">
+          <li>Business process automation</li>
+          <li>Bot development</li>
+          <li>Workflow optimization</li>
+        </ul>
+        <a href="services.html" class="svc-link">Explore Service <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
 
-        <div class="section-header" style="margin-top: 4rem;">
-            <h3 class="section-title" style="font-size: 2rem;">How We Work</h3>
+      <article class="svc-card rv">
+        <div class="svc-photo"><img src="assets/img/cloud.jpg" alt="" loading="lazy"></div>
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 18a4 4 0 0 1-.6-7.95 5.5 5.5 0 0 1 10.7-1.3A4.4 4.4 0 0 1 17.6 18Z"/><path d="M9.5 15l2.5 0 1.5-2 2 2"/></svg>
         </div>
-        <div class="process-grid">
-            <div class="process-step">
-                <div class="process-number">01</div>
-                <h4>Discovery</h4>
-                <p>Understanding your needs and business goals</p>
-            </div>
-            <div class="process-step">
-                <div class="process-number">02</div>
-                <h4>Strategy</h4>
-                <p>Designing the optimal solution architecture</p>
-            </div>
-            <div class="process-step">
-                <div class="process-number">03</div>
-                <h4>Development</h4>
-                <p>Building with precision and regular updates</p>
-            </div>
-            <div class="process-step">
-                <div class="process-number">04</div>
-                <h4>Deployment</h4>
-                <p>Launch with support and monitoring</p>
-            </div>
+        <h3>Cloud and Infrastructure</h3>
+        <p class="desc">Resilient cloud foundations with automated delivery pipelines and infrastructure that scales with demand.</p>
+        <ul class="svc-caps">
+          <li>AWS, Azure and Google Cloud</li>
+          <li>DevOps and CI/CD</li>
+          <li>Containerization</li>
+        </ul>
+        <a href="services.html" class="svc-link">Explore Service <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1">
+        <div class="svc-photo"><img src="assets/img/fintech.jpg" alt="" loading="lazy"></div>
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><polyline points="4 15 9 10 13 13 20 5"/><polyline points="15.5 5 20 5 20 9.5"/></svg>
         </div>
+        <h3>Fintech Solutions</h3>
+        <p class="desc">Financial systems engineered for precision, auditability and performance under real market conditions.</p>
+        <ul class="svc-caps">
+          <li>Trading systems</li>
+          <li>Risk-management software</li>
+          <li>Financial analytics</li>
+        </ul>
+        <a href="services.html" class="svc-link">Explore Service <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
 
-        <div class="section-header" style="margin-top: 4rem;">
-            <h3 class="section-title" style="font-size: 2rem;">Meet the Founder</h3>
+      <article class="svc-card rv rv-d2">
+        <div class="svc-photo"><img src="assets/img/data.jpg" alt="" loading="lazy"></div>
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8v-6"/><path d="M4.5 11.5v6c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8v-6"/></svg>
         </div>
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="member-avatar">SB</div>
-                <h4>Salman Ullah Baig</h4>
-                <p>Founder & Lead Engineer</p>
-            </div>
+        <h3>Data Engineering</h3>
+        <p class="desc">Trusted data foundations that turn scattered sources into governed, analytics-ready information.</p>
+        <ul class="svc-caps">
+          <li>ETL pipelines</li>
+          <li>Data warehouses</li>
+          <li>Real-time data processing</li>
+        </ul>
+        <a href="services.html" class="svc-link">Explore Service <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ INDUSTRIES -->
+<section class="section section-alt" id="industries">
+  <div class="container industries-grid">
+    <div class="industries-left">
+      <span class="eyebrow rv">Industry Expertise</span>
+      <h2 class="rv rv-d1">Technology Designed for Complex Industries</h2>
+      <p class="rv rv-d2">Every sector carries its own constraints — regulation, scale, latency, security. We engineer around those realities, not around a generic template.</p>
+      <a href="industries.html" class="btn btn-ghost rv rv-d3">View Industries <span class="arr" aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="industries-right">
+
+      <a href="blog-startups.html" class="ind-row rv">
+        <span class="ind-icon ind-photo" aria-hidden="true"><img src="assets/img/ind-startups.jpg" alt="" loading="lazy"></span>
+        <span class="txt"><h3>Startups</h3><p>Move from concept to a production-ready product fast, without accumulating architecture debt.</p></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a href="blog-enterprise.html" class="ind-row rv rv-d1">
+        <span class="ind-icon ind-photo" aria-hidden="true"><img src="assets/img/ind-enterprise.jpg" alt="" loading="lazy"></span>
+        <span class="txt"><h3>Enterprise</h3><p>Modernize legacy systems and integrate new capabilities without disrupting daily operations.</p></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a href="blog-finance.html" class="ind-row rv rv-d2">
+        <span class="ind-icon ind-photo" aria-hidden="true"><img src="assets/img/ind-finance.jpg" alt="" loading="lazy"></span>
+        <span class="txt"><h3>Finance</h3><p>Trading, risk and analytics platforms where accuracy, audit trails and uptime are non-negotiable.</p></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a href="blog-healthcare.html" class="ind-row rv rv-d3">
+        <span class="ind-icon ind-photo" aria-hidden="true"><img src="assets/img/ind-healthcare.jpg" alt="" loading="lazy"></span>
+        <span class="txt"><h3>Healthcare</h3><p>Secure, compliant data handling and workflow tooling that clinicians can actually rely on.</p></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a href="blog-ecommerce.html" class="ind-row rv rv-d4">
+        <span class="ind-icon ind-photo" aria-hidden="true"><img src="assets/img/ind-ecommerce.jpg" alt="" loading="lazy"></span>
+        <span class="txt"><h3>E-commerce</h3><p>High-conversion storefronts and order infrastructure built to survive peak traffic.</p></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a href="blog-saas.html" class="ind-row rv rv-d5">
+        <span class="ind-icon ind-photo" aria-hidden="true"><img src="assets/img/ind-saas.jpg" alt="" loading="lazy"></span>
+        <span class="txt"><h3>SaaS</h3><p>Multi-tenant platforms with the billing, analytics and reliability layers investors expect.</p></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- ============================================================ PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">Selected Work</span>
+      <h2 class="rv rv-d1">Systems That Solve Real-World Problems</h2>
+      <p class="lede rv rv-d2">A selection of production systems across security, AI, fintech and platform engineering — each built for a concrete business outcome.</p>
+    </div>
+
+    <!-- Featured case study -->
+    <article class="proj-feature rv">
+      <div class="proj-visual">
+        <div class="pv-inner">
+          <svg class="pv-svg" viewBox="0 0 420 260" aria-hidden="true">
+            <defs>
+              <linearGradient id="pvArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(47,201,77,.32)"/>
+                <stop offset="1" stop-color="rgba(47,201,77,0)"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="10" width="400" height="240" rx="14" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+            <text x="30" y="38" font-size="12" font-weight="bold" fill="#F7F8FA">Platform Usage — Last 12 Months</text>
+            <circle cx="362" cy="34" r="3" fill="#2FC94D"/>
+            <text x="370" y="37" font-size="8.5" fill="#2FC94D" letter-spacing="1">LIVE</text>
+            <rect x="30" y="50" width="360" height="1" fill="rgba(255,255,255,.08)"/>
+            <g font-size="10" fill="#A9B3C1">
+              <text x="30" y="74">users_active</text><text x="330" y="74" fill="#5BE873">6,214</text>
+              <text x="30" y="94">automations_run</text><text x="330" y="94" fill="#5BE873">18,930</text>
+              <text x="30" y="114">risk_alerts</text><text x="330" y="114" fill="#4CC9F0">142</text>
+            </g>
+            <line x1="52" y1="128" x2="64" y2="128" stroke="#2FC94D" stroke-width="2"/>
+            <text x="68" y="131" font-size="7.5" fill="#7d8894">users_active</text>
+            <line x1="128" y1="128" x2="140" y2="128" stroke="rgba(76,201,240,.8)" stroke-width="1.6" stroke-dasharray="3 3"/>
+            <text x="144" y="131" font-size="7.5" fill="#7d8894">automations (x3)</text>
+            <rect x="326" y="119" width="64" height="15" rx="7.5" fill="rgba(47,201,77,.12)" stroke="rgba(47,201,77,.35)"/>
+            <text x="358" y="129.5" font-size="7.5" fill="#5BE873" text-anchor="middle">&#9650; +18% YoY</text>
+            <g stroke="rgba(255,255,255,.06)">
+              <line x1="52" y1="140" x2="390" y2="140"/>
+              <line x1="52" y1="166" x2="390" y2="166"/>
+              <line x1="52" y1="192" x2="390" y2="192"/>
+              <line x1="52" y1="218" x2="390" y2="218"/>
+            </g>
+            <g font-size="7" fill="#7d8894" text-anchor="end">
+              <text x="46" y="143">6k</text>
+              <text x="46" y="169">4k</text>
+              <text x="46" y="195">2k</text>
+              <text x="46" y="221">0</text>
+            </g>
+            <path d="M52 202 L83 195 L113 197 L144 187 L175 188 L206 178 L236 171 L267 173 L298 161 L328 154 L359 145 L390 137 L390 218 L52 218 Z" fill="url(#pvArea)"/>
+            <polyline points="52,202 83,195 113,197 144,187 175,188 206,178 236,171 267,173 298,161 328,154 359,145 390,137" fill="none" stroke="#2FC94D" stroke-width="2" stroke-linejoin="round"/>
+            <polyline points="52,210 83,208 113,209 144,205 175,206 206,202 236,199 267,200 298,196 328,192 359,188 390,184" fill="none" stroke="rgba(76,201,240,.7)" stroke-width="1.4" stroke-dasharray="3 3"/>
+            <g fill="#0F2233" stroke="#2FC94D" stroke-width="1">
+              <circle cx="52" cy="202" r="1.8"/><circle cx="83" cy="195" r="1.8"/><circle cx="113" cy="197" r="1.8"/>
+              <circle cx="144" cy="187" r="1.8"/><circle cx="175" cy="188" r="1.8"/><circle cx="206" cy="178" r="1.8"/>
+              <circle cx="236" cy="171" r="1.8"/><circle cx="267" cy="173" r="1.8"/><circle cx="298" cy="161" r="1.8"/>
+              <circle cx="328" cy="154" r="1.8"/><circle cx="359" cy="145" r="1.8"/>
+            </g>
+            <circle cx="390" cy="137" r="6" fill="none" stroke="rgba(91,232,115,.35)"/>
+            <circle cx="390" cy="137" r="3.2" fill="#5BE873"/>
+            <g font-size="6.5" fill="#7d8894" text-anchor="middle">
+              <text x="52" y="232">J</text><text x="83" y="232">F</text><text x="113" y="232">M</text>
+              <text x="144" y="232">A</text><text x="175" y="232">M</text><text x="206" y="232">J</text>
+              <text x="236" y="232">J</text><text x="267" y="232">A</text><text x="298" y="232">S</text>
+              <text x="328" y="232">O</text><text x="359" y="232">N</text><text x="390" y="232">D</text>
+            </g>
+          </svg>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Contact</div>
-                <h2 class="section-title">Let's Discuss Your Project</h2>
-                <p class="section-description">Schedule a consultation to explore how we can help</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" placeholder="john@example.com" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Subject</label>
-                            <input type="text" placeholder="Project Inquiry">
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea placeholder="Tell us about your project..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width: 100%; font-size: 1rem;">Send Message →</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email Us</h4>
-                            <p>support@valour.ai</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Call Us</h4>
-                            <p>+92 347 5083374</p>
-                            <p>Mon-Fri: 9AM - 6PM</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Visit Us</h4>
-                            <p>F11/1, Street 73</p>
-                            <p>Islamabad, Pakistan</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4>Business Hours</h4>
-                            <p>Monday - Friday</p>
-                            <p>9:00 AM - 6:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="proj-body">
+        <span class="proj-cat">Enterprise AI Platform</span>
+        <h3>ValourAI Platform</h3>
+        <div class="proj-block">
+          <div class="k">Business Challenge</div>
+          <p>Teams needed automation, risk-management tooling and real-time analytics in one place — without stitching together a dozen disconnected tools.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <a href="#home" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">Valour<span>.</span></a>
-                <p>Technology partner for digital transformation. Building intelligent, scalable solutions for startups and enterprises.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#services">Software Engineering</a></li>
-                    <li><a href="#services">AI & Data</a></li>
-                    <li><a href="#services">Automation</a></li>
-                    <li><a href="#services">Cloud & Infrastructure</a></li>
-                    <li><a href="#services">Fintech Solutions</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#projects">Portfolio</a></li>
-                    <li><a href="#industries">Industries</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+        <div class="proj-block">
+          <div class="k">Solution</div>
+          <p>An AI-powered platform now serving more than 6,000 users, combining workflow automation, risk-management modules and live analytics on a single secure foundation.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Valour. All rights reserved. | <a href="#" style="color: var(--text-muted);">Privacy Policy</a> | <a href="#" style="color: var(--text-muted);">Terms of Service</a></p>
+        <div class="proj-tags"><span>Python</span><span>AI</span><span>Automation</span><span>Data Science</span></div>
+        <div class="proj-cta"><a href="projects.html" class="btn btn-ghost">View Case Study <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+      </div>
+    </article>
+
+    <div class="projects-grid">
+
+      <article class="proj-card rv">
+        <div class="proj-visual">
+          <div class="pv-inner">
+            <svg class="pv-svg" viewBox="0 0 420 200" aria-hidden="true">
+              <rect x="10" y="10" width="400" height="180" rx="12" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+              <path d="M10 22 a12 12 0 0 1 12 -12 h376 a12 12 0 0 1 12 12 v14 h-400 Z" fill="#0C1828"/>
+              <circle cx="28" cy="23" r="4" fill="#e0655f"/><circle cx="42" cy="23" r="4" fill="#e0c35f"/><circle cx="56" cy="23" r="4" fill="#2FC94D"/>
+              <text x="210" y="27" font-size="8" fill="#7d8894" text-anchor="middle">valour@sec: ~/mceliece</text>
+              <g font-size="9" fill="#A9B3C1">
+                <text x="30" y="56" fill="#5BE873">$ valour keygen --scheme mceliece --bits 3488</text>
+                <text x="30" y="72">  goppa polynomial ............ ok</text>
+                <text x="30" y="88">  parity-check matrix ......... ok  [2.1 s]</text>
+                <text x="30" y="104">  public_key 1.2 MB &bull; private_key sealed</text>
+                <text x="30" y="122" fill="#5BE873">$ valour encrypt --in message.txt</text>
+                <text x="30" y="138" fill="#4CC9F0">  c = 0x7f3a 9c1e 84d2 &hellip; e41b  (232 bytes)</text>
+              </g>
+              <rect x="30" y="148" width="200" height="7" rx="3.5" fill="rgba(255,255,255,.08)"/>
+              <rect x="30" y="148" width="164" height="7" rx="3.5" fill="rgba(47,201,77,.75)"/>
+              <text x="238" y="155" font-size="8" fill="#7d8894">82% &bull; keytest</text>
+              <text x="30" y="176" font-size="9" fill="#2FC94D">status: post-quantum secure</text>
+              <rect x="196" y="168" width="6" height="10" fill="#2FC94D" opacity=".8"/>
+            </svg>
+          </div>
         </div>
-    </footer>
+        <div class="proj-body">
+          <span class="proj-cat">Security &amp; Cryptography</span>
+          <h3>McEliece Cryptosystem</h3>
+          <div class="proj-block">
+            <div class="k">Business Challenge</div>
+            <p>Preparing encrypted communication for a post-quantum world, where classical schemes will no longer hold.</p>
+          </div>
+          <div class="proj-block">
+            <div class="k">Solution</div>
+            <p>A post-quantum cryptographic system with complete key generation, encryption and decryption modules.</p>
+          </div>
+          <div class="proj-tags"><span>Python</span><span>Cryptography</span><span>NumPy</span><span>SymPy</span></div>
+          <div class="proj-cta"><a href="projects.html" class="svc-link">View Case Study <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+        </div>
+      </article>
 
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
+      <article class="proj-card rv rv-d1">
+        <div class="proj-visual">
+          <div class="pv-inner">
+            <svg class="pv-svg" viewBox="0 0 420 200" aria-hidden="true">
+              <rect x="10" y="10" width="400" height="180" rx="12" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+              <circle cx="52" cy="44" r="15" fill="rgba(47,201,77,.22)" stroke="rgba(47,201,77,.5)"/>
+              <text x="52" y="48" font-size="10" font-weight="bold" fill="#5BE873" text-anchor="middle">SK</text>
+              <text x="76" y="41" font-size="11" font-weight="bold" fill="#F7F8FA">Sana Khalid</text>
+              <circle cx="79" cy="53" r="2.5" fill="#2FC94D"/>
+              <text x="86" y="56" font-size="8" fill="#7d8894">online &bull; end-to-end encrypted</text>
+              <rect x="372" y="40" width="14" height="11" rx="2" fill="none" stroke="rgba(91,232,115,.6)" stroke-width="1.4"/>
+              <path d="M375 40 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="rgba(91,232,115,.6)" stroke-width="1.4"/>
+              <rect x="30" y="66" width="360" height="1" fill="rgba(255,255,255,.08)"/>
+              <rect x="34" y="78" width="204" height="24" rx="10" fill="#0C1828" stroke="rgba(255,255,255,.07)"/>
+              <text x="46" y="93" font-size="9" fill="#C7D0DA">Hey! Is the new release live yet?</text>
+              <text x="34" y="112" font-size="6.5" fill="#7d8894">09:41</text>
+              <rect x="172" y="118" width="214" height="24" rx="10" fill="rgba(47,201,77,.16)" stroke="rgba(47,201,77,.35)"/>
+              <text x="184" y="133" font-size="9" fill="#DFF7E4">Yes &mdash; check your new profile page</text>
+              <text x="386" y="152" font-size="6.5" fill="#7d8894" text-anchor="end">09:42 &#10003;&#10003;</text>
+              <rect x="34" y="158" width="256" height="24" rx="12" fill="#0C1828" stroke="rgba(255,255,255,.08)"/>
+              <text x="48" y="173" font-size="9" fill="#5b6674">Write a message&hellip;</text>
+              <rect x="300" y="158" width="86" height="24" rx="12" fill="rgba(47,201,77,.9)"/>
+              <text x="343" y="173" font-size="9.5" font-weight="bold" fill="#07200F" text-anchor="middle">Send</text>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-cat">Software Engineering</span>
+          <h3>Social Interaction Platform</h3>
+          <div class="proj-block">
+            <div class="k">Business Challenge</div>
+            <p>Building a social product where privacy, secure authentication and content integrity come first.</p>
+          </div>
+          <div class="proj-block">
+            <div class="k">Solution</div>
+            <p>A secure social platform with user profiles, messaging, content publishing and hardened authentication.</p>
+          </div>
+          <div class="proj-tags"><span>Python</span><span>Django</span><span>JavaScript</span><span>PostgreSQL</span></div>
+          <div class="proj-cta"><a href="projects.html" class="svc-link">View Case Study <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+        </div>
+      </article>
 
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+      <article class="proj-card rv">
+        <div class="proj-visual">
+          <div class="pv-inner">
+            <svg class="pv-svg" viewBox="0 0 420 200" aria-hidden="true">
+              <rect x="10" y="10" width="400" height="180" rx="12" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+              <text x="30" y="32" font-size="11" font-weight="bold" fill="#F7F8FA">NVDA &bull; Daily Close Forecast</text>
+              <text x="30" y="45" font-size="7.5" fill="#7d8894">model: gradient boosting &bull; RMSE 0.021 &bull; walk-forward validated</text>
+              <rect x="316" y="22" width="74" height="15" rx="7.5" fill="rgba(47,201,77,.12)" stroke="rgba(47,201,77,.35)"/>
+              <text x="353" y="32.5" font-size="7.5" fill="#5BE873" text-anchor="middle">&#9650; +4.2% pred</text>
+              <g stroke="rgba(255,255,255,.06)">
+                <line x1="52" y1="64" x2="392" y2="64"/><line x1="52" y1="98" x2="392" y2="98"/>
+                <line x1="52" y1="132" x2="392" y2="132"/><line x1="52" y1="166" x2="392" y2="166"/>
+              </g>
+              <g font-size="6.5" fill="#7d8894" text-anchor="end">
+                <text x="47" y="67">230</text><text x="47" y="101">215</text>
+                <text x="47" y="135">200</text><text x="47" y="169">185</text>
+              </g>
+              <line x1="266" y1="58" x2="266" y2="166" stroke="rgba(255,255,255,.12)" stroke-dasharray="3 3"/>
+              <text x="266" y="54" font-size="6.5" fill="#7d8894" text-anchor="middle">today</text>
+              <path d="M266 112 L308 94 L350 82 L392 64 L392 96 L350 106 L308 110 Z" fill="rgba(47,201,77,.12)"/>
+              <polyline points="52,156 82,146 112,151 142,130 172,138 202,122 232,127 266,112" fill="none" stroke="rgba(169,179,193,.6)" stroke-width="1.6"/>
+              <polyline points="266,112 308,102 350,94 392,80" fill="none" stroke="#2FC94D" stroke-width="2.2" stroke-dasharray="5 5"/>
+              <circle cx="266" cy="112" r="3.5" fill="#4CC9F0"/>
+              <circle cx="392" cy="80" r="6" fill="none" stroke="rgba(91,232,115,.35)"/>
+              <circle cx="392" cy="80" r="3.2" fill="#5BE873"/>
+              <rect x="352" y="60" width="38" height="13" rx="4" fill="#0C1828" stroke="rgba(47,201,77,.4)"/>
+              <text x="371" y="69.5" font-size="7.5" fill="#5BE873" text-anchor="middle">223.40</text>
+              <g font-size="6.5" fill="#7d8894" text-anchor="middle">
+                <text x="52" y="180">Mon</text><text x="112" y="180">Tue</text><text x="172" y="180">Wed</text>
+                <text x="232" y="180">Thu</text><text x="308" y="180">+1d</text><text x="350" y="180">+2d</text><text x="392" y="180">+3d</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-cat">AI &amp; Machine Learning</span>
+          <h3>Stock Market Prediction</h3>
+          <div class="proj-block">
+            <div class="k">Business Challenge</div>
+            <p>Turning noisy historical market data into forward-looking signals traders can act on.</p>
+          </div>
+          <div class="proj-block">
+            <div class="k">Solution</div>
+            <p>A predictive machine-learning system built on historical information, technical indicators and trend analysis.</p>
+          </div>
+          <div class="proj-tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span></div>
+          <div class="proj-cta"><a href="projects.html" class="svc-link">View Case Study <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+        </div>
+      </article>
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+      <article class="proj-card rv rv-d1">
+        <div class="proj-visual">
+          <div class="pv-inner">
+            <svg class="pv-svg" viewBox="0 0 420 200" aria-hidden="true">
+              <rect x="10" y="10" width="400" height="180" rx="12" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+              <text x="30" y="34" font-size="11" font-weight="bold" fill="#F7F8FA">BTC/USDT &bull; Risk Console</text>
+              <text x="390" y="34" font-size="9" fill="#5BE873" text-anchor="end">@ 61,240</text>
+              <rect x="30" y="44" width="168" height="58" rx="10" fill="#0C1828" stroke="rgba(47,201,77,.3)"/>
+              <text x="44" y="60" font-size="8" fill="#A9B3C1">POSITION SIZE</text>
+              <text x="44" y="82" font-size="16" fill="#5BE873" font-weight="bold">2.4%</text>
+              <text x="44" y="95" font-size="7" fill="#7d8894">of equity &bull; $1,920</text>
+              <rect x="222" y="44" width="168" height="58" rx="10" fill="#0C1828" stroke="rgba(76,201,240,.3)"/>
+              <text x="236" y="60" font-size="8" fill="#A9B3C1">STOP-LOSS</text>
+              <text x="236" y="82" font-size="16" fill="#4CC9F0" font-weight="bold">-1.8%</text>
+              <text x="236" y="95" font-size="7" fill="#7d8894">60,138 &bull; R:R 1 : 2.8</text>
+              <text x="30" y="124" font-size="8" fill="#A9B3C1">PORTFOLIO RISK EXPOSURE</text>
+              <rect x="30" y="132" width="216" height="12" rx="6" fill="rgba(47,201,77,.14)"/>
+              <rect x="246" y="132" width="72" height="12" fill="rgba(224,195,95,.12)"/>
+              <path d="M318 132 h66 a6 6 0 0 1 6 6 a6 6 0 0 1 -6 6 h-66 Z" fill="rgba(224,101,95,.12)"/>
+              <rect x="30" y="132" width="238" height="12" rx="6" fill="rgba(47,201,77,.55)"/>
+              <line x1="268" y1="128" x2="268" y2="148" stroke="#5BE873" stroke-width="2"/>
+              <rect x="254" y="114" width="28" height="13" rx="4" fill="#0C1828" stroke="rgba(47,201,77,.4)"/>
+              <text x="268" y="123.5" font-size="7.5" fill="#5BE873" text-anchor="middle">66</text>
+              <g font-size="6.5" fill="#7d8894">
+                <text x="30" y="156">0</text><text x="118" y="156">25</text><text x="206" y="156">50</text>
+                <text x="294" y="156">75</text><text x="382" y="156">100</text>
+              </g>
+              <text x="30" y="176" font-size="9" fill="#A9B3C1">max drawdown <tspan fill="#4CC9F0">-6.2%</tspan></text>
+              <text x="390" y="176" font-size="9" fill="#5BE873" text-anchor="end">risk score 66 / 100 &bull; moderate</text>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-cat">Fintech</span>
+          <h3>CryptoProfitShield</h3>
+          <div class="proj-block">
+            <div class="k">Business Challenge</div>
+            <p>Crypto traders losing capital to unmanaged risk, oversized positions and missing stop-loss discipline.</p>
+          </div>
+          <div class="proj-block">
+            <div class="k">Solution</div>
+            <p>A risk-management platform for position sizing, stop-loss planning and portfolio analytics.</p>
+          </div>
+          <div class="proj-tags"><span>Python</span><span>Django</span><span>APIs</span></div>
+          <div class="proj-cta"><a href="projects.html" class="svc-link">View Case Study <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+        </div>
+      </article>
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+      <article class="proj-card rv">
+        <div class="proj-visual">
+          <div class="pv-inner">
+            <svg class="pv-svg" viewBox="0 0 420 200" aria-hidden="true">
+              <rect x="10" y="10" width="400" height="180" rx="12" fill="#101F31" stroke="rgba(255,255,255,.08)"/>
+              <text x="30" y="32" font-size="11" font-weight="bold" fill="#F7F8FA">Alpha Signals &bull; Weekly Scan</text>
+              <text x="30" y="45" font-size="7.5" fill="#7d8894">composite score 0&ndash;100 &bull; AI + technical + sentiment</text>
+              <circle cx="316" cy="28" r="3.5" fill="#5BE873"/>
+              <text x="324" y="31.5" font-size="8" fill="#5BE873">top signal: NVDA 94</text>
+              <g stroke="rgba(255,255,255,.06)">
+                <line x1="46" y1="56" x2="392" y2="56"/><line x1="46" y1="111" x2="392" y2="111"/><line x1="46" y1="166" x2="392" y2="166"/>
+              </g>
+              <g font-size="6.5" fill="#7d8894" text-anchor="end">
+                <text x="41" y="59">100</text><text x="41" y="114">50</text><text x="41" y="169">0</text>
+              </g>
+              <g>
+                <rect x="48" y="120" width="34" height="46" rx="4" fill="rgba(169,179,193,.35)"/>
+                <rect x="97" y="96" width="34" height="70" rx="4" fill="rgba(47,201,77,.5)"/>
+                <rect x="146" y="132" width="34" height="34" rx="4" fill="rgba(169,179,193,.35)"/>
+                <rect x="195" y="72" width="34" height="94" rx="4" fill="rgba(47,201,77,.75)"/>
+                <rect x="244" y="104" width="34" height="62" rx="4" fill="rgba(76,201,240,.5)"/>
+                <rect x="293" y="56" width="34" height="110" rx="4" fill="#2FC94D"/>
+                <rect x="342" y="88" width="34" height="78" rx="4" fill="rgba(76,201,240,.6)"/>
+              </g>
+              <g font-size="7" text-anchor="middle">
+                <text x="65" y="115" fill="#A9B3C1">42</text><text x="114" y="91" fill="#5BE873">64</text>
+                <text x="163" y="127" fill="#A9B3C1">31</text><text x="212" y="67" fill="#5BE873">85</text>
+                <text x="261" y="99" fill="#4CC9F0">56</text><text x="310" y="51" fill="#5BE873">94</text>
+                <text x="359" y="83" fill="#4CC9F0">71</text>
+              </g>
+              <g font-size="6.5" fill="#7d8894" text-anchor="middle">
+                <text x="65" y="178">AAPL</text><text x="114" y="178">MSFT</text><text x="163" y="178">AMZN</text>
+                <text x="212" y="178">GOOG</text><text x="261" y="178">TSLA</text><text x="310" y="178">NVDA</text>
+                <text x="359" y="178">META</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-cat">Analytics</span>
+          <h3>MarketAlphaQuest</h3>
+          <div class="proj-block">
+            <div class="k">Business Challenge</div>
+            <p>Analysts spending hours combining indicators, news and models to find tradable opportunities.</p>
+          </div>
+          <div class="proj-block">
+            <div class="k">Solution</div>
+            <p>A market analytics platform combining AI insights, technical indicators and predictive models in one view.</p>
+          </div>
+          <div class="proj-tags"><span>Python</span><span>Django</span><span>AI</span><span>Financial Data</span></div>
+          <div class="proj-cta"><a href="projects.html" class="svc-link">View Case Study <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+        </div>
+      </article>
 
-        // Form submission
-        const form = document.getElementById('contactForm');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert("Thank you for your interest!\n\nPlease email us directly at: support@valour.ai");
-            });
-        }
+      <article class="proj-card rv rv-d1" style="display:flex;justify-content:center;align-items:center;background:linear-gradient(150deg,var(--card),#0B1A2C);text-align:center;padding:44px 30px">
+        <div>
+          <span class="eyebrow" style="justify-content:center">Your Project</span>
+          <h3 style="font-size:24px;margin:14px 0 12px;">The next case study could be yours</h3>
+          <p style="color:var(--muted);font-size:14.5px;margin:0 auto 24px;max-width:34ch">Tell us what you are building and we will map the technical route to get there.</p>
+          <a href="#contact" class="btn btn-green" style="justify-content:center">Start a Conversation <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
 
-        // Change navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(15, 23, 42, 0.98)';
-            } else {
-                nav.style.background = 'rgba(15, 23, 42, 0.95)';
-            }
-        });
-    </script>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRODUCTS -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">Our Products</span>
+      <h2 class="rv rv-d1">The Valour AI Trading Suite</h2>
+      <p class="lede rv rv-d2">Beyond client work, we build and operate our own AI products — a complete trading suite spanning automated bots, prediction tools, live signals and education.</p>
+    </div>
+    <div class="products-grid">
+
+      <article class="svc-card rv">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="10" rx="2.5"/><path d="M12 8V5.2"/><circle cx="12" cy="3.8" r="1.3"/><circle cx="9.2" cy="12.4" r="1"/><circle cx="14.8" cy="12.4" r="1"/><path d="M9.5 15.3h5"/></svg>
+        </div>
+        <h3>AI Trading Bots &amp; Agents</h3>
+        <p class="desc">Automated trading robots for stocks, ETFs, forex and crypto, covering intraday, swing and long-term trend strategies.</p>
+        <ul class="svc-caps">
+          <li>Day, swing and trend trading bots</li>
+          <li>Crypto agents for Binance, Bybit and Coinbase</li>
+          <li>Multi-timeframe signal generation</li>
+        </ul>
+        <a href="products.html" class="svc-link">Explore the Suite <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.4" y1="15.4" x2="21" y2="21"/><polyline points="7.4 12.2 9.4 9.6 11 11.2 13.6 8"/></svg>
+        </div>
+        <h3>AI DIY Tools</h3>
+        <p class="desc">Pattern recognition and prediction engines for traders who want AI-assisted analysis while staying in control.</p>
+        <ul class="svc-caps">
+          <li>AI pattern search and live intraday detection</li>
+          <li>1–5 day trend forecasts with entry and exit levels</li>
+          <li>Stock screener covering 5,200+ symbols</li>
+        </ul>
+        <a href="products.html" class="svc-link">Explore the Suite <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d2">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 6.9a9.5 9.5 0 0 1 14.2 0"/><path d="M7.7 9.7a5.6 5.6 0 0 1 8.6 0"/><circle cx="12" cy="13" r="1.6"/><path d="M12 14.6V21"/></svg>
+        </div>
+        <h3>Copy Trading &amp; Signals</h3>
+        <p class="desc">Real-time buy and sell alerts across multiple assets, plus automated copy trading that mirrors proven strategies.</p>
+        <ul class="svc-caps">
+          <li>24/7 live signal feed</li>
+          <li>8–15 end-of-day trade ideas daily</li>
+          <li>Copy trading with no minimum balance</li>
+        </ul>
+        <a href="products.html" class="svc-link">Explore the Suite <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="svc-card rv rv-d3">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5L2.8 9.2 12 13.9l9.2-4.7L12 4.5z"/><path d="M6.2 11.4v4.4c0 1.3 2.6 2.7 5.8 2.7s5.8-1.4 5.8-2.7v-4.4"/><path d="M21.2 9.2v4.6"/></svg>
+        </div>
+        <h3>Trading Academy</h3>
+        <p class="desc">Structured education that takes traders from market fundamentals to advanced AI-driven strategy design.</p>
+        <ul class="svc-caps">
+          <li>12+ video courses and weekly webcasts</li>
+          <li>200+ library videos and 50+ eBooks</li>
+          <li>One-on-one lessons with expert traders</li>
+        </ul>
+        <a href="products.html" class="svc-link">Explore the Suite <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHY VALOUR -->
+<section class="section section-alt" id="why">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">Why Valour</span>
+      <h2 class="rv rv-d1">More Than Development. A Long-Term Technology Partner.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card rv">
+        <div class="why-photo" aria-hidden="true"><img src="assets/img/why-depth.jpg" alt="" loading="lazy"></div>
+        <h3>Technical Depth</h3>
+        <p>Full-stack expertise across applications, infrastructure, automation, data and AI.</p>
+      </div>
+      <div class="why-card rv rv-d1">
+        <div class="why-photo" aria-hidden="true"><img src="assets/img/why-business.jpg" alt="" loading="lazy"></div>
+        <h3>Business-First Thinking</h3>
+        <p>Every technology decision is connected to a measurable business requirement.</p>
+      </div>
+      <div class="why-card rv rv-d2">
+        <div class="why-photo" aria-hidden="true"><img src="assets/img/why-delivery.jpg" alt="" loading="lazy"></div>
+        <h3>Reliable Delivery</h3>
+        <p>Transparent milestones, regular communication and disciplined project management.</p>
+      </div>
+      <div class="why-card rv rv-d3">
+        <div class="why-photo" aria-hidden="true"><img src="assets/img/why-scale.jpg" alt="" loading="lazy"></div>
+        <h3>Scalable Architecture</h3>
+        <p>Systems engineered to remain secure, maintainable and adaptable as your organization grows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PROCESS -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow rv">How We Work</span>
+      <h2 class="rv rv-d1">A Disciplined Path From Idea to Production</h2>
+    </div>
+    <div class="process-track">
+      <div class="step rv">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="no">01 — Phase</span>
+        <div class="step-photo" aria-hidden="true"><img src="assets/img/step-discovery.jpg" alt="" loading="lazy"></div>
+        <h3>Discovery</h3>
+        <p>Understand the business, users, technical requirements and success criteria.</p>
+      </div>
+      <div class="step rv rv-d1">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="no">02 — Phase</span>
+        <div class="step-photo" aria-hidden="true"><img src="assets/img/step-strategy.jpg" alt="" loading="lazy"></div>
+        <h3>Strategy</h3>
+        <p>Define the product roadmap, architecture, technology stack and delivery plan.</p>
+      </div>
+      <div class="step rv rv-d2">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="no">03 — Phase</span>
+        <div class="step-photo" aria-hidden="true"><img src="assets/img/step-development.jpg" alt="" loading="lazy"></div>
+        <h3>Development</h3>
+        <p>Build through focused development cycles with testing and regular updates.</p>
+      </div>
+      <div class="step rv rv-d3">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="no">04 — Phase</span>
+        <div class="step-photo" aria-hidden="true"><img src="assets/img/step-deployment.jpg" alt="" loading="lazy"></div>
+        <h3>Deployment</h3>
+        <p>Launch the solution with monitoring, documentation and ongoing support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ABOUT -->
+<section class="section section-alt" id="about">
+  <div class="container about-grid">
+    <div class="founder-card rv">
+      <div class="founder-frame">
+        <img src="founder.png" alt="Salman Ullah Baig, Founder and Lead Engineer of ValourAI">
+      </div>
+      <h3>Salman Ullah Baig</h3>
+      <p class="role">Founder &amp; Lead Engineer</p>
+      <div class="founder-tags">
+        <span>Software Architecture</span>
+        <span>AI &amp; Data Systems</span>
+        <span>Fintech Engineering</span>
+        <span>5+ Years Delivery</span>
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow rv">About ValourAI</span>
+      <h2 class="rv rv-d1">Built on Engineering Discipline and Business Understanding</h2>
+      <div class="mv-block rv rv-d2">
+        <div class="k">Mission</div>
+        <p>To deliver intelligent and scalable technology solutions that solve complex business challenges and create lasting value.</p>
+      </div>
+      <div class="mv-block rv rv-d3">
+        <div class="k">Vision</div>
+        <p>To become a trusted technology partner for organizations seeking sustainable innovation and growth.</p>
+      </div>
+      <a href="about.html" class="btn btn-ghost rv rv-d4">Learn About ValourAI <span class="arr" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FINAL CTA -->
+<section class="final-cta section" id="cta">
+  <div class="cube-scene cta-cube-l" style="--cs:150px" aria-hidden="true">
+    <div class="cube3d"><i></i><i></i><i></i><i></i><i></i><i></i><b class="core-dot"></b></div>
+  </div>
+  <div class="cube-scene cta-cube-r" style="--cs:100px" aria-hidden="true">
+    <div class="cube3d"><i></i><i></i><i></i><i></i><i></i><i></i><b class="core-dot"></b></div>
+  </div>
+  <div class="container">
+    <span class="eyebrow rv" style="justify-content:center">Start a Project</span>
+    <h2 class="rv rv-d1" style="margin-top:16px">Have a Complex Technology Challenge?</h2>
+    <p class="rv rv-d2">Tell us what you are building, improving or automating. Our team will help you identify the right technical approach.</p>
+    <div class="actions rv rv-d3">
+      <a href="#contact" class="btn btn-green">Book a Consultation <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a href="mailto:salmanullahbaig@valour.ai" class="btn btn-ghost">Send an Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CONTACT -->
+<section class="section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow rv">Get in Touch</span>
+      <h2 class="rv rv-d1">Book a Free Technical Consultation</h2>
+      <p class="rv rv-d2">Share a few details about your project and we will respond within one business day with clear next steps — no obligation, no generic sales pitch.</p>
+
+      <div class="ci-item rv">
+        <span class="ci-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></span>
+        <div><div class="k">Email</div><div class="v"><a href="mailto:salmanullahbaig@valour.ai">salmanullahbaig@valour.ai</a></div></div>
+      </div>
+      <div class="ci-item rv rv-d1">
+        <span class="ci-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></span>
+        <div><div class="k">Phone</div><div class="v"><a href="tel:+923475083374">0347 5083374</a></div></div>
+      </div>
+      <div class="ci-item rv rv-d2">
+        <span class="ci-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+        <div><div class="k">Office</div><div class="v">Islamabad, Pakistan</div></div>
+      </div>
+      <div class="ci-item rv rv-d3">
+        <span class="ci-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <div><div class="k">Business Hours</div><div class="v">Mon – Fri, 9:00 – 18:00 PKT</div></div>
+      </div>
+    </div>
+
+    <div class="contact-form rv rv-d1">
+      <form id="projectForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Full Name <em>*</em></label>
+            <input id="f-name" name="name" type="text" placeholder="Jane Ahmed" required autocomplete="name">
+            <p class="err">Enter your full name.</p>
+          </div>
+          <div class="field">
+            <label for="f-email">Business Email <em>*</em></label>
+            <input id="f-email" name="email" type="email" placeholder="jane@company.com" required autocomplete="email">
+            <p class="err">Enter a valid email address.</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-company">Company</label>
+            <input id="f-company" name="company" type="text" placeholder="Company Ltd." autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-service">Service Needed <em>*</em></label>
+            <select id="f-service" name="service" required>
+              <option value="" selected disabled>Select a service</option>
+              <option>Software Engineering</option>
+              <option>AI and Data</option>
+              <option>Intelligent Automation</option>
+              <option>Cloud and Infrastructure</option>
+              <option>Fintech Solutions</option>
+              <option>Data Engineering</option>
+              <option>Not sure yet</option>
+            </select>
+            <p class="err">Choose the closest match.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-budget">Project Budget</label>
+          <select id="f-budget" name="budget">
+            <option value="" selected disabled>Select a range</option>
+            <option>Under $5,000</option>
+            <option>$5,000 – $15,000</option>
+            <option>$15,000 – $50,000</option>
+            <option>$50,000+</option>
+            <option>To be discussed</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-details">Project Details <em>*</em></label>
+          <textarea id="f-details" name="details" placeholder="What are you building, improving or automating? Any timelines or constraints we should know about?" required></textarea>
+          <p class="err">A few sentences help us prepare a useful response.</p>
+        </div>
+        <button type="submit" class="btn btn-green">Send Project Details <span class="arr" aria-hidden="true">&rarr;</span></button>
+      </form>
+      <div class="form-success" id="formSuccess" role="status">
+        <div class="tick" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg></div>
+        <h3>Project details sent</h3>
+        <p>Thank you. Our team will review your message and reply within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================ FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="f-col">
+        <a href="#top" class="logo"><img class="logo-img" src="assets/img/logo.svg" alt="">Valour<em>AI</em></a>
+        <p class="desc">A technology partner for digital transformation — intelligent, secure and scalable solutions for startups and established enterprises.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/valourai/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.49 2.49 0 1 1 5 8.48a2.49 2.49 0 0 1-.02-4.98zM3 9.75h4V21H3zM9.5 9.75h3.8v1.54h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.06c0-1.21-.02-2.76-1.68-2.76-1.68 0-1.94 1.31-1.94 2.67V21h-3.98z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.9-6.4L6.5 22H3.34l7.24-8.28L1.4 2h6.4l4.42 5.85zm-1.1 18h1.73L7.02 3.9H5.16z"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Software Engineering</a></li>
+          <li><a href="services.html">AI and Data</a></li>
+          <li><a href="services.html">Intelligent Automation</a></li>
+          <li><a href="services.html">Cloud and Infrastructure</a></li>
+          <li><a href="services.html">Fintech Solutions</a></li>
+          <li><a href="services.html">Data Engineering</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="products.html#bots">AI Trading Bots &amp; Agents</a></li>
+          <li><a href="products.html#diy-tools">AI DIY Tools</a></li>
+          <li><a href="products.html#signals">Copy Trading &amp; Signals</a></li>
+          <li><a href="products.html#academy">Trading Academy</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html#why">Why Valour</a></li>
+          <li><a href="about.html#process">Process</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:salmanullahbaig@valour.ai">salmanullahbaig@valour.ai</a></li>
+          <li><a href="tel:+923475083374">0347 5083374</a></li>
+          <li><a href="contact.html">Islamabad, Pakistan</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-green">Book a Consultation</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ValourAI. All rights reserved.</span>
+      <span class="avail"><i aria-hidden="true"></i>Available for selected projects</span>
+      <span class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
 </body>
 </html>

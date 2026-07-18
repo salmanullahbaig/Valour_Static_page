@@ -1071,3 +1071,29 @@ body{background:transparent}
 @media (max-width:600px){
   .ind-icon.ind-photo{width:72px;height:60px}
 }
+
+/* ---------- long-form article extras ---------- */
+.article h3{font-size:18px;margin:26px 0 10px}
+.article ol{margin:0 0 20px;padding-left:22px;display:flex;flex-direction:column;gap:9px}
+.article ol li{color:var(--muted);font-size:15px;padding-left:4px}
+.article ol li::marker{color:var(--green-hi);font-family:var(--font-mono);font-size:13px}
+.table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line-soft);border-radius:14px;background:var(--card)}
+.article table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+.article th{font-family:var(--font-head);font-size:13.5px;text-align:left;color:var(--text);background:rgba(47,201,77,.08);padding:12px 16px;border-bottom:1px solid var(--line-soft)}
+.article td{padding:12px 16px;color:var(--muted);border-bottom:1px solid var(--line-soft);vertical-align:top}
+.article tr:last-child td{border-bottom:none}
+.callout{display:flex;gap:12px;background:var(--green-dim);border:1px solid rgba(47,201,77,.25);border-radius:14px;padding:16px 18px;margin:22px 0}
+.callout .c-icon{flex:none;color:var(--green-hi);transform:translateY(2px)}
+.callout p{margin:0;font-size:14.5px;color:var(--text)}
+.article-toc{background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:20px 22px;margin:26px 0}
+.article-toc .toc-title{font-family:var(--font-mono);font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin:0 0 12px}
+.article-toc ol{margin:0;gap:7px}
+.article-toc ol li{font-size:14.5px}
+.article-toc a{color:var(--muted)}
+.article-toc a:hover{color:var(--green-hi)}
+.faq-item{border:1px solid var(--line-soft);border-radius:12px;margin-bottom:10px;background:var(--card)}
+.faq-item summary{cursor:pointer;padding:15px 18px;font-family:var(--font-head);font-weight:600;font-size:15px;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:var(--green-hi);font-size:18px;flex:none}
+.faq-item[open] summary::after{content:"\2013"}
+.faq-item p{padding:0 18px 16px;margin:0;font-size:14.5px}

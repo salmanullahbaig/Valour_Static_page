@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081422"/>
+      <stop offset="100%" stop-color="#0C1828"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#122338"/>
+      <stop offset="100%" stop-color="#0F1C2D"/>
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2FC94D"/>
+      <stop offset="100%" stop-color="#5BE873"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(47,201,77,0.2)"/>
+      <stop offset="100%" stop-color="rgba(76,201,240,0.08)"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas background -->
+  <rect width="1200" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Subtle background grid lines -->
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="600" y1="0" x2="600" y2="500"/>
+    <line x1="800" y1="0" x2="800" y2="500"/>
+    <line x1="1000" y1="0" x2="1000" y2="500"/>
+  </g>
+
+  <!-- Outer Frame -->
+  <rect x="36" y="32" width="1128" height="436" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+
+  <!-- Header section -->
+  <text x="70" y="82" font-size="22" font-weight="700" fill="#F7F8FA" letter-spacing="-0.3">AI-Powered Process Automation &amp; ROI Architecture</text>
+  <text x="70" y="104" font-size="13" fill="#8E9AA8" font-family="'JetBrains Mono', monospace">MODELS + DATA + BUSINESS LOGIC + SOFTWARE WORKFLOWS</text>
+
+  <!-- Status indicator badge -->
+  <rect x="996" y="62" width="138" height="30" rx="15" fill="rgba(47,201,77,0.12)" stroke="rgba(47,201,77,0.35)"/>
+  <circle cx="1014" cy="77" r="5" fill="#2FC94D" filter="url(#glow)"/>
+  <text x="1027" y="82" font-size="12" font-weight="600" fill="#5BE873" font-family="'JetBrains Mono', monospace" letter-spacing="1">ROI POSITIVE</text>
+
+  <rect x="70" y="122" width="1064" height="1" fill="rgba(255,255,255,0.07)"/>
+
+  <!-- Left Column: The 6-Step Workflow Pipeline -->
+  <text x="70" y="156" font-size="12" font-weight="600" fill="#5BE873" font-family="'JetBrains Mono', monospace" letter-spacing="1.5">END-TO-END AUTOMATION WORKFLOW</text>
+
+  <!-- Step 1: Input -->
+  <g transform="translate(70, 172)">
+    <rect width="168" height="66" rx="10" fill="#0E1B2B" stroke="rgba(255,255,255,0.09)"/>
+    <circle cx="24" cy="24" r="10" fill="rgba(76,201,240,0.18)"/>
+    <text x="24" y="28" font-size="10" font-weight="700" fill="#4CC9F0" text-anchor="middle" font-family="'JetBrains Mono', monospace">01</text>
+    <text x="44" y="27" font-size="13" font-weight="600" fill="#F1F5F9">Input Data</text>
+    <text x="16" y="49" font-size="11" fill="#8291A4">Emails, Docs &amp; Tickets</text>
+  </g>
+
+  <!-- Connector 1 -->
+  <line x1="238" y1="205" x2="256" y2="205" stroke="#2FC94D" stroke-width="2" stroke-dasharray="3 3"/>
+
+  <!-- Step 2: AI Classification & Extraction -->
+  <g transform="translate(256, 172)">
+    <rect width="176" height="66" rx="10" fill="#0E1B2B" stroke="rgba(47,201,77,0.3)"/>
+    <circle cx="24" cy="24" r="10" fill="rgba(47,201,77,0.2)"/>
+    <text x="24" y="28" font-size="10" font-weight="700" fill="#5BE873" text-anchor="middle" font-family="'JetBrains Mono', monospace">02</text>
+    <text x="44" y="27" font-size="13" font-weight="600" fill="#F1F5F9">AI Understanding</text>
+    <text x="16" y="49" font-size="11" fill="#8291A4">Classify &amp; Extract Data</text>
+  </g>
+
+  <!-- Connector 2 -->
+  <line x1="432" y1="205" x2="450" y2="205" stroke="#2FC94D" stroke-width="2"/>
+
+  <!-- Step 3: Database & ERP validation -->
+  <g transform="translate(450, 172)">
+    <rect width="180" height="66" rx="10" fill="#0E1B2B" stroke="rgba(255,255,255,0.09)"/>
+    <circle cx="24" cy="24" r="10" fill="rgba(168,85,247,0.18)"/>
+    <text x="24" y="28" font-size="10" font-weight="700" fill="#C084FC" text-anchor="middle" font-family="'JetBrains Mono', monospace">03</text>
+    <text x="44" y="27" font-size="13" font-weight="600" fill="#F1F5F9">System Sync</text>
+    <text x="16" y="49" font-size="11" fill="#8291A4">Check DB, CRM &amp; Rules</text>
+  </g>
+
+  <!-- Down & Return Connector -->
+  <path d="M540 238 L540 262 L154 262 L154 284" fill="none" stroke="rgba(47,201,77,0.4)" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Step 4: Autonomous Action -->
+  <g transform="translate(70, 284)">
+    <rect width="168" height="66" rx="10" fill="#0E1B2B" stroke="rgba(47,201,77,0.4)"/>
+    <circle cx="24" cy="24" r="10" fill="rgba(47,201,77,0.2)"/>
+    <text x="24" y="28" font-size="10" font-weight="700" fill="#5BE873" text-anchor="middle" font-family="'JetBrains Mono', monospace">04</text>
+    <text x="44" y="27" font-size="13" font-weight="600" fill="#F1F5F9">Autonomous Action</text>
+    <text x="16" y="49" font-size="11" fill="#8291A4">Update CRM / API Dispatch</text>
+  </g>
+
+  <!-- Connector 4 -->
+  <line x1="238" y1="317" x2="256" y2="317" stroke="#2FC94D" stroke-width="2"/>
+
+  <!-- Step 5: Human in the Loop -->
+  <g transform="translate(256, 284)">
+    <rect width="176" height="66" rx="10" fill="#0E1B2B" stroke="rgba(255,255,255,0.09)"/>
+    <circle cx="24" cy="24" r="10" fill="rgba(251,191,36,0.18)"/>
+    <text x="24" y="28" font-size="10" font-weight="700" fill="#FBBF24" text-anchor="middle" font-family="'JetBrains Mono', monospace">05</text>
+    <text x="44" y="27" font-size="13" font-weight="600" fill="#F1F5F9">Human in the Loop</text>
+    <text x="16" y="49" font-size="11" fill="#8291A4">Exceptions &amp; Judgement</text>
+  </g>
+
+  <!-- Connector 5 -->
+  <line x1="432" y1="317" x2="450" y2="317" stroke="#2FC94D" stroke-width="2"/>
+
+  <!-- Step 6: Measurable Outcome -->
+  <g transform="translate(450, 284)">
+    <rect width="180" height="66" rx="10" fill="rgba(47,201,77,0.12)" stroke="#2FC94D"/>
+    <circle cx="24" cy="24" r="10" fill="#2FC94D"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#07200F" text-anchor="middle" font-family="'JetBrains Mono', monospace">✓</text>
+    <text x="44" y="27" font-size="13" font-weight="700" fill="#5BE873">Outcome Verified</text>
+    <text x="16" y="49" font-size="11" fill="#DFF7E4">Ticket Closed in Seconds</text>
+  </g>
+
+  <!-- Pipeline summary tag -->
+  <text x="70" y="386" font-size="12" fill="#7D8A99">
+    Continuous cycle: <tspan fill="#5BE873">AI reads → classifies → checks databases → takes action → alerts human only when required</tspan>
+  </text>
+
+  <!-- Divider line between Pipeline and ROI panel -->
+  <line x1="662" y1="140" x2="662" y2="440" stroke="rgba(255,255,255,0.07)"/>
+
+  <!-- Right Column: Financial ROI Engine -->
+  <text x="696" y="156" font-size="12" font-weight="600" fill="#5BE873" font-family="'JetBrains Mono', monospace" letter-spacing="1.5">MEASURED FINANCIAL RETURN (AI ROI)</text>
+
+  <!-- Stat Card 1: Time Saved -->
+  <g transform="translate(696, 172)">
+    <rect width="206" height="88" rx="12" fill="#0C1828" stroke="rgba(255,255,255,0.08)"/>
+    <text x="18" y="28" font-size="11" fill="#8E9AA8" font-family="'JetBrains Mono', monospace" letter-spacing="1">AUTOMATION RATE</text>
+    <text x="18" y="60" font-size="30" font-weight="800" fill="#5BE873">70%</text>
+    <text x="88" y="58" font-size="12" fill="#8E9AA8">of routine tasks</text>
+    <text x="18" y="78" font-size="10.5" fill="#4CC9F0">~233 employee hrs / mo saved</text>
+  </g>
+
+  <!-- Stat Card 2: Cost Comparison -->
+  <g transform="translate(926, 172)">
+    <rect width="208" height="88" rx="12" fill="#0C1828" stroke="rgba(255,255,255,0.08)"/>
+    <text x="18" y="28" font-size="11" fill="#8E9AA8" font-family="'JetBrains Mono', monospace" letter-spacing="1">ANNUAL BASELINE</text>
+    <text x="18" y="60" font-size="28" font-weight="800" fill="#F1F5F9">$156k</text>
+    <text x="108" y="58" font-size="12" fill="#8E9AA8">/ year cost</text>
+    <text x="18" y="78" font-size="10.5" fill="#EF4444">Manual 100 hrs/wk baseline</text>
+  </g>
+
+  <!-- Large ROI Equation Banner -->
+  <g transform="translate(696, 276)">
+    <rect width="438" height="114" rx="12" fill="rgba(47,201,77,0.08)" stroke="rgba(47,201,77,0.3)"/>
+    <text x="20" y="32" font-size="12" font-weight="600" fill="#5BE873" font-family="'JetBrains Mono', monospace" letter-spacing="1">THE AI ROI EQUATION</text>
+    
+    <!-- Formula -->
+    <text x="20" y="66" font-size="15" font-weight="700" fill="#F1F5F9">
+      AI ROI = <tspan fill="#5BE873">$100,000</tspan> (Value Created) − <tspan fill="#EF4444">$30,000</tspan> (Cost)
+    </text>
+
+    <!-- Net Value Output -->
+    <rect x="20" y="80" width="170" height="24" rx="6" fill="rgba(47,201,77,0.2)"/>
+    <text x="28" y="96" font-size="12" font-weight="800" fill="#5BE873" font-family="'JetBrains Mono', monospace">NET VALUE: +$70,000/YR</text>
+    
+    <text x="202" y="96" font-size="11.5" fill="#8E9AA8">3.3x First-Year Return on Capital</text>
+  </g>
+
+  <!-- Footer Tagline inside graphic -->
+  <text x="70" y="440" font-size="12" fill="#5A6674" font-family="'JetBrains Mono', monospace">
+    ValourAI Architecture: Engineering AI systems around specific business bottlenecks, not hype.
+  </text>
+</svg>
